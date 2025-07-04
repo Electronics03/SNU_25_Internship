@@ -12,3 +12,4 @@
 *.xpr
 .vscode/
 Verilog_Project/
+.gitignore
