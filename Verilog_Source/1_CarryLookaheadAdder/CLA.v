@@ -1,4 +1,4 @@
-module CLA #(parameter N = 4) (
+module CLA #(parameter N = 8) (
         input wire sub,
         input wire [N-1:0] x,
         input wire [N-1:0] y,
@@ -32,6 +32,6 @@ module CLA #(parameter N = 4) (
             end
         endgenerate
 
-        assign C_out = C[N];
+        assign carry = C[N];
         assign overflow = C[N-1] ^ C[N];
 endmodule
