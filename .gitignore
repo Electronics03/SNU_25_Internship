@@ -1,0 +1,14 @@
+*.log
+*.jou
+*.str
+*.xml
+*.wcfg
+*.tcl
+*.cache/
+*.hw/
+*.ip_user_files/
+*.sim/
+*.runs/
+*.xpr
+.vscode/
+Verilog_Project/
