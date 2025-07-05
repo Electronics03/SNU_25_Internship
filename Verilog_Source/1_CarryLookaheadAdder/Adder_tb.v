@@ -32,31 +32,18 @@ module Adder_tb #( parameter N = 8);
     );
     initial begin
         $monitor(
-            "%d (S=%b) %d = %d (C=%b, O=%b)\n%d (S=%b) %d = %d (C=%b, O=%b)\n",
+            "RCA: %d (S=%b) %d = %d (C=%b, O=%b)\nCLA: %d (S=%b) %d = %d (C=%b, O=%b)",
             x, sub, y, sum_R, carry_R, overflow_R,
             x, sub, y, sum_L, carry_L, overflow_L
         );
 
-        x=123; y=-80; sub=1'b0;
-        #10;
-
-        x=-12; y=53; sub=1'b0;
-        #10;
-
-        x=8; y=3; sub=1'b0;
-        #10;
-
-        x=5; y=-8; sub=1'b1;
-        #10;
-
-        x=2; y=1; sub=1'b1;
-        #10;
-
-        x=-12; y=-23; sub=1'b1;
-        #10;
-
-        x=127; y=127; sub=1'b0;
-        #10;
+        x=123;  y=-80;  sub=1'b0;   #10;
+        x=-12;  y=53;   sub=1'b0;   #10;
+        x=8;    y=3;    sub=1'b0;   #10;
+        x=5;    y=-8;   sub=1'b1;   #10;
+        x=2;    y=1;    sub=1'b1;   #10;
+        x=-12;  y=-23;  sub=1'b1;   #10;
+        x=127;  y=127;  sub=1'b0;   #10;
     end
 
 endmodule
