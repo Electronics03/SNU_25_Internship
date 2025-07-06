@@ -1,5 +1,8 @@
 # How to Approximation?
 
+I am studying efficient computation through the approximation of the Softmax function. 
+The following contents summarize the process of deriving the approximation formula for the Softmax function as described in [[1]](#references).
+
 ## 0. Pre-Processing
 
 $$
@@ -46,5 +49,23 @@ $$
 - Use $\log_2$ to transform to the exponential domain and convert division into subtraction.
 
 ## III. Log Base-2 of x
+$$
+\begin{aligned}
+x &= 2^w\cdot\frac{x}{2^w} = 2^w \cdot x^\prime
+&(1 \le x^\prime < 2)\\
+\log_2x &= \log_2(2^w\cdot x^\prime)\\
+&= w\cdot\log_2x^\prime\\
+&\approx w+x^\prime-1
+\end{aligned}
+$$
 
+- The normalized $x$ can be used for approximation.
+- First, $x$ is separated into $w$ and $\log_2 x'$.
+- $\log_2 x'$ can be approximated using a LUT or polynomial approximation.
+- In [[1]](#references), it was calculated using $(x' − 1)$.
 
+## References
+
+[1] Q.-X. Wu, C.-T. Huang, S.-S. Teng, J.-M. Lu, and M.-D. Shieh,  
+“A Low-complexity and Reconfigurable Design for Nonlinear Function Approximation in Transformers,”  
+in Proc. IEEE International Symposium on Circuits and Systems (ISCAS), 2025.
