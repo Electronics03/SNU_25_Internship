@@ -10,7 +10,7 @@ Finally, I will compare the approximation results to the standard Softmax output
 
 ## 0. Apprioximation Formula
 
-### [How to apprioximate?](HowToApproximate.md)
+### [How to apprioximate?](./HowToApproximate.md)
 
 ## I. LUT
 This function models the **Look-Up Table (LUT)** used in [[1]](#references)'s **Reconfigurable-Unit (RU)** design.  
