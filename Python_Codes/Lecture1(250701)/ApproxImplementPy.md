@@ -1,6 +1,6 @@
 # Softmax Function Approximation Implement in Python
 
-This document is based on [[1]](#references).  
+This document is based on [[1]](#iv-references).  
 It implements and explains the paper’s proposed approach for approximating the Softmax function in a hardware-friendly way.
 
 This design replaces expensive operations like division and exponentials with simple, modular components using shifts, additions, and look-up tables (LUTs).
@@ -13,7 +13,7 @@ Finally, I will compare the approximation results to the standard Softmax output
 ### [How to apprioximate?](./HowToApproximate.md)
 
 ## I. LUT
-This function models the **Look-Up Table (LUT)** used in [[1]](#references)'s **Reconfigurable-Unit (RU)** design.  
+This function models the **Look-Up Table (LUT)** used in [[1]](#iv-references)'s **Reconfigurable-Unit (RU)** design.  
 The RU stores pre-defined multiplication constants in advance, allowing it to quickly select and apply the appropriate scaling factor without expensive operations.
 
 ### Input/Output
@@ -24,7 +24,7 @@ The RU stores pre-defined multiplication constants in advance, allowing it to qu
 - 0 : No scaling (returns 1)
 - 1 : Scaling by 0.5 (used for square root approximations)
 - 2 : Scaling by $\log_2e \approx 1.4427$ (for exponential function approximation)
-- 3 : Scaling by $\alpha\cdot\log_2e \approx 2.5709$ (a tuned constant for GELU approximation in [[1]](#references))
+- 3 : Scaling by $\alpha\cdot\log_2e \approx 2.5709$ (a tuned constant for GELU approximation in [[1]](#iv-references))
 
 ### Layout
 ![LUT](./Pictures/LUT.png)
@@ -47,7 +47,7 @@ def LUT(sel_mult):
 
 Reconfigurable Unit (RU) Function
     
-This function implements the **core arithmetic block** used in [[1]](#references)'s reconfigurable design.
+This function implements the **core arithmetic block** used in [[1]](#iv-references)'s reconfigurable design.
 
 The RU supports two modes of operation:
 - `sel_mux = True`  : performs subtraction for input preprocessing

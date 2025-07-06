@@ -1,7 +1,7 @@
 # How to Approximate?
 
 I am studying efficient computation through the approximation of the Softmax function. 
-The following contents summarize the process of deriving the approximation formula for the Softmax function as described in [[1]](#references).
+The following contents summarize the process of deriving the approximation formula for the Softmax function as described in [[1]](#iv-references).
 
 ## 0. Pre-Processing
 
@@ -62,7 +62,7 @@ $$
 - The normalized $x$ can be used for approximation.
 - First, $x$ is separated into $w$ and $\log_2 x'$.
 - $\log_2 x'$ can be approximated using a LUT or polynomial approximation.
-- In [[1]](#references), it was calculated using $(x' − 1)$.
+- In [[1]](#iv-references), it was calculated using $(x' − 1)$.
 
 ## IV. References
 

@@ -1,19 +1,22 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from datasets import load_dataset
-from transformers import BertTokenizer, BertForSequenceClassification
+import datasets
+from transformers import BertTokenizer
+from transformers import BertForSequenceClassification
 import torch
+
 
 # Look Up Table (LUT)
 def LUT(sel_mult):
     if sel_mult == 0:
-        return 1            # 1
+        return 1  # 1
     elif sel_mult == 1:
-        return 0.5          # 1/2
+        return 0.5  # 1/2
     elif sel_mult == 2:
         return 1.442695041  # log2(e)
     elif sel_mult == 3:
         return 2.570882563  # alpha*log2(e)
+
 
 def RU(in_0, in_1, sel_mux, sel_mult):
     # Subtraction or log2-based normalization
@@ -33,6 +36,7 @@ def RU(in_0, in_1, sel_mux, sel_mult):
     out_1 = 2 ** (out_0)
 
     return [out_0, out_1]
+
 
 def approx2_softmax(x):
     x = np.array(x, dtype=np.float32)
@@ -54,6 +58,7 @@ def approx2_softmax(x):
 
     return output
 
+
 def basic_softmax(x):
     logits_tensor = torch.tensor(x)
     probs_tensor = torch.softmax(logits_tensor, dim=-1)
@@ -62,34 +67,70 @@ def basic_softmax(x):
 
 def main():
     # 1️ 모델 준비
-    model_name = 'textattack/bert-base-uncased-SST-2'
+    model_name = "textattack/bert-base-uncased-SST-2"
+    # 모델이름
     tokenizer = BertTokenizer.from_pretrained(model_name)
+    # 모델에 맞는 토크나이저를 준비
+    # 토크나이저 객체를 반환하는 함수
     model = BertForSequenceClassification.from_pretrained(model_name)
-    model.eval()
+    # SST-2에 맞춰 fine-tune된 BERT 모델 다운로드 후 변수에 저장
+    # 모델 객체를 반환하는 함수
 
-    # 2️ SST-2 데이터셋 샘플 100개
-    dataset = load_dataset("glue", "sst2", split="validation")
+    model.eval()  # Evaluation 모드
+
+    # 2️ SST-2 데이터셋 샘플 모두 가져오기
+    # SST-2 데이터셋 샘플은 Hugging Face에서 가져올 수 있다.
+    # from datasets import load_dataset으로 load_dataset 사용
+    dataset = datasets.load_dataset("glue", "sst2", split="validation")
+    # "validation"-> 검증용 데이터 872개를 가져옴
     sentences = dataset["sentence"]
+    # 문장 샘플데이터
     true_labels = np.array(dataset["label"])
+    # 정답 샘플데이터
 
     print(f"Loaded {len(sentences)} SST-2 samples.")
+    # 데이터셋 샘플을 모두 가져왔음
 
     # 3️ 문장 토크나이즈
-    inputs = tokenizer(sentences, return_tensors='pt', padding=True, truncation=True)
+    inputs = tokenizer(sentences, return_tensors="pt", padding=True, truncation=True)
+    # 앞에서 가져온 토크나이저를 이용
+    # input = {
+    # 'input_ids': Tensor1,
+    # 'attention_mask': Tensor2
+    # }
+    # Tensor1는 각 문장이 반환한 토큰 번호 시퀀스
+    # Tensor2는 attention_mask 어떤 것이 패딩인지, 패딩이 아닌지 -> 모델이 패딩을 무시하도록 한다
+    # 딕셔너리이다 (Key-Value)
 
     with torch.no_grad():
-        outputs = model(**inputs)
+        # 이 블록 안에서는 모든 연산에서 gradient(미분 정보)를 추적하지 않겠다.
+        # autograd 엔진이 꺼짐
+        # 학습할떄의 역전파 사용 안함
+        # 단순히 결과를 출력 (추론)만 한다
+        # 앞에서 추론 모드로 설정
+        outputs = model(
+            input_ids=inputs["input_ids"],
+            attention_mask=inputs["attention_mask"],
+        )
+        # outputs = SequenceClassifierOutput(
+        # loss=None (또는 값),
+        # logits=Tensor,
+        # hidden_states=None,
+        # attentions=None
+        # )
+        # Tensor는 각 문장이 반환한 로짓 벡터 시퀀스
         logits = outputs.logits.numpy()
+        # 텐서를 넘파이 기반 배열로 변경
 
     # 4️ 예측 라벨 비교
     correct_basic = 0
     correct_approx = 0
     match_count = 0
 
-    for idx, logit in enumerate(logits):
+    for idx, logit in enumerate(logits):  # 인덱스와 값을 동시에 꺼내주는 함수
         std_probs = basic_softmax(logit)
         approx_probs = approx2_softmax(logit)
-
+        # 뭐 여기서부턴 그냥 두개 비교
         std_label = np.argmax(std_probs)
         approx_label = np.argmax(approx_probs)
         true_label = true_labels[idx]
@@ -109,8 +150,12 @@ def main():
             print(f"Sample {idx+1}: {sentences[idx]}")
             print(f"True Label: {true_label}")
             print(f"Logits: {np.round(logit, 3)}")
-            print(f"Standard Softmax Probs: {np.round(std_probs, 4)} → Label: {std_label}")
-            print(f"Approximate Softmax Probs: {np.round(approx_probs, 4)} → Label: {approx_label}")
+            print(
+                f"Standard Softmax Probs: {np.round(std_probs, 4)} → Label: {std_label}"
+            )
+            print(
+                f"Approximate Softmax Probs: {np.round(approx_probs, 4)} → Label: {approx_label}"
+            )
             print(f"Labels Match? {std_label == approx_label}")
             print("-" * 60)
 
@@ -124,6 +169,7 @@ def main():
     print(f"Standard Softmax Accuracy : {acc_basic:.2f}%")
     print(f"Approximate Softmax Accuracy: {acc_approx:.2f}%")
     print(f"Label Match Rate (Std vs Approx): {label_match_rate:.2f}%")
+
 
 if __name__ == "__main__":
     main()
