@@ -1,4 +1,4 @@
-# How to Approximation?
+# How to Approximate?
 
 I am studying efficient computation through the approximation of the Softmax function. 
 The following contents summarize the process of deriving the approximation formula for the Softmax function as described in [[1]](#references).
