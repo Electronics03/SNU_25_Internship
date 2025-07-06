@@ -34,15 +34,15 @@ def RU(in_0, in_1, sel_mux, sel_mult):
 
 
 def approx2_softmax(x):
-    x = np.array(x)
+    x = np.array(x, dtype=np.float32)
     y = np.empty(x.size, dtype=np.float32)
     output = np.empty(x.size, dtype=np.float32)
 
     # Stage 1: Max-subtraction and exponentiation approximation
-    xs = np.max(x)
+    x_max = np.max(x)
     sum_exp = 0
     for i in range(x.size):
-        out = RU(xs, x[i], True, 2)
+        out = RU(x_max, x[i], True, 2)
         y[i] = out[0]
         sum_exp += out[1]
 
@@ -55,8 +55,8 @@ def approx2_softmax(x):
 
 
 def basic_softmax(x):
-    x = np.array(x)
-    exp_x = np.exp(x)
+    x = np.array(x, dtype=np.float32)
+    exp_x = np.exp(x, dtype=np.float32)
     return exp_x / np.sum(exp_x)
 
 

@@ -12,7 +12,7 @@ Finally, I will compare the approximation results to the standard Softmax output
 
 ### [How to apprioximate?](HowToApproximate.md)
 
-## LUT
+## I. LUT
 This function models the **Look-Up Table (LUT)** used in [[1]](#references)'s **Reconfigurable-Unit (RU)** design.  
 The RU stores pre-defined multiplication constants in advance, allowing it to quickly select and apply the appropriate scaling factor without expensive operations.
 
@@ -26,7 +26,7 @@ The RU stores pre-defined multiplication constants in advance, allowing it to qu
 - 2 : Scaling by $\log_2e \approx 1.4427$ (for exponential function approximation)
 - 3 : Scaling by $\alpha\cdot\log_2e \approx 2.5709$ (a tuned constant for GELU approximation in [[1]](#references))
 
-### Features
+### Layout
 ![LUT](./Pictures/LUT.png)
 
 ### Code
@@ -43,52 +43,44 @@ def LUT(sel_mult):
         return 2.570882563  # alpha*log2(e)
 ```
 
-## RU
+## II. RU
 
 Reconfigurable Unit (RU) Function
     
-This function implements the **core arithmetic block** used in the paper's reconfigurable design.
+This function implements the **core arithmetic block** used in [[1]](#references)'s reconfigurable design.
 
 The RU supports two modes of operation:
-- sel_mux = True  : performs subtraction for input preprocessing
-- sel_mux = False : performs log2-based normalization
+- `sel_mux = True`  : performs subtraction for input preprocessing
+- `sel_mux = False` : performs transform domain to exp with log2-based normalization
 
 After subtraction/log2, the result is scaled by a selectable multiplier (sel_mult),
-then transformed via 2^x to approximate exponential behavior.
+then transformed via $2^x$ to approximate exponential behavior.
 
-### Inputs:
-- `in_0` : float
-    - First input operand.
-        - For sel_mux=True: typically current input value x_i
-        - For sel_mux=False: typically sum_exp or log2(sum_exp)
+### Input
+- **Data**
+    - `in_0` : First input operand (`FP32`)
+    - `in_1` : Second input operand (`FP32`)
 
-- `in_1` : float
-    - Second input operand.
-        - For sel_mux=True: reference value (e.g., max(x))
-        - For sel_mux=False: log2(sum of exponentials)
+- **Selelctors**
+    - `sel_mux` : `bool`
+        - Mode selector:
+            - `True`  : subtraction mode
+            - `False` : log2 normalization mode
 
-- `sel_mux` : bool
-    - Mode selector:
-        - True  : subtraction mode (for initial shift)
-        - False : log2 normalization mode (for sum_exp correction)
+    - `sel_mult` : `INT32`
+        - Multiplier selector controlling LUT scaling.
+            - 0 : No scaling
+            - 1 : Scaling by 0.5
+            - 2 : Scaling by $\log_2e \approx 1.4427$
+            - 3 : Scaling by $\alpha\cdot\log_2e \approx 2.5709$
 
-- `sel_mult` : int (0-3)
-    - Multiplier selector controlling LUT scaling.
-        - 0 : no scaling (1)
-        - 1 : scaling by 0.5
-        - 2 : scaling by log2(e) (for exp approximation)
-        - 3 : scaling by alpha * log2(e) (for GELU approximation)
-
-### Ouputs:
+### Ouput
     
 - list of `[out_0, out_1]`
     - `out_0` : intermediate result after subtraction/log2 and scaling
-    - `out_1` : final result after 2^x operation (exp approximation)
+    - `out_1` : final result after $2^x$ operation (exp approximation)
 
-### Notes:
-The RU is designed to approximate nonlinear functions (like softmax) in hardware-friendly form using log2/exponential transforms and scaling.
-This design is directly inspired by the proposed reconfigurable unit in the paper.
-
+### Layout
 ![RU](./Pictures/RU.png)
 
 ### Code
@@ -114,57 +106,56 @@ def RU(in_0, in_1, sel_mux, sel_mult):
     return [out_0, out_1]
 ```
 
-## approx2_softmax Function
+## III. approx2_softmax Function
 
 This function implements a **two-stage approximation of the softmax operation**, mirroring the approach described in the paper’s reconfigurable design.
 
-### Purpose:
-- Emulates the paper's Algorithm 1 in software
-- Breaks softmax computation into two hardware-friendly stages
-- Allows use of RU (Reconfigurable Unit) in different modes
+### Purpose
+I want to ultimately calculate $2^{x_j'\cdot\log_2 e - \log_2 \left(\sum_{i=0}^{N-1} e^{x_i'}\right)}$.  
+In the first stage, I will compute $x_j'\cdot\log_2 e$ and approximate $2^{x_j'\cdot\log_2 e} \approx e^{x_j'}$.  
+Before the second stage, I will calculate the sum of $e^{x_i'}$.  
+In the second stage, I will transform $\sum e^{x_i'}$ to the log2 domain using normalization, and subtract it from $x_j'\cdot\log_2 e$ (without divison).  
+Finally, using the $2^x$ operation, I will obtain the result $2^{x_j'\cdot\log_2 e - \log_2 \left(\sum_{i=0}^{N-1} e^{x_i'}\right)}$.
 
-### Stages:
-1. Stage 1 – Max-Subtraction and Exponentiation Approximation
-   - Uses RU in `sel_mux=True` mode
-   - For each input x_i, computes:
-     - `(x_i - max(x)) * log2(e)`
-     - Approximates exp via 2^x
-   - Accumulates sum of exponentials
 
-2. Stage 2 – Normalization
-   - Uses RU in `sel_mux=False` mode
-   - For each transformed value y_i, computes:
-     - Normalized value by correcting with log2(sum of exponentials)
-     - Final result via 2^x back-transformation
+### Main Logic
+1. **Stage 1**
+    - Uses RU in `sel_mux=True`
+    - For each input `x_i`, computes:
+        - `(x_i - max(x)) * log2(e)`
+        - Approximates exp via $2^x$
+    - Accumulates sum of exponentials
 
-### Inputs:
-- `x` : array-like
-  - Input logits vector (e.g., attention scores)
+2. **Stage 2**
+    - Uses RU in `sel_mux=False`
+    - For each transformed value `y_i`, computes:
+        - Normalized value by correcting with log2(sum of exponentials)
+        - Final result via $2^x$
 
-### Outputs:
-- `output` : NumPy array
-  - Approximated softmax probability distribution
+### Input
+- `x` : array (`FP32`)
+    - Input logits vector
 
-### Notes:
-- Designed for modularity to match hardware implementation.
-- RU calls emulate separate pipeline stages for max-shift, scaling, and normalization.
-- Intended for eventual fixed-point or LUT-based hardware realization.
+### Output
+- `output` : NumPy array (`FP32`)
+    - Approximated softmax probability distribution
 
+### Layout
 ![Softmax_app](./Pictures/Softmax_app.png)
 
 ### Code
 
 ```py
 def approx2_softmax(x):
-    x = np.array(x)
+    x = np.array(x, dtype=np.float32)
     y = np.empty(x.size, dtype=np.float32)
     output = np.empty(x.size, dtype=np.float32)
 
     # Stage 1: Max-subtraction and exponentiation approximation
-    xs = np.max(x)
+    x_max = np.max(x)
     sum_exp = 0
     for i in range(x.size):
-        out = RU(xs, x[i], True, 2)
+        out = RU(x_max, x[i], True, 2)
         y[i] = out[0]
         sum_exp += out[1]
 
