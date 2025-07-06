@@ -12,6 +12,7 @@ Finally, I will compare the approximation results to the standard Softmax output
 
 ### [How to apprioximate?](./HowToApproximate.md)
 - $\log_2x$
+
 $$
 \log_2x\approx w+x^\prime-1
 $$
@@ -24,6 +25,7 @@ def log2_approx(x):
     return log2_x
 ```
 - $2^x$
+
 $$
 2^x= 2^{u + v}=2^v \cdot 2^u\approx (1+v) \ll u
 $$
