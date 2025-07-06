@@ -3,3 +3,4 @@
 ### 1. Softmax Preview
 - [0. How to approximate?](./Python_Codes/Lecture1(250701)/HowToApproximate.md)
 - [1. Softmax Function Approximation Implement in Python](./Python_Codes/Lecture1(250701)/ApproxImplementPy.md)
+- [2. Softmax Function Approximation Comparison](./Python_Codes/Lecture1(250701)/Comp.md)

@@ -11,6 +11,30 @@ Finally, I will compare the approximation results to the standard Softmax output
 ## 0. Apprioximation Formula
 
 ### [How to apprioximate?](./HowToApproximate.md)
+- $\log_2x$
+$$
+\log_2x\approx w+x^\prime-1
+$$
+
+```py
+def log2_approx(x):
+    w = int(np.floor(np.log2(x)))
+    x_prime = x / (2**w)
+    log2_x = w + (x_prime - 1)
+    return log2_x
+```
+- $2^x$
+$$
+2^x= 2^{u + v}=2^v \cdot 2^u\approx (1+v) \ll u
+$$
+```py
+def pow2_approx(x):
+    x = np.array(x)
+    u = np.floor(x).astype(int)
+    v = x - u
+    pow2_x = (1 + v) * (2.0**u)
+    return pow2_x
+```
 
 ## I. LUT
 This function models the **Look-Up Table (LUT)** used in [[1]](#iv-references)'s **Reconfigurable-Unit (RU)** design.  
@@ -94,14 +118,14 @@ def RU(in_0, in_1, sel_mux, sel_mult):
     else:
         # sel_mux = False: log2 correction (log2(exp_sum) - y_i)
         # Ensuring input is positive for log2 domain
-        out_0 = in_1 - np.log2(in_0)
+        out_0 = in_1 - log2_approx(in_0)
 
     # Scaling via selected LUT constant
     out_0 = out_0 * LUT(sel_mult)
 
     # Exponential approximation via 2^x
     # It can approximate to add and shift operation
-    out_1 = 2 ** (out_0)
+    out_1 = pow2_approx(out_0)
 
     return [out_0, out_1]
 ```
