@@ -167,7 +167,7 @@ def approx2_softmax(x):
     return output
 ```
 
-## References
+## IV. References
 
 [1] Q.-X. Wu, C.-T. Huang, S.-S. Teng, J.-M. Lu, and M.-D. Shieh,  
 “A Low-complexity and Reconfigurable Design for Nonlinear Function Approximation in Transformers,”  

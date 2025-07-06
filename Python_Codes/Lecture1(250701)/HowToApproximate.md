@@ -64,7 +64,7 @@ $$
 - $\log_2 x'$ can be approximated using a LUT or polynomial approximation.
 - In [[1]](#references), it was calculated using $(x' − 1)$.
 
-## References
+## IV. References
 
 [1] Q.-X. Wu, C.-T. Huang, S.-S. Teng, J.-M. Lu, and M.-D. Shieh,  
 “A Low-complexity and Reconfigurable Design for Nonlinear Function Approximation in Transformers,”  

@@ -1,5 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from datasets import load_dataset
+from transformers import BertTokenizer, BertModel
+import torch
 
 # Look Up Table (LUT)
 def LUT(sel_mult):
@@ -11,7 +14,6 @@ def LUT(sel_mult):
         return 1.442695041  # log2(e)
     elif sel_mult == 3:
         return 2.570882563  # alpha*log2(e)
-
 
 def RU(in_0, in_1, sel_mux, sel_mult):
     # Subtraction or log2-based normalization
@@ -31,7 +33,6 @@ def RU(in_0, in_1, sel_mux, sel_mult):
     out_1 = 2 ** (out_0)
 
     return [out_0, out_1]
-
 
 def approx2_softmax(x):
     x = np.array(x, dtype=np.float32)
@@ -53,60 +54,53 @@ def approx2_softmax(x):
 
     return output
 
-
 def basic_softmax(x):
     x = np.array(x, dtype=np.float32)
     exp_x = np.exp(x, dtype=np.float32)
     return exp_x / np.sum(exp_x)
 
+def get_bert_logits(sentences):
+    # 사전학습된 BERT 모델과 토크나이저 로드
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+    model = BertModel.from_pretrained('bert-base-uncased')
+    model.eval()
+
+    # 문장 인코딩
+    inputs = tokenizer(sentences, return_tensors='pt', padding=True, truncation=True)
+    with torch.no_grad():
+        outputs = model(**inputs)
+    
+    # [CLS] 토큰 벡터 사용 (batch_size, hidden_size)
+    cls_embeddings = outputs.last_hidden_state[:, 0, :].numpy()
+
+    return cls_embeddings
 
 def main():
-    N = 50
-    dtype = np.float32
+    # 1. SST-2 문장 샘플 불러오기
+    dataset = load_dataset("glue", "sst2", split="train[:5]")
+    sentences = dataset["sentence"]
 
-    # Generate input: 50 random values from uniform(-3, 3)
-    x = np.random.uniform(-3, 3, size=N).astype(dtype)
-    print("Input vector x:", x)
+    print("Sample sentences from SST-2:")
+    for s in sentences:
+        print("-", s)
+    print()
 
-    # Compute approximate and standard softmax
-    approx_output = approx2_softmax(x)
-    basic_output = basic_softmax(x)
+    # 2. BERT 임베딩 벡터 생성
+    cls_vectors = get_bert_logits(sentences)
+    print(f"BERT CLS embeddings shape: {cls_vectors.shape}")
 
-    # Compute relative error in percentage
-    error_percentage = (approx_output - basic_output) / basic_output * 100
+    # 3. Softmax 비교
+    for idx, vec in enumerate(cls_vectors):
+        print(f"\nSample {idx+1}:")
+        print("Input vector (rounded):", np.round(vec[:8], 3), "...")  # 일부만 출력
 
-    # Print results
-    print("Softmax output (approx):", approx_output)
-    print("Sum of outputs (approx):", np.sum(approx_output))
+        approx_result = approx2_softmax(vec)
+        basic_result = basic_softmax(vec)
 
-    print("Softmax output (basic):", basic_output)
-    print("Sum of outputs (basic):", np.sum(basic_output))
-
-    print("Error (%):", error_percentage)
-
-    # --- Visualization Section ---
-    plt.figure(figsize=(12, 5))
-
-    # 1. Bar chart comparing outputs
-    plt.subplot(1, 2, 1)
-    indices = np.arange(len(x))
-    plt.bar(indices - 0.2, basic_output, width=0.4, label="Basic Softmax")
-    plt.bar(indices + 0.2, approx_output, width=0.4, label="Approx2 Softmax")
-    plt.title("Softmax Output Comparison")
-    plt.xlabel("Index")
-    plt.ylabel("Probability")
-    plt.legend()
-
-    # 2. Error percentage plot
-    plt.subplot(1, 2, 2)
-    plt.bar(indices, error_percentage)
-    plt.title("Error Percentage per Element")
-    plt.xlabel("Index")
-    plt.ylabel("Error (%)")
-
-    plt.tight_layout()
-    plt.show()
-
+        print("Approximate Softmax:", np.round(approx_result, 4))
+        print("Standard Softmax   :", np.round(basic_result, 4))
+        print("Errors             :", (basic_result-approx_result)/basic_result)
+        print("-" * 50)
 
 if __name__ == "__main__":
     main()
