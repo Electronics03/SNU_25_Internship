@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from datasets import load_dataset
-from transformers import BertTokenizer, BertModel
+from transformers import BertTokenizer, BertForSequenceClassification
 import torch
 
 # Look Up Table (LUT)
@@ -55,52 +55,75 @@ def approx2_softmax(x):
     return output
 
 def basic_softmax(x):
-    x = np.array(x, dtype=np.float32)
-    exp_x = np.exp(x, dtype=np.float32)
-    return exp_x / np.sum(exp_x)
+    logits_tensor = torch.tensor(x)
+    probs_tensor = torch.softmax(logits_tensor, dim=-1)
+    return probs_tensor.numpy()
 
-def get_bert_logits(sentences):
-    # 사전학습된 BERT 모델과 토크나이저 로드
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-    model = BertModel.from_pretrained('bert-base-uncased')
-    model.eval()
-
-    # 문장 인코딩
-    inputs = tokenizer(sentences, return_tensors='pt', padding=True, truncation=True)
-    with torch.no_grad():
-        outputs = model(**inputs)
-    
-    # [CLS] 토큰 벡터 사용 (batch_size, hidden_size)
-    cls_embeddings = outputs.last_hidden_state[:, 0, :].numpy()
-
-    return cls_embeddings
 
 def main():
-    # 1. SST-2 문장 샘플 불러오기
-    dataset = load_dataset("glue", "sst2", split="train[:5]")
+    # 1️ 모델 준비
+    model_name = 'textattack/bert-base-uncased-SST-2'
+    tokenizer = BertTokenizer.from_pretrained(model_name)
+    model = BertForSequenceClassification.from_pretrained(model_name)
+    model.eval()
+
+    # 2️ SST-2 데이터셋 샘플 100개
+    dataset = load_dataset("glue", "sst2", split="validation")
     sentences = dataset["sentence"]
+    true_labels = np.array(dataset["label"])
 
-    print("Sample sentences from SST-2:")
-    for s in sentences:
-        print("-", s)
-    print()
+    print(f"Loaded {len(sentences)} SST-2 samples.")
 
-    # 2. BERT 임베딩 벡터 생성
-    cls_vectors = get_bert_logits(sentences)
-    print(f"BERT CLS embeddings shape: {cls_vectors.shape}")
+    # 3️ 문장 토크나이즈
+    inputs = tokenizer(sentences, return_tensors='pt', padding=True, truncation=True)
 
-    # 3. Softmax 비교
-    for idx, vec in enumerate(cls_vectors):
-        print(f"\nSample {idx+1}:")
-        print("Input vector (rounded):", np.round(vec[:8], 3), "...")  # 일부만 출력
+    with torch.no_grad():
+        outputs = model(**inputs)
+        logits = outputs.logits.numpy()
 
-        approx_result = approx2_softmax(vec)
-        basic_result = basic_softmax(vec)
+    # 4️ 예측 라벨 비교
+    correct_basic = 0
+    correct_approx = 0
+    match_count = 0
 
-        print("Approximate Softmax:", np.round(approx_result, 4))
-        print("Standard Softmax   :", np.round(basic_result, 4))
-        print("Errors             :", (basic_result-approx_result)/basic_result)
-        print("-" * 50)
+    for idx, logit in enumerate(logits):
+        std_probs = basic_softmax(logit)
+        approx_probs = approx2_softmax(logit)
+
+        std_label = np.argmax(std_probs)
+        approx_label = np.argmax(approx_probs)
+        true_label = true_labels[idx]
+
+        # Accuracy 측정
+        if std_label == true_label:
+            correct_basic += 1
+        if approx_label == true_label:
+            correct_approx += 1
+
+        # Softmax 버전 간 예측 라벨 일치 여부
+        if std_label == approx_label:
+            match_count += 1
+
+        # 선택적으로 상세 출력
+        if idx < 5:  # 처음 5개만 출력 예시
+            print(f"Sample {idx+1}: {sentences[idx]}")
+            print(f"True Label: {true_label}")
+            print(f"Logits: {np.round(logit, 3)}")
+            print(f"Standard Softmax Probs: {np.round(std_probs, 4)} → Label: {std_label}")
+            print(f"Approximate Softmax Probs: {np.round(approx_probs, 4)} → Label: {approx_label}")
+            print(f"Labels Match? {std_label == approx_label}")
+            print("-" * 60)
+
+    # 5️ 전체 정확도 요약
+    total = len(sentences)
+    acc_basic = correct_basic / total * 100
+    acc_approx = correct_approx / total * 100
+    label_match_rate = match_count / total * 100
+
+    print("\n=== Evaluation Results ===")
+    print(f"Standard Softmax Accuracy : {acc_basic:.2f}%")
+    print(f"Approximate Softmax Accuracy: {acc_approx:.2f}%")
+    print(f"Label Match Rate (Std vs Approx): {label_match_rate:.2f}%")
 
 if __name__ == "__main__":
     main()
