@@ -32,7 +32,7 @@ endmodule
 
 
 module pow2_approx(
-    input  wire signed [15:0] in_x,
+    input wire signed [15:0] in_x,
     output wire signed [15:0] pow2_x
 );
 
@@ -46,6 +46,6 @@ module pow2_approx(
     assign one_plus_frac = {4'b0001, frac_part};
 
     assign mult_result = (int_part >= 0) ? (one_plus_frac <<< int_part) : (one_plus_frac >>> (-int_part));
-
+    
     assign pow2_x = mult_result[15:0];
 endmodule
