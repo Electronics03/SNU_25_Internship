@@ -35,6 +35,7 @@ module pow2_approx(
     input  wire signed [15:0] in_x,
     output wire signed [15:0] pow2_x
 );
+
     wire signed [3:0] int_part;
     wire [11:0] frac_part;
     wire signed [15:0] one_plus_frac;
