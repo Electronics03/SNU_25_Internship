@@ -30,7 +30,6 @@ module log2_approx (
     assign log2_x = {int_part, frac_part[14:3]};
 endmodule
 
-
 module pow2_approx(
     input wire signed [15:0] in_x,
     output wire signed [15:0] pow2_x

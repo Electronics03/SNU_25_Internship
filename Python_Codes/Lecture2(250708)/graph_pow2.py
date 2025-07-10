@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 
 x_pow_data = np.array(
     [
+        -4.000000,
+        -3.500000,
         -3.000000,
         -2.500000,
         -2.000000,
@@ -34,6 +36,8 @@ x_pow_data = np.array(
 
 y_pow_approx = np.array(
     [
+        0.062500,
+        0.093750,
         0.125000,
         0.187500,
         0.250000,
