@@ -1,5 +1,5 @@
-module log2_approx (
-    input  wire [15:0] in_x,
+module log2_approx(
+    input wire [15:0] in_x,
     output wire [15:0] log2_x
 );
     reg [3:0] count;
