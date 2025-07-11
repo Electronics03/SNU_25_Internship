@@ -1,23 +1,29 @@
+/*
+16-bit fixed-point : Q4.12
+Testbench for log2_approx module
+Description:
+- Applies multiple 16-bit fixed-point test inputs to log2_approx.
+- Displays both input and output in real-number format.
+- Uses a task to convert Q4.12 to real for readable output.
+*/
+
 `timescale 1ns/1ps
 
-module approx_tb;
+module log2_approx_tb;
 
-    reg [15:0] in_log2;
-    wire [15:0] out_log2;
+    reg [15:0] in_log2;        // Test input in Q4.12 format
+    wire [15:0] out_log2;      // Output from log2_approx (Q4.12)
 
-    reg signed [15:0] in_pow2;
-    wire signed [15:0] out_pow2;
-
+    // Instantiate the DUT (Device Under Test)
     log2_approx u_log2 (
         .in_x(in_log2),
         .log2_x(out_log2)
     );
 
-    pow2_approx u_pow2 (
-        .in_x(in_pow2),
-        .pow2_x(out_pow2)
-    );
-
+    /*
+    Task to display fixed-point Q4.12 as real number.
+    Converts signed 16-bit value to real by dividing by 4096.0.
+    */
     task display_fixed;
         input [15:0] val;
         real real_val;
@@ -26,6 +32,11 @@ module approx_tb;
             $write("%f", real_val);
         end
     endtask
+
+    /*
+    Apply a sequence of test vectors.
+    Print input and corresponding output for verification.
+    */
 
     initial begin
         $display("==== log2_approx test ====");
@@ -318,230 +329,6 @@ module approx_tb;
         display_fixed(out_log2);
         $write("\n");
 
-        $display("==== pow2_approx test ====");
-
-        in_pow2 = 16'b1100000000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1100100000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1101000000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1101100000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1110000000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1110010000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1110100000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1110110000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1111000000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1111010000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1111100000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b1111110000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0000000000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0000010000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0000100000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0000110000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0001000000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0001010000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0001100000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0001110000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0010000000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0010001000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0010010000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0010011000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0010100000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0010101000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0010110000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
-
-        in_pow2 = 16'b0010111000000000;
-        #10;
-        $write("Input: ");
-        display_fixed(in_pow2);
-        $write("-> Onput: ");
-        display_fixed(out_pow2);
-        $write("\n");
+        $finish;
     end
 endmodule
