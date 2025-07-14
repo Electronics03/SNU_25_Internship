@@ -17,7 +17,7 @@ module RU (
     input en,
     output [15:0] out_0,    // Intermediate result in Q4.12
     output [15:0] out_1,     // Final result after pow2_approx in Q4.12
-    output valid    
+    output valid
 );
 
     wire [15:0] in_0_log2_sub;    // log2_approx result
@@ -46,7 +46,6 @@ module RU (
         end
     end
 
-
     assign mult = (sel_mult) ? 16'b0001_0111_0001_0010 : 16'b0001_0000_0000_0000;
     assign sub = (sel_mux) ? in_0_sub : in_0_log2_sub;
 
@@ -71,14 +70,14 @@ module RU (
         .en(en),
         .ready(1'b1),
         .log2_x(in_0_log2_sub),
-        .valid(),
+        .valid(valid),
         .out_x(in_0_sub)
     );
 
     assign out_0 = out_x;
 
     pow2_approx POW2(
-        .in_x(mult_result),
+        .in_x(mult_result[27:12]),
         .clk(clk),
         .rst(rst),
         .en(en),
