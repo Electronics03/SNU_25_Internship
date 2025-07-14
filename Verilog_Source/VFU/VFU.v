@@ -1,41 +1,45 @@
 module VFU #(
     parameter N = 64
 )(
-    input [N*16-1:0] vect_A,
-    input [N*16-1:0] vect_B,
+    input [N*16-1:0] vect_A_in,
+    input [N*16-1:0] vect_B_in,
     input [1:0] INST,
     input clk,
     input rst,
     output reg [N*16-1:0] vect_out_flat,
     output reg out_tvalid
-);
-    localparam MULT_LAT = 11;
-    localparam ADD_LAT = 6;
-    localparam SUB_LAT = 11;
-    localparam EXP_LAT = 6;
-    localparam SUBEXP_LAT = SUB_LAT + EXP_LAT;
-    localparam MAX_LAT = SUBEXP_LAT;
-
-    reg [1:0] inst_pipe [0:MAX_LAT-1];
-    integer i;
-
-    always @(posedge clk) begin
-        if (~rst) begin
-            for (i = 0; i < MAX_LAT; i = i + 1)
-                inst_pipe[i] <= 2'b00;
-        end
-        else begin
-            inst_pipe[0] <= INST;
-            for (i = 1; i < MAX_LAT; i = i + 1)
-                inst_pipe[i] <= inst_pipe[i-1];
-        end
-    end
+);    
+    reg [3:0] valid;
+    reg [N*16-1:0] vect_A;
+    reg [N*16-1:0] vect_B;
 
     wire [N*16-1:0] sub_result;
     wire [N*16-1:0] exp_result;
     wire [N*16-1:0] add_result;
     wire [N*16-1:0] mult_result;
     wire [N*16-1:0] bypass_result;
+
+    always @(posedge clk) begin
+        if(rst) begin
+            vect_A <= vect_A_in;
+            vect_B <= vect_B_in;
+        end
+        else begin
+            vect_A <= {N{16'd0}};
+            vect_B <= {N{16'd0}};
+        end
+    end
+
+    always @(*) begin
+        case (INST)
+            2'b00: valid = 4'b1000;
+            2'b01: valid = 4'b0100;
+            2'b10: valid = 4'b0010;
+            2'b11: valid = 4'b0001;
+        endcase
+    end
+
+
 
     wire mult_valid, add_valid, sub_valid, exp_valid;
     wire sub_exp_valid;
@@ -47,7 +51,7 @@ module VFU #(
         .add_in_B_flat(vect_B),
         .clk(clk),
         .rst(rst),
-        .in_tvalid({N{1'b1}}),
+        .in_tvalid({N{valid[2]}}),
         .in_tready(),
         .out_tvalid(add_valid),
         .add_out_flat(add_result)
@@ -58,7 +62,7 @@ module VFU #(
         .mult_in_B_flat(vect_B),
         .clk(clk),
         .rst(rst),
-        .in_tvalid({N{1'b1}}),
+        .in_tvalid({N{valid[3]}}),
         .in_tready(),
         .out_tvalid(mult_valid),
         .mult_out_flat(mult_result)
@@ -69,7 +73,7 @@ module VFU #(
         .sub_in_B_flat(vect_B),
         .clk(clk),
         .rst(rst),
-        .in_tvalid({N{1'b1}}),
+        .in_tvalid({N{valid[1]}}),
         .in_tready(),
         .out_tvalid(sub_valid),
         .sub_out_flat(sub_result)
@@ -86,33 +90,22 @@ module VFU #(
     );
 
     assign sub_exp_valid = exp_valid;
-
-    always @(posedge clk) begin
-        if (~rst) begin
-            vect_out_flat <= 0;
-            out_tvalid <= 0;
-        end
-        else begin
-            out_tvalid <= 0;
-            vect_out_flat <= 0;
-
-            if (mult_valid && inst_pipe[MULT_LAT-1] == 2'b00) begin
-                vect_out_flat <= mult_result;
-                out_tvalid <= 1;
-            end
-            else if (add_valid && inst_pipe[ADD_LAT-1] == 2'b01) begin
-                vect_out_flat <= add_result;
-                out_tvalid <= 1;
-            end
-            else if (sub_exp_valid && inst_pipe[SUBEXP_LAT-1] == 2'b10) begin
-                vect_out_flat <= exp_result;
-                out_tvalid <= 1;
-            end
-            else if (inst_pipe[0] == 2'b11) begin
-                vect_out_flat <= bypass_result;
-                out_tvalid <= 1;
-            end
-        end
+    always @(*) begin
+        case (INST)
+            2'b00: vect_out_flat = mult_result;
+            2'b01: vect_out_flat = add_result;
+            2'b10: vect_out_flat = exp_result;
+            2'b11: vect_out_flat = bypass_result;
+        endcase
     end
 
+    always @(*) begin
+    case (INST)
+        2'b00: out_tvalid = mult_valid;
+        2'b01: out_tvalid = add_valid;
+        2'b10: out_tvalid = exp_valid;
+        2'b11: out_tvalid = 1'b1;
+        default: out_tvalid = 1'b0;
+    endcase
+end
 endmodule

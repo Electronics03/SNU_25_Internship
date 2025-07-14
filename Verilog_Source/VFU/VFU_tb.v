@@ -13,14 +13,12 @@ module VFU_tb;
     wire [N*16-1:0] vect_out_flat;
     wire out_tvalid;
 
-    // 클록 생성
     initial clk = 0;
     always #5 clk = ~clk;
 
-    // DUT 인스턴스
     VFU #(.N(N)) DUT (
-        .vect_A(vect_A),
-        .vect_B(vect_B),
+        .vect_A_in(vect_A),
+        .vect_B_in(vect_B),
         .INST(INST),
         .clk(clk),
         .rst(rst),
@@ -28,7 +26,6 @@ module VFU_tb;
         .out_tvalid(out_tvalid)
     );
 
-    // 테스트 입력 데이터
     reg [15:0] A_arr [0:N-1];
     reg [15:0] B_arr [0:N-1];
     reg [15:0] OUT_arr [0:N-1];
@@ -36,13 +33,11 @@ module VFU_tb;
     integer i;
 
     initial begin
-        // 초기화
         rst = 0;
         INST = 2'b00;
         vect_A = 0;
         vect_B = 0;
 
-        // FP16 상수 예제값
         A_arr[0] = 16'h3C00; // 1.0
         A_arr[1] = 16'h4000; // 2.0
         A_arr[2] = 16'h4200; // 3.0
@@ -53,44 +48,27 @@ module VFU_tb;
         B_arr[2] = 16'h3800;
         B_arr[3] = 16'h3800;
 
-        // 클록 두어 싸이클 대기
         #10;
 
-        // 리셋 활성
         rst = 0;
         #20;
         rst = 1;
         #20;
 
-        // ---------------------------------------
-        // 첫 INST : MULT
-        // ---------------------------------------
         INST = 2'b00;
         $display("[TB] INST = MULT (00)");
 
         pack_inputs();
 
-        #100;
-
-        // ---------------------------------------
-        // 두 번째 INST : ADD
-        // ---------------------------------------
+        #200;
         INST = 2'b01;
         $display("[TB] INST = ADD (01)");
 
         #100;
-
-        // ---------------------------------------
-        // 세 번째 INST : SUB+EXP
-        // ---------------------------------------
         INST = 2'b10;
         $display("[TB] INST = SUB+EXP (10)");
 
         #200;
-
-        // ---------------------------------------
-        // 네 번째 INST : BYPASS
-        // ---------------------------------------
         INST = 2'b11;
         $display("[TB] INST = BYPASS (11)");
 
