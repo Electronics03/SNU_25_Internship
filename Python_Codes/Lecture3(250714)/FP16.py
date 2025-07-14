@@ -24,4 +24,4 @@ for h in hex_list:
 for d in dec_list:
     print(f"{d} -> h{float_to_fp16_hex(d)}")
 
-print(fp16_to_float("5480"))
+print(fp16_to_float("231c"))
