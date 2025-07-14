@@ -8,49 +8,54 @@ Description:
 */
 
 module RU (
+    input valid_in,
     input [15:0] in_0,     // First input in Q4.12 format
     input [15:0] in_1,     // Second input in Q4.12 format
-    input sel_mult,               // Selector for multiplication factor
-    input sel_mux,                // Selector for subtraction path
+    input sel_mult,        // Selector for multiplication factor
+    input sel_mux,         // Selector for subtraction path
     input clk,
     input rst,
     input en,
     output [15:0] out_0,    // Intermediate result in Q4.12
-    output [15:0] out_1,     // Final result after pow2_approx in Q4.12
-    output valid
+    output [15:0] out_1,    // Final result after pow2_approx in Q4.12
+    output valid_out
 );
+    wire [15:0] log_in_0;
+    wire [15:0] in_0_bypass;
+    wire [15:0] in_1_bypass;
 
-    wire [15:0] in_0_log2_sub;    // log2_approx result
-    wire [15:0] in_0_sub;
     wire [15:0] sub;              // selected sub path
     wire [15:0] mult;             // selected multiplier constant
+
     wire [15:0] diff;             // difference input
     wire [31:0] mult_result;      // multiplication result (extended)
     wire [15:0] out_x;            // scaled difference (final output before pow2)
 
-    reg [31:0] reg_total;
-    reg [15:0] pipe [0:2];
+    wire valid_log;
+    reg [4:0] valid_pipe;
 
     always @(posedge clk) begin
         if (rst) begin
-            reg_total <= 32'd0;
-            pipe[0] <= 16'd0;
-            pipe[1] <= 16'd0;
-            pipe[2] <= 16'd0;
+            valid_pipe[0] <= 1'b0;
+            valid_pipe[1] <= 1'b0;
+            valid_pipe[2] <= 1'b0;
+            valid_pipe[3] <= 1'b0;
+            valid_pipe[4] <= 1'b0;
         end
         else if (en) begin
-            reg_total <= {in_1, in_0};
-            pipe[0] <= reg_total[31:16];
-            pipe[1] <= pipe[0];
-            pipe[2] <= pipe[1];
+            valid_pipe[0] <= valid_log;
+            valid_pipe[1] <= valid_pipe[0];
+            valid_pipe[2] <= valid_pipe[1];
+            valid_pipe[3] <= valid_pipe[2];
+            valid_pipe[4] <= valid_pipe[3];
         end
     end
 
     assign mult = (sel_mult) ? 16'b0001_0111_0001_0010 : 16'b0001_0000_0000_0000;
-    assign sub = (sel_mux) ? in_0_sub : in_0_log2_sub;
+    assign sub = (sel_mux) ? in_0_bypass : log_in_0;
 
     sub_FX16 SUB(
-        .A(pipe[2]),
+        .A(in_1_bypass),
         .B(sub),
         .CLK(clk),
         .S(diff)
@@ -63,28 +68,28 @@ module RU (
         .P(mult_result)
     );
 
-    log2_approx LOG2(
-        .in_x(reg_total[15:0]),
+    stage1_log2_approx STAGE1 (
+        .valid_in(valid_in),
         .clk(clk),
         .rst(rst),
         .en(en),
-        .ready(1'b1),
-        .log2_x(in_0_log2_sub),
-        .valid(valid),
-        .out_x(in_0_sub)
+        .in_0(in_0),
+        .in_1(in_1),
+        .valid_out(valid_log),
+        .log_in_0(log_in_0),
+        .in_0_bypass(in_0_bypass),
+        .in_1_bypass(in_1_bypass)
     );
 
-    assign out_0 = out_x;
-
-    pow2_approx POW2(
-        .in_x(mult_result[27:12]),
+    stage3_pow2_approx STAGE2 (
+        .valid_in(valid_pipe[4]),
         .clk(clk),
         .rst(rst),
         .en(en),
-        .ready(1'b1),
-        .pow2_x(out_1),
-        .valid(),
-        .out_x(out_x)
+        .in_x(mult_result[27:12]),
+        .valid_out(valid_out),
+        .pow_in_x(out_1),
+        .in_x_bypass(out_0)
     );
 
 endmodule

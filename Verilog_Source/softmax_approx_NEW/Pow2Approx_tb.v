@@ -9,31 +9,29 @@ Description:
 
 `timescale 1ns/1ps
 
-module pow2_approx_tb;
+module stage3_pow2_approx_tb;
 
+    reg valid_in;
     reg clk;
     reg rst;
     reg en;
-    reg ready;
-    wire valid;
+    reg [15:0] in_x;
+    wire valid_out;
+    wire [15:0] pow_in_x;
+    wire [15:0] in_x_bypass;
 
     initial clk = 0;
     always #5 clk = ~clk;
 
-    reg [15:0] in_pow2;       // Input stimulus in Q4.12 format (signed)
-    wire [15:0] out_pow2;     // Output from pow2_approx in Q4.12 format
-    wire [15:0] out_x;  
-
-    // Instantiate pow2_approx module under test
-    pow2_approx u_pow2 (
-        .in_x(in_pow2),
+    stage3_pow2_approx u_pow2 (
+        .valid_in(valid_in),
         .clk(clk),
         .rst(rst),
         .en(en),
-        .ready(ready),
-        .pow2_x(out_pow2),
-        .valid(valid),
-        .out_x(out_x)
+        .in_x(in_x),
+        .valid_out(valid_out),
+        .pow_in_x(pow_in_x),
+        .in_x_bypass(in_x_bypass)
     );
 
     /*
@@ -64,284 +62,284 @@ module pow2_approx_tb;
 
         $display("==== pow2_approx test ====");
 
-        in_pow2 = 16'b1100000000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1100000000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1100100000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1100100000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1101000000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1101000000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1101100000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1101100000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1110000000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1110000000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1110010000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1110010000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1110100000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1110100000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1110110000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1110110000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1111000000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1111000000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1111010000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1111010000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1111100000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1111100000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b1111110000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b1111110000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0000000000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0000000000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0000010000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0000010000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0000100000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0000100000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0000110000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0000110000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0001000000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0001000000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0001010000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0001010000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0001100000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0001100000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0001110000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0001110000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0010000000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0010000000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0010001000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0010001000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0010010000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0010010000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0010011000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0010011000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0010100000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0010100000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0010101000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0010101000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0010110000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0010110000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
-        in_pow2 = 16'b0010111000000000;
-        ready = 1'b1;
-        #5; ready = 1'b0;
+        in_x = 16'b0010111000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
         #5;
         $write("Input: ");
-        display_fixed(out_x);
+        display_fixed(in_x_bypass);
         $write("-> Onput: ");
-        display_fixed(out_pow2);
+        display_fixed(pow_in_x);
         $write("\n");
 
         $finish;

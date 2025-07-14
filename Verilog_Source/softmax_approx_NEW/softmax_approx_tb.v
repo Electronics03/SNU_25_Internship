@@ -18,6 +18,8 @@ module softmax_tb;
     reg en;
     reg rst;
 
+    reg valid_in;
+
     initial clk = 0;
     always #5 clk = ~clk;
 
@@ -27,16 +29,19 @@ module softmax_tb;
     wire signed [N*16-1:0] prob_flat;  // Flattened output vector
 
     wire [N*16-1:0] add_in_flat_0;
+    wire valid_out;
 
     // Instantiate softmax module
     softmax #(.N(N)) DUT (
+        .valid_in(valid_in),
         .in_x_flat(in_x_flat),
         .max_x(max_x),
         .prob_flat(prob_flat),
         .add_in_flat_0(add_in_flat_0),
         .clk(clk),
         .rst(rst),
-        .en(en)
+        .en(en),
+        .valid_out(valid_out)
     );
 
     /*
@@ -83,7 +88,7 @@ module softmax_tb;
     initial begin
         #2; rst = 1;
         #10; rst = 0;
-        #10; en = 1;
+        #10; en = 1; valid_in = 1;
 
         $display("===== Softmax Testbench Start =====");
         #1000;

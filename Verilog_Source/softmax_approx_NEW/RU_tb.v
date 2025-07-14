@@ -15,8 +15,8 @@ module RU_tb;
     reg clk;
     reg rst;
     reg en;
-    reg ready;
-    wire valid;
+    reg valid_in;
+    wire valid_out;
 
     initial clk = 0;
     always #5 clk = ~clk;
@@ -31,6 +31,7 @@ module RU_tb;
 
     // Instantiate the RU module under test
     RU uut (
+        .valid_in(valid_in),
         .in_0(in_0),
         .in_1(in_1),
         .sel_mult(sel_mult),
@@ -39,7 +40,8 @@ module RU_tb;
         .rst(rst),
         .en(en),
         .out_0(out_0),
-        .out_1(out_1)
+        .out_1(out_1),
+        .valid_out(valid_out)
     );
 
     /*
@@ -72,6 +74,9 @@ module RU_tb;
         in_1 = 16'h1000;  // Example x_i
         sel_mux = 1;
         sel_mult = 1;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
         #500;
         $display("-- Stage 1 output --");
         $display("Input x_i ="); display_fixed(in_1);
@@ -86,6 +91,9 @@ module RU_tb;
         in_1 = 16'b1110_0011_0001_0110;  // Example y_i
         sel_mux = 0;
         sel_mult = 0;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
         #500;
         $display("-- Stage 2 output --");
         $display("Input sum ="); display_fixed(in_0);

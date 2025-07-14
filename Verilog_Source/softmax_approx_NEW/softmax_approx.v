@@ -11,11 +11,13 @@ Description:
 */
 
 module softmax #(parameter N = 8)(
+    input valid_in,
     input [N*16-1:0] in_x_flat,   // Flattened N inputs (each 16-bit Q4.12)
     input clk,
     input en,
     input rst,
     input  [15:0] max_x,           // Maximum value used for numerical stability
+    output valid_out,
     output [N*16-1:0] prob_flat,    // Flattened N outputs (softmax probabilities)
     output [N*16-1:0] add_in_flat_0
 );
@@ -30,6 +32,8 @@ module softmax #(parameter N = 8)(
     wire [15:0] add_out;
     wire [N*16-1:0] add_out_prop_flat;
     wire [15:0] add_out_prop [0:N-1];
+
+    wire valid_s1, valid_s2;
 
     assign add_in_flat_0 = add_in_flat;
 
@@ -47,6 +51,7 @@ module softmax #(parameter N = 8)(
     generate
         for (i = 0; i < N; i = i + 1) begin
             RU FIRSTSTAGE(
+                .valid_in(valid_in),
                 .in_0(max_x),
                 .in_1(in_x[i]),
                 .sel_mult(1'b1),
@@ -55,24 +60,28 @@ module softmax #(parameter N = 8)(
                 .out_1(add_in[i]),
                 .clk(clk),
                 .rst(rst),
-                .en(en)
+                .en(en),
+                .valid_out(valid_s1)
             );
         end
     endgenerate
 
     add_tree #(.N(N)) ADDT(
+        .valid_in(valid_s1),
         .clk(clk),
         .rst(rst),
         .en(en),
         .in_0_flat(y_flat),
         .in_1_flat(add_in_flat),
         .out(add_out),
-        .out_prop(add_out_prop_flat)
+        .out_prop(add_out_prop_flat),
+        .valid_out(valid_s2)
     );
 
     generate
         for (i = 0; i < N; i = i + 1) begin
             RU SECONDSTAGE(
+                .valid_in(valid_s2),
                 .in_0(add_out),
                 .in_1(add_out_prop[i]),
                 .sel_mult(1'b0),
@@ -81,7 +90,8 @@ module softmax #(parameter N = 8)(
                 .out_1(prob[i]),
                 .clk(clk),
                 .rst(rst),
-                .en(en)
+                .en(en),
+                .valid_out(valid_out)
             );
         end
     endgenerate

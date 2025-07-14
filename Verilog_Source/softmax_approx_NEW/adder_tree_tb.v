@@ -4,22 +4,27 @@ module add_tree_tb;
 
     parameter N = 8;
 
+    reg valid_in;
     reg clk;
     reg rst;
-    reg ready;
     reg en;
-    reg [N*16-1:0] in_flat;
+    reg [N*16-1:0] in_0_flat;
+    reg [N*16-1:0] in_1_flat;
+
     wire [15:0] out;
-    wire valid;
+    wire valid_out;
     wire [N*16-1:0] out_prop;
 
     add_tree #(.N(N)) DUT (
+        .valid_in(valid_in),
         .clk(clk),
         .rst(rst),
         .en(en),
-        .in_flat(in_flat),
+        .in_0_flat(in_0_flat),
+        .in_1_flat(in_1_flat),
         .out(out),
-        .out_prop(out_prop)
+        .out_prop(out_prop),
+        .valid_out(valid_out)
     );
 
     initial clk = 0;
@@ -42,18 +47,20 @@ module add_tree_tb;
         in_arr[7]  = 16'h0800;  // 8.0
 
         rst = 1;
-        in_flat = 0;
-        #20;
-        rst = 0;
-        ready = 1;
-        en = 1;
-        #10;
+        in_1_flat = 0;
 
-        in_flat = 0;
+        in_0_flat = 16'd23;
+
         for (i = 0; i < N; i = i + 1) begin
-            in_flat = in_flat | (in_arr[i] << (i*16));
+            in_1_flat = in_1_flat | (in_arr[i] << (i*16));
         end
 
+        #10;
+        rst = 0;
+        valid_in = 1;
+        en = 1;
+        #10;
+        
         $display("[TB] Input vector loaded at time %0t", $time);
         #500;
         $display("---- Simulation Complete ----");

@@ -1,31 +1,36 @@
 module add_tree #(
     parameter N = 64
 )(
+    input valid_in,
     input clk,
     input rst,
     input en,
     input [N*16-1:0] in_0_flat,
     input [N*16-1:0] in_1_flat,
+    output valid_out,
     output [15:0] out,
     output [N*16-1:0] out_prop
 );
     localparam STAGE_NUM = $clog2(N);
 
     reg [N*16-1:0] pipe [0:STAGE_NUM-1];
+    reg [STAGE_NUM-1:0] valid_pipe;
     wire [15:0] stage_data [0:STAGE_NUM][0:N-1];
-    wire [N-1:0] stage_valid [0:STAGE_NUM];
 
     integer k;
     always @(posedge clk) begin
         if (rst) begin
             for (k = 0; k <= STAGE_NUM-1; k = k + 1) begin
                 pipe[k] <= N*16'd0;
+                valid_pipe[k] <= 1'b0;
             end
         end
         else if (en) begin
             pipe[0] <= in_0_flat;
+            valid_pipe[0] <= valid_in;
             for (k = 0; k <= STAGE_NUM-2; k = k + 1) begin
                 pipe[k+1] <= pipe[k];
+                valid_pipe[k+1] <= valid_pipe[k];
             end
         end
     end
@@ -52,4 +57,5 @@ module add_tree #(
 
     assign out = stage_data[STAGE_NUM][0];
     assign out_prop = pipe[STAGE_NUM-1];
+    assign valid_out = valid_pipe[STAGE_NUM-1];
 endmodule
