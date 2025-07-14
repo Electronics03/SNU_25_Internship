@@ -1,15 +1,19 @@
 module add_tree #(
-    parameter N = 4
+    parameter N = 64
 )(
     input clk,
     input rst,
+    input ready,
     input [N*16-1:0] in_flat,
+    output valid,
     output [15:0] out
 );
     localparam STAGE_NUM = $clog2(N);
 
 
     wire [15:0] stage_data [0:STAGE_NUM][0:N-1];
+    wire [N-1:0] stage_valid [0:STAGE_NUM];
+    assign stage_valid[0] = {N{ready}};
 
     genvar i, j;
 
@@ -25,20 +29,21 @@ module add_tree #(
                 add_FP16 ADD (
                     .aclk(clk),
                     .aresetn(rst),
-                    .s_axis_a_tvalid(1'b1),
+                    .s_axis_a_tvalid(stage_valid[j][2*i]),
                     .s_axis_a_tready(),
                     .s_axis_a_tdata(stage_data[j][2*i]),
-                    .s_axis_b_tvalid(1'b1),
+                    .s_axis_b_tvalid(stage_valid[j][2*i+1]),
                     .s_axis_b_tready(),
                     .s_axis_b_tdata(stage_data[j][2*i+1]),
-                    .m_axis_result_tvalid(),
-                    .m_axis_result_tready(1'b1),
+                    .m_axis_result_tvalid(stage_valid[j+1][i]),
+                    .m_axis_result_tready(2'b1),
                     .m_axis_result_tdata(stage_data[j+1][i])
                 );
             end
         end
     endgenerate
 
+    assign valid = stage_valid[STAGE_NUM];
     assign out = stage_data[STAGE_NUM][0];
 
 endmodule
