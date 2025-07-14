@@ -10,13 +10,14 @@ Description:
 - Outputs final softmax probabilities in Q4.12 format.
 */
 
-module softmax #(parameter N = 4)(
+module softmax #(parameter N = 8)(
     input [N*16-1:0] in_x_flat,   // Flattened N inputs (each 16-bit Q4.12)
     input clk,
     input en,
     input rst,
     input  [15:0] max_x,           // Maximum value used for numerical stability
-    output [N*16-1:0] prob_flat    // Flattened N outputs (softmax probabilities)
+    output [N*16-1:0] prob_flat,    // Flattened N outputs (softmax probabilities)
+    output [N*16-1:0] add_in_flat_0
 );
     wire [15:0] in_x [0:N-1];      // Unpacked input array
     wire [15:0] prob [0:N-1];      // Unpacked output probabilities
@@ -29,6 +30,8 @@ module softmax #(parameter N = 4)(
     wire [15:0] add_out;
     wire [N*16-1:0] add_out_prop_flat;
     wire [15:0] add_out_prop [0:N-1];
+
+    assign add_in_flat_0 = add_in_flat;
 
     genvar i;
     generate

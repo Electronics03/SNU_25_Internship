@@ -26,11 +26,14 @@ module softmax_tb;
     wire signed [15:0] max_x;          // Maximum value for stabilization
     wire signed [N*16-1:0] prob_flat;  // Flattened output vector
 
+    wire [N*16-1:0] add_in_flat_0;
+
     // Instantiate softmax module
     softmax #(.N(N)) DUT (
         .in_x_flat(in_x_flat),
         .max_x(max_x),
         .prob_flat(prob_flat),
+        .add_in_flat_0(add_in_flat_0),
         .clk(clk),
         .rst(rst),
         .en(en)
