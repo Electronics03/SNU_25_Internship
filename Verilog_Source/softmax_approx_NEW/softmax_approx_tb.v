@@ -12,7 +12,31 @@ Description:
 
 module softmax_tb;
 
-    parameter N = 4;
+    parameter N = 8;
+
+    localparam [N*16-1:0] my_x_0 = {
+        16'hEE08, // -1.123
+        16'h13BE, //  1.234
+        16'h0501, //  0.313
+        16'h3521, //  3.324
+        16'hEC6E, // -1.223
+        16'hFC4E, // -0.231
+        16'hFDF8, // -0.123
+        16'h21C3  //  2.11
+    };
+
+    localparam [N*16-1:0] my_x_1 = {N{16'h0501}}; //  0.313
+
+    localparam [N*16-1:0] my_x_2 = {
+        16'hFE08, // -0.123
+        16'h13BE, //  1.234
+        16'h0501, //  0.313
+        16'h4521, //  4.324
+        16'hFC6E, // -0.223
+        16'hFC4E, // -0.231
+        16'hFDF8, // -0.123
+        16'h21C3  //  2.11
+    };
 
     reg clk;
     reg en;
@@ -23,30 +47,34 @@ module softmax_tb;
     initial clk = 0;
     always #5 clk = ~clk;
 
+    reg signed [N*16-1:0] in_x_flat; // Flattened input vector
+    reg signed [15:0] max_x;         // Maximum value for stabilization
+    wire signed [N*16-1:0] prob_flat; // Flattened output vector
 
-    wire signed [N*16-1:0] in_x_flat;  // Flattened input vector
-    wire signed [15:0] max_x;          // Maximum value for stabilization
-    wire signed [N*16-1:0] prob_flat;  // Flattened output vector
-
-    wire [N*16-1:0] add_in_flat_0;
+    wire [15:0] in_x_arr [0:N-1];
+    wire [15:0] prob_arr [0:N-1];
     wire valid_out;
 
-    // Instantiate softmax module
+    genvar idx;
+    generate
+        for (idx = 0; idx < N; idx = idx + 1) begin
+            assign in_x_arr[idx] = in_x_flat[16*idx +: 16];
+            assign prob_arr[idx] = prob_flat[16*idx +: 16];
+        end
+    endgenerate
+
     softmax #(.N(N)) DUT (
         .valid_in(valid_in),
         .in_x_flat(in_x_flat),
         .max_x(max_x),
         .prob_flat(prob_flat),
-        .add_in_flat_0(add_in_flat_0),
+        .add_in_flat_0(),
         .clk(clk),
         .rst(rst),
         .en(en),
         .valid_out(valid_out)
     );
 
-    /*
-    Task to display fixed-point Q4.12 value as hex and real
-    */
     task display_fixed;
         input [15:0] val;
         real real_val;
@@ -56,56 +84,22 @@ module softmax_tb;
         end
     endtask
 
+
     integer i;
-
-    // Input and output unpacked arrays
-    wire signed [15:0] in_x_arr [0:N-1];
-    wire signed [15:0] prob_arr [0:N-1];
-
-    // Define test inputs in Q4.12
-    assign in_x_arr[0] = 16'hEC80;
-    assign in_x_arr[1] = 16'hFE18;
-    assign in_x_arr[2] = 16'h2771;
-    assign in_x_arr[3] = 16'h15DB;
-
-    // Provide max_x for numerical stability
-    assign max_x = 16'h2771;
-
-    // Flatten input array
-    assign in_x_flat = {in_x_arr[3], in_x_arr[2], in_x_arr[1], in_x_arr[0]};
-
-    // Unpack output probabilities
-    assign prob_arr[0] = prob_flat[15:0];
-    assign prob_arr[1] = prob_flat[31:16];
-    assign prob_arr[2] = prob_flat[47:32];
-    assign prob_arr[3] = prob_flat[63:48];
-
-    /*
-    Main stimulus:
-    - Waits for module evaluation
-    - Prints all inputs and resulting outputs once
-    */
     initial begin
+        in_x_flat = 0;
+        valid_in = 0;
         #2; rst = 1;
         #10; rst = 0;
-        #10; en = 1; valid_in = 1;
+        #10; en = 1; 
 
-        $display("===== Softmax Testbench Start =====");
-        #1000;
-        $display("Inputs:");
-        for (i = 0; i < N; i = i + 1) begin
-            display_fixed(in_x_arr[i]);
-        end
-
-        $display("");
-        $display("max_x = "); display_fixed(max_x);
-        $display("");
-        $display("Softmax Outputs (Probabilities):");
-        for (i = 0; i < N; i = i + 1) begin
-            display_fixed(prob_arr[i]);
-        end
-
-        $display("===== Softmax Testbench End =====");
+        #10;
+        in_x_flat = my_x_0; valid_in = 1; max_x = 16'h3521;
+        #10;
+        in_x_flat = my_x_1; valid_in = 1; max_x = 16'h0501;
+        #10;
+        in_x_flat = my_x_2; valid_in = 1; max_x = 16'h4521;
+        #300;
         $finish;
     end
 

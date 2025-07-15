@@ -1,3 +1,12 @@
+/*
+16-bit fixed-point : Q4.12
+Input  : in_x  (16-bit unsigned)
+Output : log2_x (16-bit unsigned)
+Description:
+Approximates log2(x) by detecting the leading '1' position (integer part)
+and extracting fractional bits via shift normalization.
+*/
+
 module stage1_log2_approx(
     input valid_in,
     input clk,

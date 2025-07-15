@@ -25,7 +25,6 @@ module RU_tb;
     reg signed [15:0] in_1;     // Input in Q4.12
     reg sel_mult;               // Multiplier selection
     reg sel_mux;                // Mux selection
-
     wire signed [15:0] out_0;   // Intermediate output (scaled difference)
     wire signed [15:0] out_1;   // Final output after pow2_approx
 
