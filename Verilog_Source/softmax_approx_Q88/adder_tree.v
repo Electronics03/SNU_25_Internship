@@ -1,13 +1,3 @@
-/*
-16-bit fixed-point : Q4.12
-add_tree module
-Description:
-- Implements a pipelined binary adder tree for N parallel 16-bit fixed-point inputs.
-- Uses hierarchical stages of pairwise additions to reduce inputs to a single 16-bit sum.
-- Includes pipeline registers to synchronize propagated input data.
-- Outputs the final sum, the valid signal, and the propagated input data for downstream modules.
-*/
-
 module add_tree #(
     parameter N = 64
 )(

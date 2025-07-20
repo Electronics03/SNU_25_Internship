@@ -1,14 +1,3 @@
-/*
-16-bit fixed-point : Q4.12
-add_tree_tb (Testbench)
-Description:
-- Testbench for the add_tree module with N=8 inputs.
-- Generates clock and reset signals, initializes test input vectors.
-- Packs multiple 16-bit fixed-point values into flattened bus format.
-- Applies inputs to the DUT and monitors output sum and valid signal.
-- Displays simulation progress and results for verification.
-*/
-
 `timescale 1ns/1ps
 
 module add_tree_tb;
@@ -47,14 +36,14 @@ module add_tree_tb;
 
     initial begin
         $display("---- Starting add_tree_module TB ----");
-        in_arr[0]  = 16'h0100;  // 1.0
-        in_arr[1]  = 16'h0200;  // 2.0
-        in_arr[2]  = 16'h0300;  // 3.0
-        in_arr[3]  = 16'h0400;  // 4.0
-        in_arr[4]  = 16'h0500;  // 5.0
-        in_arr[5]  = 16'h0600;  // 6.0
-        in_arr[6]  = 16'h0700;  // 7.0
-        in_arr[7]  = 16'h0800;  // 8.0
+        in_arr[0]  = 16'h0100;
+        in_arr[1]  = 16'h0200;
+        in_arr[2]  = 16'h0300;
+        in_arr[3]  = 16'h0400;
+        in_arr[4]  = 16'h0500;
+        in_arr[5]  = 16'h0600;
+        in_arr[6]  = 16'h0700;
+        in_arr[7]  = 16'h0800;
 
         rst = 1;
 

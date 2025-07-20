@@ -1,15 +1,3 @@
-/*
-16-bit fixed-point : Q4.12
-RU (Reduction Unit) module
-Description:
-- Composite pipeline unit performing log2, subtraction, multiplication, and exp2 approximation.
-- Uses stage1_log2_approx to compute log2 of input with bypassed data.
-- Applies selectable subtraction and multiplication with fixed-point scaling.
-- Feeds result to stage3_pow2_approx for 2^x approximation.
-- Manages 5-stage valid signal pipeline for synchronization.
-- Outputs two 16-bit fixed-point results and a valid signal for downstream modules.
-*/
-
 module RU (
     input valid_in,
     input [15:0] in_0,
