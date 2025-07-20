@@ -8,11 +8,11 @@ module add_tree #(
     output valid,
     output [15:0] out
 );
-    localparam STAGE_NUM = $clog2(N);
+    localparam STAGE = $clog2(N);
 
 
-    wire [15:0] stage_data [0:STAGE_NUM][0:N-1];
-    wire [N-1:0] stage_valid [0:STAGE_NUM];
+    wire [15:0] stage_data [0:STAGE][0:N-1];
+    wire [N-1:0] stage_valid [0:STAGE];
     assign stage_valid[0] = {N{ready}};
 
     genvar i, j;
@@ -24,7 +24,7 @@ module add_tree #(
     endgenerate
     
     generate
-        for (j = 0; j < STAGE_NUM; j = j + 1) begin : stages
+        for (j = 0; j < STAGE; j = j + 1) begin : stages
             for (i = 0; i < (N >> (j+1)); i = i + 1) begin : adders
                 add_FP16 ADD (
                     .aclk(clk),
@@ -43,7 +43,7 @@ module add_tree #(
         end
     endgenerate
 
-    assign valid = stage_valid[STAGE_NUM];
-    assign out = stage_data[STAGE_NUM][0];
+    assign valid = stage_valid[STAGE];
+    assign out = stage_data[STAGE][0];
 
 endmodule
