@@ -1,15 +1,3 @@
-/*
-16-bit fixed-point : Q4.12
-RU_tb (Testbench)
-Description:
-- Testbench for the RU (Reduction Unit) module.
-- Generates clock, reset, enable, and valid signals to drive the DUT.
-- Applies representative test inputs for both stages of RU computation.
-- Uses display_fixed task to print inputs and outputs in real-number format.
-- Verifies pipelined log2, subtraction, multiplication, and exp2 approximation sequence.
-- Displays input and output values for both configured operation modes.
-*/
-
 `timescale 1ns/1ps
 
 module RU_tb;
@@ -48,7 +36,7 @@ module RU_tb;
         input [15:0] val;
         real real_val;
         begin
-            real_val = $itor($signed(val)) / 4096.0;
+            real_val = $itor($signed(val)) / 256.0;
             $display("%h = %f", val, real_val);
         end
     endtask
@@ -62,14 +50,14 @@ module RU_tb;
         $display("=== RU Module Test Start ===");
 
         $display("Stage 1: (x_i - max) * log2(e)");
-        in_0 = 16'h2400;
-        in_1 = 16'h1000;
+        in_0 = 16'h0240;
+        in_1 = 16'h0100;
         sel_mux = 1;
         sel_mult = 1;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
-        #500;
+        #100;
         $display("-- Stage 1 output --");
         $display("Input x_i ="); display_fixed(in_1);
         $display("Input max ="); display_fixed(in_0);
@@ -78,14 +66,14 @@ module RU_tb;
         $display("");
 
         $display("Stage 2: (log2_sum - y_i) * 1");
-        in_0 = 16'h1800;
-        in_1 = 16'b1110_0011_0001_0110;
+        in_0 = 16'h0180;
+        in_1 = 16'b1111_1110_0011_0001;
         sel_mux = 0;
         sel_mult = 0;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
-        #500;
+        #100;
         $display("-- Stage 2 output --");
         $display("Input sum ="); display_fixed(in_0);
         $display("Input y_i ="); display_fixed(in_1);
@@ -94,6 +82,7 @@ module RU_tb;
         $display("");
 
         $display("=== RU Module Test End ===");
+        #5;
         $finish;
     end
 

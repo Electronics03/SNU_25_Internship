@@ -16,7 +16,7 @@ module stage1_log2_approx(
     reg [48:0] reg_2;
 
     reg [3:0] count;
-    wire [3:0] int_part;
+    wire [8:0] int_part;
     wire [15:0] frac_part;
     wire [15:0] result;
 
@@ -55,8 +55,8 @@ module stage1_log2_approx(
     end
 
     assign frac_part = reg_1[15:0] << reg_1[35:32];
-    assign int_part = {~reg_1[35], reg_1[34:32]};
-    assign result = {int_part, frac_part[14:3]};
+    assign int_part = {{5{reg_1[35]}}, ~reg_1[34:32]};
+    assign result = {int_part, frac_part[14:7]};
 
     assign valid_out = reg_2[48];
     assign log_in_0 = reg_2[47:32];

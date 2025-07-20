@@ -1,15 +1,3 @@
-/*
-16-bit fixed-point : Q4.12
-softmax module
-Description:
-- Implements fixed-point softmax computation over N parallel 16-bit inputs.
-- FIRSTSTAGE RU array: computes (x_i - max) * log2(e) and exp approximation.
-- add_tree: sums exp approximations to produce softmax denominator.
-- SECONDSTAGE RU array: computes exp(x_i - max) / sum(exp) for final probabilities.
-- Uses pipelined valid signals for synchronization across stages.
-- Outputs N parallel 16-bit fixed-point probabilities and intermediate add_in values.
-*/
-
 module softmax #(parameter N = 8)(
     input valid_in,
     input [N*16-1:0] in_x_flat,
@@ -18,8 +6,7 @@ module softmax #(parameter N = 8)(
     input rst,
     input  [15:0] max_x,
     output valid_out,
-    output [N*16-1:0] prob_flat,
-    output [N*16-1:0] add_in_flat_0
+    output [N*16-1:0] prob_flat
 );
     wire [15:0] in_x [0:N-1];
     wire [15:0] prob [0:N-1];
@@ -34,8 +21,6 @@ module softmax #(parameter N = 8)(
     wire [15:0] add_out_prop [0:N-1];
 
     wire valid_s1, valid_s2;
-
-    assign add_in_flat_0 = add_in_flat;
 
     genvar i;
     generate

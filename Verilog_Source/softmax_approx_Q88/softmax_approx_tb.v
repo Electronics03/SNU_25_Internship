@@ -17,27 +17,27 @@ module softmax_tb;
     parameter N = 8;
 
     localparam [N*16-1:0] my_x_0 = {
-        16'hEE08, // -1.123
-        16'h13BE, //  1.234
-        16'h0501, //  0.313
-        16'h3521, //  3.324
-        16'hEC6E, // -1.223
-        16'hFC4E, // -0.231
-        16'hFDF8, // -0.123
-        16'h21C3  //  2.11
+        16'hFEE0, // -1.123
+        16'h013B, //  1.234
+        16'h0050, //  0.313
+        16'h0352, //  3.324
+        16'hFEC6, // -1.223
+        16'hFFC4, // -0.231
+        16'hFFDF, // -0.123
+        16'h021C  //  2.11
     };
 
-    localparam [N*16-1:0] my_x_1 = {N{16'h0501}}; //  0.313
+    localparam [N*16-1:0] my_x_1 = {N{16'h0050}}; //  0.313
 
     localparam [N*16-1:0] my_x_2 = {
-        16'hFE08, // -0.123
-        16'h13BE, //  1.234
-        16'h0501, //  0.313
-        16'h4521, //  4.324
-        16'hFC6E, // -0.223
-        16'hFC4E, // -0.231
-        16'hFDF8, // -0.123
-        16'h21C3  //  2.11
+        16'hFFE0, // -0.123
+        16'h013B, //  1.234
+        16'h0050, //  0.313
+        16'h0452, //  4.324
+        16'hFFC6, // -0.223
+        16'hFFC4, // -0.231
+        16'hFFDF, // -0.123
+        16'h021C  //  2.11
     };
 
     reg clk;
@@ -81,7 +81,7 @@ module softmax_tb;
         input [15:0] val;
         real real_val;
         begin
-            real_val = $itor($signed(val)) / 4096.0;
+            real_val = $itor($signed(val)) / 256.0;
             $display("%h = %f", val, real_val);
         end
     endtask
@@ -96,11 +96,11 @@ module softmax_tb;
         #10; en = 1; 
 
         #10;
-        in_x_flat = my_x_0; valid_in = 1; max_x = 16'h3521;
+        in_x_flat = my_x_0; valid_in = 1; max_x = 16'h0352;
         #10;
-        in_x_flat = my_x_1; valid_in = 1; max_x = 16'h0501;
+        in_x_flat = my_x_1; valid_in = 1; max_x = 16'h0050;
         #10;
-        in_x_flat = my_x_2; valid_in = 1; max_x = 16'h4521;
+        in_x_flat = my_x_2; valid_in = 1; max_x = 16'h0452;
         #300;
         $finish;
     end

@@ -1,18 +1,6 @@
-/*
-16-bit fixed-point : Q4.12
-stage3_pow2_approx_tb (Testbench)
-Description:
-- Testbench for the stage3_pow2_approx module.
-- Generates clock, reset, enable, and valid signals to drive the DUT.
-- Applies multiple 16-bit fixed-point test inputs covering a range of values.
-- Uses display_fixed task to print real-number interpretations of inputs and outputs.
-- Verifies 2^x approximation by displaying bypassed inputs and computed outputs.
-*/
-
 `timescale 1ns/1ps
 
 module stage3_pow2_approx_tb;
-
     reg valid_in;
     reg clk;
     reg rst;
@@ -40,7 +28,7 @@ module stage3_pow2_approx_tb;
         input [15:0] val;
         real real_val;
         begin
-            real_val = $itor($signed(val)) / 4096.0;
+            real_val = $itor($signed(val)) / 256.0;
             $write("%f", real_val);
         end
     endtask
@@ -52,117 +40,112 @@ module stage3_pow2_approx_tb;
 
         $display("==== pow2_approx test ====");
 
-        in_x = 16'b1100000000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
-        in_x = 16'b1100100000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
-        in_x = 16'b1101000000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
-        in_x = 16'b1101100000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
-        in_x = 16'b1110000000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
-        in_x = 16'b1110010000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
-        in_x = 16'b1110100000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
-        in_x = 16'b1110110000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
-        in_x = 16'b1111000000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
-        in_x = 16'b1111010000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
-        in_x = 16'b1111100000000000;
-        valid_in = 1'b1;
-        #5; valid_in = 1'b0;
-        #5;
-        $write("Input: ");
-        display_fixed(in_x_bypass);
-        $write("-> Onput: ");
-        display_fixed(pow_in_x);
-        $write("\n");
-
         in_x = 16'b1111110000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+
+        in_x = 16'b1111110010000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+        $write("Input: ");
+        display_fixed(in_x_bypass);
+        $write("-> Onput: ");
+        display_fixed(pow_in_x);
+        $write("\n");
+
+        in_x = 16'b1111110100000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+        $write("Input: ");
+        display_fixed(in_x_bypass);
+        $write("-> Onput: ");
+        display_fixed(pow_in_x);
+        $write("\n");
+
+        in_x = 16'b1111110110000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+        $write("Input: ");
+        display_fixed(in_x_bypass);
+        $write("-> Onput: ");
+        display_fixed(pow_in_x);
+        $write("\n");
+
+        in_x = 16'b1111111000000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+        $write("Input: ");
+        display_fixed(in_x_bypass);
+        $write("-> Onput: ");
+        display_fixed(pow_in_x);
+        $write("\n");
+
+        in_x = 16'b1111111001000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+        $write("Input: ");
+        display_fixed(in_x_bypass);
+        $write("-> Onput: ");
+        display_fixed(pow_in_x);
+        $write("\n");
+
+        in_x = 16'b1111111010000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+        $write("Input: ");
+        display_fixed(in_x_bypass);
+        $write("-> Onput: ");
+        display_fixed(pow_in_x);
+        $write("\n");
+
+        in_x = 16'b1111111011000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+        $write("Input: ");
+        display_fixed(in_x_bypass);
+        $write("-> Onput: ");
+        display_fixed(pow_in_x);
+        $write("\n");
+
+        in_x = 16'b1111111100000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+        $write("Input: ");
+        display_fixed(in_x_bypass);
+        $write("-> Onput: ");
+        display_fixed(pow_in_x);
+        $write("\n");
+
+        in_x = 16'b1111111101000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+        $write("Input: ");
+        display_fixed(in_x_bypass);
+        $write("-> Onput: ");
+        display_fixed(pow_in_x);
+        $write("\n");
+
+        in_x = 16'b1111111110000000;
+        valid_in = 1'b1;
+        #5; valid_in = 1'b0;
+        #5;
+        $write("Input: ");
+        display_fixed(in_x_bypass);
+        $write("-> Onput: ");
+        display_fixed(pow_in_x);
+        $write("\n");
+
+        in_x = 16'b1111111111000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -182,7 +165,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0000010000000000;
+        in_x = 16'b0000000001000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -192,7 +175,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0000100000000000;
+        in_x = 16'b0000000010000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -202,7 +185,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0000110000000000;
+        in_x = 16'b0000000011000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -212,7 +195,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0001000000000000;
+        in_x = 16'b0000000100000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -222,7 +205,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0001010000000000;
+        in_x = 16'b0000000101000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -232,7 +215,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0001100000000000;
+        in_x = 16'b0000000110000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -242,7 +225,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0001110000000000;
+        in_x = 16'b0000000111000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -252,7 +235,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0010000000000000;
+        in_x = 16'b0000001000000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -262,7 +245,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0010001000000000;
+        in_x = 16'b0000001000100000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -272,7 +255,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0010010000000000;
+        in_x = 16'b0000001001000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -282,7 +265,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0010011000000000;
+        in_x = 16'b0000001001100000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -292,7 +275,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0010100000000000;
+        in_x = 16'b0000001010000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -302,7 +285,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0010101000000000;
+        in_x = 16'b0000001010100000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -312,7 +295,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0010110000000000;
+        in_x = 16'b0000001011000000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
@@ -322,7 +305,7 @@ module stage3_pow2_approx_tb;
         display_fixed(pow_in_x);
         $write("\n");
 
-        in_x = 16'b0010111000000000;
+        in_x = 16'b0000001011100000;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;

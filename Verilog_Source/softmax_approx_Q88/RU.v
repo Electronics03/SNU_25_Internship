@@ -54,7 +54,7 @@ module RU (
         end
     end
 
-    assign mult = (sel_mult) ? 16'b0001_0111_0001_0010 : 16'b0001_0000_0000_0000;
+    assign mult = (sel_mult) ? 16'b0000_0001_0111_0001 : 16'b0000_0001_0000_0000;
     assign sub = (sel_mux) ? in_0_bypass : log_in_0;
 
     sub_FX16 SUB(
@@ -89,7 +89,7 @@ module RU (
         .clk(clk),
         .rst(rst),
         .en(en),
-        .in_x(mult_result[27:12]),
+        .in_x(mult_result[23:8]),
         .valid_out(valid_out),
         .pow_in_x(out_1),
         .in_x_bypass(out_0)
