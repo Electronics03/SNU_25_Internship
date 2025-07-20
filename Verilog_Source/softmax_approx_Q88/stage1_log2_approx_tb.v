@@ -13,10 +13,8 @@ module stage1_log2_approx_tb;
     wire [15:0] in_0_bypass;
     wire [15:0] in_1_bypass;
 
-
     initial clk = 0;
     always #5 clk = ~clk;
-
 
     stage1_log2_approx u_log2 (
         .valid_in(valid_in),
@@ -30,7 +28,6 @@ module stage1_log2_approx_tb;
         .in_0_bypass(in_0_bypass),
         .in_1_bypass(in_1_bypass)
     );
-
 
     task display_fixed;
         input [15:0] val;

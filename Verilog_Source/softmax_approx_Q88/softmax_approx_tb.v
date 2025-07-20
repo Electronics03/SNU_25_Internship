@@ -1,15 +1,3 @@
-/*
-16-bit fixed-point : Q4.12
-softmax_tb (Testbench)
-Description:
-- Testbench for verifying the softmax module with N=8 inputs.
-- Generates clock, reset, enable, and valid_in signals for DUT control.
-- Defines multiple test input vectors with known fixed-point values.
-- Applies input vectors along with corresponding max values to simulate softmax behavior.
-- Uses display_fixed task to print 16-bit fixed-point values in real-number format.
-- Observes and verifies output probability vectors produced by the DUT.
-*/
-
 `timescale 1ns/1ps
 
 module softmax_tb;
@@ -17,27 +5,27 @@ module softmax_tb;
     parameter N = 8;
 
     localparam [N*16-1:0] my_x_0 = {
-        16'hFEE0, // -1.123
-        16'h013B, //  1.234
-        16'h0050, //  0.313
-        16'h0352, //  3.324
-        16'hFEC6, // -1.223
-        16'hFFC4, // -0.231
-        16'hFFDF, // -0.123
-        16'h021C  //  2.11
+        16'hFEE0,
+        16'h013B,
+        16'h0050,
+        16'h0352,
+        16'hFEC6,
+        16'hFFC4,
+        16'hFFDF,
+        16'h021C
     };
 
-    localparam [N*16-1:0] my_x_1 = {N{16'h0050}}; //  0.313
+    localparam [N*16-1:0] my_x_1 = {N{16'h0050}};
 
     localparam [N*16-1:0] my_x_2 = {
-        16'hFFE0, // -0.123
-        16'h013B, //  1.234
-        16'h0050, //  0.313
-        16'h0452, //  4.324
-        16'hFFC6, // -0.223
-        16'hFFC4, // -0.231
-        16'hFFDF, // -0.123
-        16'h021C  //  2.11
+        16'hFFE0,
+        16'h013B,
+        16'h0050,
+        16'h0452,
+        16'hFFC6,
+        16'hFFC4,
+        16'hFFDF,
+        16'h021C
     };
 
     reg clk;
@@ -85,7 +73,6 @@ module softmax_tb;
             $display("%h = %f", val, real_val);
         end
     endtask
-
 
     integer i;
     initial begin

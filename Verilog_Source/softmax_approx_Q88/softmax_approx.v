@@ -10,7 +10,6 @@ module softmax #(parameter N = 8)(
 );
     wire [15:0] in_x [0:N-1];
     wire [15:0] prob [0:N-1];
-    
 
     wire [15:0] add_in [0:N-1];
     wire [15:0] y [0:N-1];
