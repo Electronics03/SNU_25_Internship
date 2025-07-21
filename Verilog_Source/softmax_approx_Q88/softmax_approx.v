@@ -4,12 +4,14 @@ module softmax #(parameter N = 8)(
     input clk,
     input en,
     input rst,
-    input  [15:0] max_x,
     output valid_out,
     output [N*16-1:0] prob_flat
 );
     wire [15:0] in_x [0:N-1];
     wire [15:0] prob [0:N-1];
+    wire [N*16-1:0] max_prop_flat;
+    wire [15:0] max_x;
+    wire valid_max_out;
 
     wire [15:0] add_in [0:N-1];
     wire [15:0] y [0:N-1];
@@ -19,12 +21,19 @@ module softmax #(parameter N = 8)(
     wire [N*16-1:0] add_out_prop_flat;
     wire [15:0] add_out_prop [0:N-1];
 
-    wire valid_s1, valid_s2;
+    wire [N-1:0] valid_s1_arr;
+    wire [N-1:0] valid_s2_arr;
+
+    wire valid_s1;
+    wire valid_s2;
+
+    assign valid_s1 = &(valid_s1_arr);
+    assign valid_out = &(valid_s2_arr);
 
     genvar i;
     generate
         for (i = 0; i < N; i = i + 1) begin
-            assign in_x[i] = in_x_flat[i*16 +: 16];
+            assign in_x[i] = max_prop_flat[i*16 +: 16];
             assign add_in_flat[i*16 +: 16] = add_in[i];
             assign y_flat[i*16 +: 16] = y[i];
             assign add_out_prop[i] = add_out_prop_flat[i*16 +: 16];
@@ -32,10 +41,20 @@ module softmax #(parameter N = 8)(
         end
     endgenerate
 
+    max_tree #(.N(N)) max_tree(
+        .valid_in(valid_in),
+        .clk(clk),
+        .rst(rst),
+        .in_flat(in_x_flat),
+        .valid_out(valid_max_out),
+        .out(max_x),
+        .out_prop(max_prop_flat)
+    );
+
     generate
         for (i = 0; i < N; i = i + 1) begin
             RU FIRSTSTAGE(
-                .valid_in(valid_in),
+                .valid_in(valid_max_out),
                 .in_0(max_x),
                 .in_1(in_x[i]),
                 .sel_mult(1'b1),
@@ -45,7 +64,7 @@ module softmax #(parameter N = 8)(
                 .clk(clk),
                 .rst(rst),
                 .en(en),
-                .valid_out(valid_s1)
+                .valid_out(valid_s1_arr[i])
             );
         end
     endgenerate
@@ -75,7 +94,7 @@ module softmax #(parameter N = 8)(
                 .clk(clk),
                 .rst(rst),
                 .en(en),
-                .valid_out(valid_out)
+                .valid_out(valid_s2_arr[i])
             );
         end
     endgenerate

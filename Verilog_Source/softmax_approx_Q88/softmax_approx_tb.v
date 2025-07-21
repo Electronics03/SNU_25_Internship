@@ -38,7 +38,6 @@ module softmax_tb;
     always #5 clk = ~clk;
 
     reg signed [N*16-1:0] in_x_flat;
-    reg signed [15:0] max_x;
     wire signed [N*16-1:0] prob_flat;
 
     wire [15:0] in_x_arr [0:N-1];
@@ -56,9 +55,7 @@ module softmax_tb;
     softmax #(.N(N)) DUT (
         .valid_in(valid_in),
         .in_x_flat(in_x_flat),
-        .max_x(max_x),
         .prob_flat(prob_flat),
-        .add_in_flat_0(),
         .clk(clk),
         .rst(rst),
         .en(en),
@@ -83,11 +80,11 @@ module softmax_tb;
         #10; en = 1; 
 
         #10;
-        in_x_flat = my_x_0; valid_in = 1; max_x = 16'h0352;
+        in_x_flat = my_x_0; valid_in = 1;
         #10;
-        in_x_flat = my_x_1; valid_in = 1; max_x = 16'h0050;
+        in_x_flat = my_x_1; valid_in = 1;
         #10;
-        in_x_flat = my_x_2; valid_in = 1; max_x = 16'h0452;
+        in_x_flat = my_x_2; valid_in = 1;
         #300;
         $finish;
     end
