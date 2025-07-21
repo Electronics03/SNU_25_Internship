@@ -75,7 +75,7 @@ module SFU #(
     wire tready_recip_in;
     wire [15:0] tdata_recip_in;
     assign tvalid_recip_in = tvalid_addt_out;
-    assign tready_recip_in = tready_addt_out;
+    assign tready_addt_out = tready_recip_in;
     assign tdata_recip_in = tdata_addt_out;
 
     wire tvalid_recip_out;
@@ -95,6 +95,6 @@ module SFU #(
     );
 
     assign tvalid_out = tvalid_recip_out;
-    assign tready_out = tready_recip_out;
+    assign tready_recip_out = tready_out;
     assign tdata_out = tdata_recip_out;
 endmodule

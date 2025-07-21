@@ -69,6 +69,28 @@ module adder_tree_tb;
             tdata_in = tdata_in | (in_arr[i] << (i*16));
         end
 
+        #100
+        in_arr[0] = 16'h3c00;  // 1.0
+        in_arr[1] = 16'h3c00;  // 2.0
+        in_arr[2] = 16'h3c00;  // 3.0
+        in_arr[3] = 16'h3c00;  // 4.0
+        in_arr[4] = 16'h3c00;  // 5.0
+        in_arr[5] = 16'h3c00;  // 6.0
+        in_arr[6] = 16'h3c00;  // 7.0
+        in_arr[7] = 16'h3c00;  // 8.0
+        in_arr[8] = 16'h3c00;  // 1.0
+        in_arr[9] = 16'h3c00;  // 2.0
+        in_arr[10] = 16'h3c00; // 3.0
+        in_arr[11] = 16'h3c00; // 4.0
+        in_arr[12] = 16'h3c00; // 5.0
+        in_arr[13] = 16'h3c00; // 6.0
+        in_arr[14] = 16'h3c00; // 7.0
+        in_arr[15] = 16'h3c00; // 8.0
+
+        for (i = 0; i < N; i = i + 1) begin
+            tdata_in = tdata_in | (in_arr[i] << (i*16));
+        end
+
         $display("[TB] reg vector loaded at time %0t", $time);
         #2000;
         $display("---- Simulation Complete ----");
