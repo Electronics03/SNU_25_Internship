@@ -5,6 +5,7 @@ module softmax #(parameter N = 8)(
     input en,
     input rst,
     output valid_out,
+    output [15:0] add_out_test,
     output [N*16-1:0] prob_flat
 );
     wire [15:0] in_x [0:N-1];
@@ -30,7 +31,7 @@ module softmax #(parameter N = 8)(
 
     assign valid_s1 = &(valid_s1_arr);
     assign valid_out = &(valid_s2_arr);
-
+    assign add_out_test = add_out;
     genvar i;
     generate
         for (i = 0; i < N; i = i + 1) begin
