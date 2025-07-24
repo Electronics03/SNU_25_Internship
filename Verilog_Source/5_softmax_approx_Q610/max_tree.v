@@ -1,37 +1,59 @@
+/*
+Max Tree Module
+
+16-bit fixed-point: Q6.10
+Description:
+- Computes the maximum of N signed 16-bit inputs using a binary comparison tree.
+- Uses a pipelined architecture composed of log2(N) stages of max_comparator units.
+- Outputs the maximum value and its associated validity flag.
+- Also bypasses the original inputs and valid flags with matching latency for downstream use.
+- One max_comparator per 2 inputs, reducing input count by half at each stage.
+- log2(N) clock cycle latency from input to output.
+*/
 module max_tree #(
     parameter N = 64
 )(
-    input valid_in,
     input clk,
-    input rst,
+    input en,
+    input rst_n,
+
+    input [N-1:0] valid_in,
     input [N*16-1:0] in_flat,
-    output valid_out,
-    output [15:0] out,
-    output [N*16-1:0]out_prop
+
+    output valid_MAX_out,
+    output [15:0] MAX,
+
+    output [N-1:0] valid_bypass_out,
+    output [N*16-1:0] in_bypass
 );
+
     localparam STAGE = $clog2(N);
 
+    wire [N-1:0] stage_valid [0:STAGE];
     wire [15:0] stage_data [0:STAGE][0:N-1];
-    wire [N-1:0] stage_tvalid [0:STAGE];
 
-    reg [N*16-1:0] pipe [0:STAGE-1];
+    reg [N-1:0] reg_valid_bypass [0:STAGE-1];
+    reg [N*16-1:0] reg_bypass [0:STAGE-1];
 
     integer k;
     always @(posedge clk) begin
-        if (rst) begin
+        if (~rst_n) begin
             for (k = 0; k <= STAGE-1; k = k + 1) begin
-                pipe[k] <= {N{16'd0}};
+                reg_valid_bypass[k] <= {N{1'b0}};
+                reg_bypass[k] <= {N{16'd0}};
             end
         end
-        else begin
-            pipe[0] <= in_flat;
+        else if (en) begin
+            reg_valid_bypass[0] <= valid_in;
+            reg_bypass[0] <= in_flat;
             for (k = 0; k <= STAGE-2; k = k + 1) begin
-                pipe[k+1] <= pipe[k];
+                reg_valid_bypass[k+1] <= reg_valid_bypass[k];
+                reg_bypass[k+1] <= reg_bypass[k];
             end
         end
     end
 
-    assign stage_tvalid[0] = {N{valid_in}};
+    assign stage_valid[0] = valid_in;
 
     genvar i, j;
     generate
@@ -45,39 +67,61 @@ module max_tree #(
             for (i = 0; i < (N >> (j+1)); i = i + 1) begin : comps
                 max_comparator MAX(
                     .clk(clk),
-                    .rst(rst),
-                    .valid_A_in(stage_tvalid[j][2*i]),
+                    .en(en),
+                    .rst_n(rst_n),
+
+                    .valid_A_in(stage_valid[j][2*i]),
                     .A_in(stage_data[j][2*i]),
-                    .valid_B_in(stage_tvalid[j][2*i+1]),
+
+                    .valid_B_in(stage_valid[j][2*i+1]),
                     .B_in(stage_data[j][2*i+1]),
-                    .MAX_out(stage_data[j+1][i]),
-                    .valid_out(stage_tvalid[j+1][i])
+
+                    .valid_out(stage_valid[j+1][i]),
+                    .MAX_out(stage_data[j+1][i])
                 );
             end
         end
     endgenerate
 
-    assign out = stage_data[STAGE][0];
-    assign valid_out = stage_tvalid[STAGE][0];
-    assign out_prop = pipe[STAGE-1];
+    assign valid_MAX_out = stage_valid[STAGE][0];
+    assign MAX = stage_data[STAGE][0];
+
+    assign valid_bypass_out = reg_valid_bypass[STAGE-1];
+    assign in_bypass = reg_bypass[STAGE-1];
+
 endmodule
 
+
+/*
+Max Comparator Module
+
+16-bit fixed-point: Q6.10
+Description:
+- Outputs the larger of two signed input values.
+- The output is valid only when both input valid signals are high.
+- One clock cycle latency.
+*/
 module max_comparator (
     input clk,
-    input rst,
+    input en,
+    input rst_n,
+
     input valid_A_in,
     input signed [15:0] A_in,
+
     input valid_B_in,
     input signed [15:0] B_in,
-    output reg signed [15:0] MAX_out,
-    output reg valid_out
+
+    output reg valid_out,
+    output reg signed [15:0] MAX_out
 );
+
     always @(posedge clk) begin
-        if (rst) begin
+        if (~rst_n) begin
             MAX_out <= 16'd0;
             valid_out <= 1'b0;
         end 
-        else begin
+        else if (en) begin
             MAX_out <= (A_in > B_in) ? A_in : B_in;
             valid_out <= valid_A_in & valid_B_in;
         end
