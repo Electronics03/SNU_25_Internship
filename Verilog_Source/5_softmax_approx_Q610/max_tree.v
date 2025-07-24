@@ -11,11 +11,11 @@ Description:
 - log2(N) clock cycle latency from input to output.
 */
 module max_tree #(
-    parameter N = 64
+    parameter N = 8
 )(
     input clk,
     input en,
-    input rst_n,
+    input rst,
 
     input [N-1:0] valid_in,
     input [N*16-1:0] in_flat,
@@ -37,7 +37,7 @@ module max_tree #(
 
     integer k;
     always @(posedge clk) begin
-        if (~rst_n) begin
+        if (rst) begin
             for (k = 0; k <= STAGE-1; k = k + 1) begin
                 reg_valid_bypass[k] <= {N{1'b0}};
                 reg_bypass[k] <= {N{16'd0}};
@@ -68,7 +68,7 @@ module max_tree #(
                 max_comparator MAX(
                     .clk(clk),
                     .en(en),
-                    .rst_n(rst_n),
+                    .rst(rst),
 
                     .valid_A_in(stage_valid[j][2*i]),
                     .A_in(stage_data[j][2*i]),
@@ -104,7 +104,7 @@ Description:
 module max_comparator (
     input clk,
     input en,
-    input rst_n,
+    input rst,
 
     input valid_A_in,
     input signed [15:0] A_in,
@@ -117,7 +117,7 @@ module max_comparator (
 );
 
     always @(posedge clk) begin
-        if (~rst_n) begin
+        if (rst) begin
             MAX_out <= 16'd0;
             valid_out <= 1'b0;
         end 

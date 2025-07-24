@@ -11,6 +11,7 @@ module softmax #(parameter N = 8)(
     wire [15:0] prob [0:N-1];
     wire [N*16-1:0] max_prop_flat;
     wire [15:0] max_x;
+    wire [N-1:0] valid_bypass_out;
     wire valid_max_out;
 
     wire [15:0] add_in [0:N-1];
@@ -42,19 +43,24 @@ module softmax #(parameter N = 8)(
     endgenerate
 
     max_tree #(.N(N)) max_tree(
-        .valid_in(valid_in),
         .clk(clk),
+        .en(en),
         .rst(rst),
+
+        .valid_in({N{valid_in}}),
         .in_flat(in_x_flat),
-        .valid_out(valid_max_out),
-        .out(max_x),
-        .out_prop(max_prop_flat)
+
+        .valid_MAX_out(valid_max_out),
+        .MAX(max_x),
+
+        .valid_bypass_out(valid_bypass_out),
+        .in_bypass(max_prop_flat)
     );
 
     generate
         for (i = 0; i < N; i = i + 1) begin
             RU FIRSTSTAGE(
-                .valid_in(valid_max_out),
+                .valid_in(valid_max_out & valid_bypass_out[i]),
                 .in_0(max_x),
                 .in_1(in_x[i]),
                 .sel_mult(1'b1),
@@ -70,15 +76,18 @@ module softmax #(parameter N = 8)(
     endgenerate
 
     add_tree #(.N(N)) ADDT(
-        .valid_in(valid_s1),
         .clk(clk),
-        .rst(rst),
         .en(en),
+        .rst(rst),
+
+        .valid_in(valid_s1),
         .in_0_flat(y_flat),
         .in_1_flat(add_in_flat),
-        .out(add_out),
-        .out_prop(add_out_prop_flat),
-        .valid_out(valid_s2)
+
+        .in_1_sum(add_out),
+
+        .valid_bypass_out(valid_s2),
+        .in_bypass_flat(add_out_prop_flat)
     );
 
     generate

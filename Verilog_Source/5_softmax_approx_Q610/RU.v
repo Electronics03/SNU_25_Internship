@@ -23,7 +23,7 @@ module RU (
     wire [15:0] out_x;
 
     wire valid_log;
-    reg [4:0] valid_pipe;
+    reg [5:0] valid_pipe;
 
     always @(posedge clk) begin
         if (rst) begin
@@ -32,6 +32,7 @@ module RU (
             valid_pipe[2] <= 1'b0;
             valid_pipe[3] <= 1'b0;
             valid_pipe[4] <= 1'b0;
+            valid_pipe[5] <= 1'b0;
         end
         else if (en) begin
             valid_pipe[0] <= valid_log;
@@ -39,6 +40,7 @@ module RU (
             valid_pipe[2] <= valid_pipe[1];
             valid_pipe[3] <= valid_pipe[2];
             valid_pipe[4] <= valid_pipe[3];
+            valid_pipe[5] <= valid_pipe[4];
         end
     end
 
@@ -49,6 +51,7 @@ module RU (
         .A(in_1_bypass),
         .B(sub),
         .CLK(clk),
+        .CE(en),
         .S(diff)
     );
 
@@ -56,6 +59,7 @@ module RU (
         .CLK(clk),
         .A(diff),
         .B(mult),
+        .CE(en),
         .P(mult_result)
     );
 
@@ -73,7 +77,7 @@ module RU (
     );
 
     stage3_pow2_approx STAGE2 (
-        .valid_in(valid_pipe[4]),
+        .valid_in(valid_pipe[5]),
         .clk(clk),
         .rst(rst),
         .en(en),
