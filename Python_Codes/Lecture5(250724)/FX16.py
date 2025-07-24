@@ -1,7 +1,8 @@
 import numpy as np
+import torch
 
 
-def q412_to_float(hex_list):
+def Q610_to_float(hex_list):
     result = []
     for hex_val in hex_list:
         val = int(hex_val, 16)
@@ -10,6 +11,13 @@ def q412_to_float(hex_list):
         real_val = val / 1024.0
         result.append((real_val))
     return result
+
+
+def baseline_softmax_Pytorch_FP32(x):
+    logits_tensor = torch.tensor(x)
+    probs_tensor = torch.softmax(logits_tensor, dim=-1)
+    # Using pytorch softmax
+    return probs_tensor.numpy()
 
 
 softmax_out = [
@@ -23,8 +31,13 @@ softmax_out = [
     "fe00",
 ]
 
-converted = q412_to_float(softmax_out)
+converted = Q610_to_float(softmax_out)
 for real_val in converted:
+    print(f"{real_val:.5f}")
+print()
+
+vec = baseline_softmax_Pytorch_FP32(converted)
+for real_val in vec:
     print(f"{real_val:.5f}")
 print()
 
@@ -39,8 +52,13 @@ softmax_out = [
     "0e62",
 ]
 
-converted = q412_to_float(softmax_out)
+converted = Q610_to_float(softmax_out)
 for real_val in converted:
+    print(f"{real_val:.5f}")
+print()
+
+vec = baseline_softmax_Pytorch_FP32(converted)
+for real_val in vec:
     print(f"{real_val:.5f}")
 print()
 
@@ -55,8 +73,13 @@ softmax_out = [
     "fe00",
 ]
 
-converted = q412_to_float(softmax_out)
+converted = Q610_to_float(softmax_out)
 for real_val in converted:
+    print(f"{real_val:.5f}")
+print()
+
+vec = baseline_softmax_Pytorch_FP32(converted)
+for real_val in vec:
     print(f"{real_val:.5f}")
 print()
 
@@ -71,7 +94,7 @@ softmax_out = [
     "000f",
 ]
 
-converted = q412_to_float(softmax_out)
+converted = Q610_to_float(softmax_out)
 for real_val in converted:
     print(f"{real_val:.5f}")
 print()
@@ -87,7 +110,7 @@ softmax_out = [
     "0080",
 ]
 
-converted = q412_to_float(softmax_out)
+converted = Q610_to_float(softmax_out)
 for real_val in converted:
     print(f"{real_val:.5f}")
 print()
@@ -103,7 +126,7 @@ softmax_out = [
     "0006",
 ]
 
-converted = q412_to_float(softmax_out)
+converted = Q610_to_float(softmax_out)
 for real_val in converted:
     print(f"{real_val:.5f}")
 print()
