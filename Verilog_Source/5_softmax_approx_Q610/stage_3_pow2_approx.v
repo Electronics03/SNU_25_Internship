@@ -1,9 +1,11 @@
 module stage3_pow2_approx(
-    input valid_in,
     input clk,
-    input rst,
     input en,
+    input rst,
+
+    input valid_in,
     input [15:0] in_x,
+
     output valid_out,
     output [15:0] pow_in_x,
     output [15:0] in_x_bypass
@@ -18,7 +20,7 @@ module stage3_pow2_approx(
     wire [15:0] result;
 
     assign in_x_frac = reg_stg_0[9:0];
-    assign in_x_int = in_x[14:10];
+    assign in_x_int = in_x[15:10];
 
     always @(posedge clk) begin
         if (rst) begin
@@ -33,22 +35,22 @@ module stage3_pow2_approx(
 
     always @(*) begin
         case (in_x_int)
-            5'b10110: shift = 5'd15;
-            5'b10111: shift = 5'd14;
-            5'b11000: shift = 5'd13;
-            5'b11001: shift = 5'd12;
-            5'b11010: shift = 5'd11;
-            5'b11011: shift = 5'd10;
-            5'b11100: shift = 5'd9;
-            5'b11101: shift = 5'd8;
-            5'b11110: shift = 5'd7;
-            5'b11111: shift = 5'd6;
-            5'b00000: shift = 5'd5;
-            5'b00001: shift = 5'd4;
-            5'b00010: shift = 5'd3;
-            5'b00011: shift = 5'd2;
-            5'b00100: shift = 5'd1;
-            5'b00101: shift = 5'd0;
+            6'b110110: shift = 5'd15;
+            6'b110111: shift = 5'd14;
+            6'b111000: shift = 5'd13;
+            6'b111001: shift = 5'd12;
+            6'b111010: shift = 5'd11;
+            6'b111011: shift = 5'd10;
+            6'b111100: shift = 5'd9;
+            6'b111101: shift = 5'd8;
+            6'b111110: shift = 5'd7;
+            6'b111111: shift = 5'd6;
+            6'b000000: shift = 5'd5;
+            6'b000001: shift = 5'd4;
+            6'b000010: shift = 5'd3;
+            6'b000011: shift = 5'd2;
+            6'b000100: shift = 5'd1;
+            6'b000101: shift = 5'd0;
             default: shift = 5'd16;
         endcase
     end

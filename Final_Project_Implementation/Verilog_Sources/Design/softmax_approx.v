@@ -2,10 +2,8 @@ module softmax #(parameter N = 8)(
     input clk,
     input en,
     input rst,
-
     input valid_in,
     input [N*16-1:0] in_x_flat,
-
     output valid_out,
     output [N*16-1:0] prob_flat
 );

@@ -1,12 +1,15 @@
 module stage1_log2_approx(
-    input valid_in,
     input clk,
-    input rst,
     input en,
+    input rst,
+
+    input valid_in,
     input [15:0] in_0,
     input [15:0] in_1,
+
     output valid_out,
     output [15:0] log_in_0,
+
     output [15:0] in_0_bypass,
     output [15:0] in_1_bypass
 );
@@ -16,19 +19,20 @@ module stage1_log2_approx(
 
     reg [3:0] count;
     reg [5:0] int_part;
+
     wire [15:0] frac_part;
     wire [15:0] result;
 
     always @(posedge clk) begin
         if (rst) begin
             reg_stg_0 <= 33'd0;
-            reg_stg_1 <= 41'd0;
+            reg_stg_1 <= 37'd0;
             reg_stg_2 <= 49'd0;
         end
         else if (en) begin
             reg_stg_0 <= {valid_in, in_1, in_0};
             reg_stg_1 <= {reg_stg_0[32], count, reg_stg_0[31:0]};
-            reg_stg_2 <= {reg_stg_1[36], result ,reg_stg_1[31:0]};
+            reg_stg_2 <= {reg_stg_1[36], result, reg_stg_1[31:0]};
         end
     end
 
@@ -79,6 +83,7 @@ module stage1_log2_approx(
 
     assign valid_out = reg_stg_2[48];
     assign log_in_0 = reg_stg_2[47:32];
+
     assign in_1_bypass = reg_stg_2[31:16];
     assign in_0_bypass = reg_stg_2[15:0];
 endmodule
