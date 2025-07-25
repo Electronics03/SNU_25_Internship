@@ -66,8 +66,8 @@ module RU_tb;
         $display("");
 
         $display("Stage 2: (log2_sum - y_i) * 1");
-        in_0 = 16'h0180;
-        in_1 = 16'b1111_1110_0011_0001;
+        in_0 = 16'he125;
+        in_1 = 16'h2d44;
         sel_mux = 0;
         sel_mult = 0;
         valid_in = 1'b1;

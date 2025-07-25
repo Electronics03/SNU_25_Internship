@@ -9,9 +9,9 @@ module sim_FSM #(parameter N = 8)(
     reg [N*16-1:0] mem [0:2];
 
     initial begin
-        mem[0] = {8{16'hFFE5, 16'h0030, 16'hFFFF, 16'hFFF4, 16'hFFEE, 16'hFFE7, 16'hFFC2, 16'hFFC9}};
-        mem[1] = {N{16'hFFF}};
-        mem[2] = {8{16'hFFFC, 16'hFFEC, 16'h0028, 16'h000D, 16'h0011, 16'h0015, 16'h0029, 16'hFFC6}};
+        mem[0] = {8{16'h061D, 16'h061D, 16'hFDE2, 16'h0B13, 16'hFBCF, 16'h0B26, 16'h042B, 16'hF5BE}};
+        mem[1] = {8{16'hFA60, 16'h042D, 16'hFFBF, 16'hF46A, 16'h0A79, 16'hF8B9, 16'hFBCC, 16'hF55D}};
+        mem[2] = {8{16'h00F7, 16'h0AC0, 16'h0A99, 16'h09D6, 16'hFF4D, 16'hF72D, 16'hFF90, 16'h0B2A}};
     end
 
     parameter IDLE = 2'b00;

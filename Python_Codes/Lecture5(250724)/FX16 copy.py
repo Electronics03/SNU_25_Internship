@@ -20,14 +20,15 @@ def baseline_softmax_Pytorch_FP32(x):
     return probs_tensor.numpy()
 
 
-softmax_out = ["3c80"]
+softmax_out = ["0032"]
 
 converted = Q610_to_float(softmax_out)
 for real_val in converted:
     print(f"{real_val:.5f}")
 print()
 
-vec = baseline_softmax_Pytorch_FP32(converted)
+"""vec = baseline_softmax_Pytorch_FP32(converted)
 for real_val in vec:
     print(f"{real_val:.5f}")
 print()
+"""

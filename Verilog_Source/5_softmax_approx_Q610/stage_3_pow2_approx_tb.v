@@ -52,7 +52,7 @@ module stage3_pow2_approx_tb;
 
         $display("==== pow2_approx test ====");
 
-        in_x = 16'b100110_0000000000;
+        in_x = 16'hd37d;
         valid_in = 1'b1;
         #5; valid_in = 1'b0;
         #5;
