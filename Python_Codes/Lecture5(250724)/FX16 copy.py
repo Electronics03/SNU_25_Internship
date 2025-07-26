@@ -20,7 +20,7 @@ def baseline_softmax_Pytorch_FP32(x):
     return probs_tensor.numpy()
 
 
-softmax_out = ["0032"]
+softmax_out = ["000b"]
 
 converted = Q610_to_float(softmax_out)
 for real_val in converted:
