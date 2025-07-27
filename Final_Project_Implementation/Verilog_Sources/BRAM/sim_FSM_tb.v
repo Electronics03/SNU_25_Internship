@@ -4,10 +4,9 @@ module FSM_tb #(
     parameter N = 64
 );
     reg clk;
-    reg en;
+    wire en;
     reg rst;
 
-    wire [3:0] adds;
     wire valid_in;
     wire [N*16-1:0] in_x_flat;
 
@@ -21,7 +20,6 @@ module FSM_tb #(
         .clk(clk),
         .en(en),
         .rst(rst),
-        .adds(adds),
         .valid_in(valid_in),
         .data(in_x_flat)
     );
@@ -39,7 +37,6 @@ module FSM_tb #(
     initial begin
         #2; rst = 1;
         #10; rst = 0;
-        #10; en = 1;
         #2000;
     end
 endmodule

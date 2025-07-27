@@ -53,7 +53,7 @@ module FSM #(
                         state <= STOP;
                         address <= 4'd0;
                         en <= 1;
-                        valid <= 0;
+                        valid <= 1;
                     end
                 end
                 STOP: begin
