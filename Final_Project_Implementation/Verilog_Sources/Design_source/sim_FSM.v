@@ -13,12 +13,12 @@ module FSM #(
     localparam STOP = 2'b10;
 
     reg [1:0] state;
-    reg [3:0] address;
+    reg [5:0] address;
     reg valid;
     reg valid_pipe;
 
     wire comp;
-    assign comp = (address == 4'd15);
+    assign comp = (address == 6'd63);
 
     always @(posedge clk) begin
         if (rst) begin
@@ -32,7 +32,7 @@ module FSM #(
     always @(posedge clk or posedge rst) begin
         if (rst) begin
             state <= IDLE;
-            address <= 4'd0;
+            address <= 8'd0;
             valid <= 0;
             en <= 0;
         end 
@@ -51,14 +51,14 @@ module FSM #(
                     end
                     else begin
                         state <= STOP;
-                        address <= 4'd0;
+                        address <= 8'd0;
                         en <= 1;
                         valid <= 1;
                     end
                 end
                 STOP: begin
                     state <= STOP;
-                    address <= 4'd0;
+                    address <= 8'd0;
                     en <= 1;
                     valid <= 0;
                 end
@@ -68,9 +68,8 @@ module FSM #(
     
     assign valid_in = valid_pipe;
 
-    blk_mem_gen_0 BRAM (
+    BRAM_data BRAM (
         .clka(clk),
-        .ena(1),
         .wea(1'b0),
         .addra(address),
         .dina(1024'd0),

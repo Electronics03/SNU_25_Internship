@@ -1,6 +1,6 @@
 module add_tree #(
     parameter N = 8
-) (
+)(
     input clk,
     input en,
     input rst,
@@ -65,4 +65,5 @@ module add_tree #(
 
     assign valid_bypass_out = reg_valid_bypass[STAGE*2-1];
     assign in_bypass_flat = reg_bypass[STAGE*2-1];
+
 endmodule

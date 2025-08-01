@@ -79,16 +79,6 @@ module max_tree #(
 
 endmodule
 
-
-/*
-Max Comparator Module
-
-16-bit fixed-point: Q6.10
-Description:
-- Outputs the larger of two signed input values.
-- The output is valid only when both input valid signals are high.
-- One clock cycle latency.
-*/
 module max_comparator (
     input clk,
     input en,

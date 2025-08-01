@@ -1,4 +1,6 @@
-module softmax #(parameter N = 8)(
+module softmax #(
+    parameter N = 8
+)(
     input clk,
     input en,
     input rst,
@@ -119,4 +121,5 @@ module softmax #(parameter N = 8)(
             );
         end
     endgenerate
+
 endmodule

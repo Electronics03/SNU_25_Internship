@@ -67,24 +67,29 @@ module RU (
     );
 
     stage1_log2_approx STAGE1 (
-        .valid_in(valid_in),
         .clk(clk),
-        .rst(rst),
         .en(en),
+        .rst(rst),
+
+        .valid_in(valid_in),
         .in_0(in_0),
         .in_1(in_1),
+
         .valid_out(valid_log),
         .log_in_0(log_in_0),
+
         .in_0_bypass(in_0_bypass),
         .in_1_bypass(in_1_bypass)
     );
 
     stage3_pow2_approx STAGE2 (
-        .valid_in(valid_pipe[5]),
         .clk(clk),
-        .rst(rst),
         .en(en),
+        .rst(rst),
+
+        .valid_in(valid_pipe[5]),
         .in_x(mult_result[25:10]),
+
         .valid_out(valid_out),
         .pow_in_x(out_1),
         .in_x_bypass(out_0)
