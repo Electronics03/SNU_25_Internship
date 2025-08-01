@@ -25,14 +25,54 @@ By using only shift and addition operations to find $w$ and $x'$ (the integer an
 
 ![log2_approx](/Final_Project_Implementation/Explanation/Pictures/stage1_log2_approx_2.png)
 
-## II. Architecture
+## II. Operation Flow
+
+### 
+
+To compute $\log_2x$, I use the formula [shown above](#i-approximation-fomular).
+First, find the position of the first 1 in the input. 
+This gives the value `count`, which represents how much input need to shift. 
+In Verilog, this is implemented using a `casex` statement, which will be synthesized as a LUT.
+
+Next, I shift the input by `count` so that `1` moves to MSB.
+I remove this `1` (bit [15]) and take the next 10 bits ([14:5]) as the fractional part.
+
+At the same time, I calculate the 6-bit integer part using count.
+This is done by subtracting 5 from count, product -1 and converting the result to a 6-bit two’s complement number.
+In Verilog, this is implemented using a `case` statement, which will be synthesized as a LUT.
+
+Finally, I combine the integer part and the fractional part to get a 16-bit approximation of $\log_2x$.
+
+### Pseudo Code
+```
+function log2_approx(input x)
+{
+    count ← position of most significant '1' bit in x
+
+    norm_x ← x << count
+    frac_part ← bits of norm_x[14:5]
+    int_part ← (count - 5) * (-1)
+
+    log2x ← {int_part[5:0], frac_part[9:0]}
+    return log2x
+}
+```
+### Operation Example
+
+1. `16'b0010_0101_1100_1011` (9.4482)
+    - `count` : 2 (`0010`)
+
+2. `16'b1001_0111_0010_1100`
+    - `<<` Left shift : 2
+    - fractional part : `001_0111_001`
+    - integer part : 3 (`0000_11`)
+
+3. `16'b0000_1100_1011_1001` (3.1807)
+
+## III. Architecture
 
 ![log2_approx](/Final_Project_Implementation/Explanation/Pictures/stage1_log2_approx_3.png)
 
-## III. Pseudo Code
-```
-
-```
 
 ## IV. Verilog Code
 
