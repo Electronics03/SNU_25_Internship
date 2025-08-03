@@ -3,7 +3,7 @@
 The approximation method for $\log_2x$ is introduced in [[1]](#v-references).
 Based on this, I present a Verilog implementation of a 3-stage pipelined unit that computes an approximate result of $\log_2x$. The design uses a 16-bit fixed-point format in Q6.10 representation.
 
-## I. Approximation Fomular
+## I. Approximation Formula
 
 $$
 \begin{aligned}
@@ -27,21 +27,27 @@ By using only shift and addition operations to find $w$ and $x'$ (the integer an
 
 ## II. Operation Flow
 
-### 
+To compute $\log_2x$, I use the formula [shown above](#i-approximation-formula).
 
-To compute $\log_2x$, I use the formula [shown above](#i-approximation-fomular).
-First, find the position of the first 1 in the input. 
-This gives the value `count`, which represents how much input need to shift. 
-In Verilog, this is implemented using a `casex` statement, which will be synthesized as a LUT.
+1. **Leading-One Detection**
 
-Next, I shift the input by `count` so that `1` moves to MSB.
-I remove this `1` (bit [15]) and take the next 10 bits ([14:5]) as the fractional part.
+    First, the position of the first 1 in the input is detected.
+    This position is denoted as `count`, representing how many bits the input needs to be shifted.
+    In Verilog, this is implemented using a `casex` statement, which is synthesized as a LUT.
 
-At the same time, I calculate the 6-bit integer part using count.
-This is done by subtracting 5 from count, product -1 and converting the result to a 6-bit two’s complement number.
-In Verilog, this is implemented using a `case` statement, which will be synthesized as a LUT.
+2. **Normalization and Fraction Extraction**
 
-Finally, I combine the integer part and the fractional part to get a 16-bit approximation of $\log_2x$.
+    Next, the input is left-shifted by `count` so that the leading 1 moves to the MSB (bit [15]).
+    The leading 1 is then discarded, and the following 10 bits (bits [14:5]) are extracted as the fractional part.
+
+3. **Integer Part Calculation**
+
+    Simultaneously, the integer part is calculated by subtracting `5` from `count`, multiplying the result by `-1`, and converting it into a 6-bit two’s complement number.
+    This is implemented using a `case` statement in Verilog, which is synthesized as a LUT.
+
+4. **Final Approximation**
+
+    Finally, the integer part and the fractional part are concatenated to form the 16-bit approximation of $\log_2 x$.
 
 ### Pseudo Code
 ```
@@ -57,21 +63,14 @@ function log2_approx(input x)
     return log2x
 }
 ```
-### Operation Example
-
-1. `16'b0010_0101_1100_1011` (9.4482)
-    - `count` : 2 (`0010`)
-
-2. `16'b1001_0111_0010_1100`
-    - `<<` Left shift : 2
-    - fractional part : `001_0111_001`
-    - integer part : 3 (`0000_11`)
-
-3. `16'b0000_1100_1011_1001` (3.1807)
 
 ## III. Architecture
 
 ![log2_approx](/Final_Project_Implementation/Explanation/Pictures/stage1_log2_approx_3.png)
+
+The operation flow is divided into three stages for computation.
+Since the Reconfigurable Unit (RU) directly uses `in_0` and `in_1`, they are forwarded via bypass signals.
+To ensure the validity of the computation, the `valid_in` signal is propagated as `valid_out`.
 
 
 ## IV. Verilog Code
@@ -92,16 +91,18 @@ module stage1_log2_approx(
     output [15:0] in_0_bypass,
     output [15:0] in_1_bypass
 );
-    reg [32:0] reg_stg_0;
-    reg [36:0] reg_stg_1;
-    reg [48:0] reg_stg_2;
+    // Pipeline registers for 3 stages
+    reg [32:0] reg_stg_0;  // Stage 0: {valid, in_1, in_0}
+    reg [36:0] reg_stg_1;  // Stage 1: {valid, count, in_1, in_0}
+    reg [48:0] reg_stg_2;  // Stage 2: {valid, result, in_1, in_0}
 
-    reg [3:0] count;
-    reg [5:0] int_part;
+    reg [3:0] count;       // Leading-one position
+    reg [5:0] int_part;    // Integer part of log2 result
 
-    wire [15:0] frac_part;
-    wire [15:0] result;
+    wire [15:0] frac_part; // Fractional part of log2 result
+    wire [15:0] result;    // Final log2 approximation result
 
+    // Pipeline update
     always @(posedge clk) begin
         if (rst) begin
             reg_stg_0 <= 33'd0;
@@ -109,12 +110,16 @@ module stage1_log2_approx(
             reg_stg_2 <= 49'd0;
         end
         else if (en) begin
+            // Stage 0: input capture
             reg_stg_0 <= {valid_in, in_1, in_0};
+            // Stage 1: shift count and input forwarding
             reg_stg_1 <= {reg_stg_0[32], count, reg_stg_0[31:0]};
+            // Stage 2: final result and bypass
             reg_stg_2 <= {reg_stg_1[36], result, reg_stg_1[31:0]};
         end
     end
 
+    // Stage 0: leading-one detection
     always @(*) begin
         casex (reg_stg_0[15:0])
             16'b1xxx_xxxx_xxxx_xxxx: count = 4'b0000;
@@ -136,6 +141,7 @@ module stage1_log2_approx(
         endcase
     end
 
+    // Stage 1: compute integer part from count
     always @(*) begin
         case (reg_stg_1[35:32])
             4'b0000: int_part = 6'b00_0101;
@@ -157,12 +163,17 @@ module stage1_log2_approx(
         endcase
     end
 
+    // Stage 1: extract fractional bits by normalization (shift)
     assign frac_part = reg_stg_1[15:0] << reg_stg_1[35:32];
+
+    // Combine integer and fractional part
     assign result = {int_part, frac_part[14:5]};
 
+    // Stage 2: outputs
     assign valid_out = reg_stg_2[48];
     assign log_in_0 = reg_stg_2[47:32];
 
+    // Bypass
     assign in_1_bypass = reg_stg_2[31:16];
     assign in_0_bypass = reg_stg_2[15:0];
 endmodule
