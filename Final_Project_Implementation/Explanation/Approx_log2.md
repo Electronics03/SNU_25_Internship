@@ -72,7 +72,6 @@ The operation flow is divided into three stages for computation.
 Since the Reconfigurable Unit (RU) directly uses `in_0` and `in_1`, they are forwarded via bypass signals.
 To ensure the validity of the computation, the `valid_in` signal is propagated as `valid_out`.
 
-
 ## IV. Verilog Code
 
 ```verilog
