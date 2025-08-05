@@ -9,7 +9,7 @@ $$
 \begin{aligned}
 \log_2x &= \log_2(2^w\cdot x^\prime)\\
 &= w\cdot\log_2x^\prime\\
-&\approx w+x^\prime-1\\
+\therefore &\approx w+x^\prime-1\\
 \end{aligned}
 $$
 

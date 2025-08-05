@@ -26,7 +26,7 @@ To compute $2^x$, I use the formula [shown above](#i-approximation-formula).
 1. Determine the shift amount
 
     The shift amount is determined based on the integer part of the input.  
-    The mapping between the integer part and the shift amount follows the table below:  
+    The mapping between the integer part and the shift amount follows the table below :  
     ![pow2_approx_table](/Final_Project_Implementation/Explanation/Pictures/stage3_pow2_approx_4.png)  
     This is implemented using a `case` statement in Verilog, which is synthesized as a LUT.
 
@@ -126,9 +126,11 @@ module stage3_pow2_approx(
 
     // Stage 1: apply right shift to compute 2^x approximation
     assign result = {1'b1, in_x_frac, 5'b00000} >> reg_stg_0[20:16];
+
     // Output stage
     assign valid_out = reg_stg_1[32];
     assign pow_in_x = reg_stg_1[31:16];
+
     // Bypass original input
     assign in_x_bypass = reg_stg_1[15:0];
 
