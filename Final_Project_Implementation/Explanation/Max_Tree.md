@@ -65,15 +65,15 @@ function max_tree(valid_in[N], in_flat[N])
         for i ← 0 to M-1:
             (v_out, max_out) ← max_comparator(
                                    stage_valid[j][2*i],
-                                   stage_data [j][2*i],
+                                   stage_data[j][2*i],
                                    stage_valid[j][2*i+1],
-                                   stage_data [j][2*i+1],
+                                   stage_data[j][2*i+1],
                                )
             stage_valid[j+1][i] ← v_out
-            stage_data [j+1][i] ← max_out
+            stage_data[j+1][i] ← max_out
 
     valid_MAX_out ← stage_valid[STAGE][0]
-    MAX ← stage_data [STAGE][0]
+    MAX ← stage_data[STAGE][0]
 
     valid_bypass_out ← valid_in
     in_bypass ← in_flat
@@ -86,8 +86,12 @@ function max_tree(valid_in[N], in_flat[N])
 
 ![max_tree_arch](/Final_Project_Implementation/Explanation/Pictures/max_T_1.png)
 
+The `max_comparator` module has a latency of 1 clock cycle.
+
 Based on the figure above ($8$, $2^3$ inputs), a total of 3 stages of max operations are required to determine the maximum value.
 Bypass registers are used to forward the bypass signals.
+
+For 64 inputs, a total of 6 stages are required. With each stage having a latency of 1 clock cycle, the total latency is 6 clock cycles.
 
 ## IV. Verilog Code
 
