@@ -57,6 +57,12 @@ Bypass registers are used to forward the bypass signals.
 For 64 inputs, a total of 6 stages are required. With each stage having a latency of 2 clock cycle, the total latency is 12 clock cycles.
 
 ## IV. Verilog Code
+### IP
+| Instance Name | IP name | VLNV | Description | Latency |
+|---------------|---------|------|-------------|---------|
+| `add_FX16` | Adder/Subtracter | `xilinx.com:ip:c_addsub:12` | 16-bit fixed-point subtractor (Q6.10) | 2 |
+
+### Code
 ```verilog
 module add_tree #(
     parameter N = 8                  // Number of input elements (must be a power of 2)
