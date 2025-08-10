@@ -52,43 +52,22 @@ $$
 \begin{matrix}
 \vec{k}_1^T & \vec{k}_2^T & \cdots & \vec{k}_n^T
 \end{matrix}
-\right]
-\\
+\right]\\
 &=\left[
 \begin{matrix}
-\vec{q}_1\cdot\vec{k}_1 &
-\vec{q}_1\cdot\vec{k}_2 &
-\cdots &
-\vec{q}_1\cdot\vec{k}_n \\
-\vec{q}_2\cdot\vec{k}_1 &
-\vec{q}_2\cdot\vec{k}_2 &
-\cdots &
-\vec{q}_2\cdot\vec{k}_n \\
-\vdots & \vdots & \ddots & \vdots & 
-\\
-\vec{q}_n\cdot\vec{k}_1 &
-\vec{q}_n\cdot\vec{k}_2 &
-\cdots &
-\vec{q}_n\cdot\vec{k}_n \\
+\vec{q}_1\cdot\vec{k}_1 & \vec{q}_1\cdot\vec{k}_2 & \cdots & \vec{q}_1\cdot\vec{k}_n\\
+\vec{q}_2\cdot\vec{k}_1 & \vec{q}_2\cdot\vec{k}_2 & \cdots & \vec{q}_2\cdot\vec{k}_n\\
+\vdots & \vdots & \ddots & \vdots \\
+\vec{q}_n\cdot\vec{k}_1 & \vec{q}_n\cdot\vec{k}_2 & \cdots & \vec{q}_n\cdot\vec{k}_n\\
 \end{matrix}
 \right]\\
 \therefore &=
 \left[
 \begin{matrix}
-s_{11} &
-s_{12} &
-\cdots &
-s_{1n} \\
-s_{21} &
-s_{22} &
-\cdots &
-s_{2n} \\
-\vdots & \vdots & \ddots & \vdots & 
-\\
-s_{n1} &
-s_{n2} &
-\cdots &
-s_{nn} \\
+s_{11} & s_{12} & \cdots & s_{1n}\\
+s_{21} & s_{22} & \cdots & s_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+s_{n1} & s_{n2} & \cdots & s_{nn}\\
 \end{matrix}
 \right]
 \end{aligned}
@@ -99,42 +78,19 @@ $$
 \mathbf{F}&=
 \left[
 \begin{matrix}
-\mathrm{softmax}(
-s_{11} &
-s_{12} &
-\cdots &
-s_{1n}) \\
-\mathrm{softmax}(
-s_{21} &
-s_{22} &
-\cdots &
-s_{2n}) \\
-\vdots & \vdots & \ddots & \vdots & 
-\\
-\mathrm{softmax}(
-s_{n1} &
-s_{n2} &
-\cdots &
-s_{nn}) \\
+\mathrm{softmax}(s_{11} & s_{12} & \cdots & s_{1n})\\
+\mathrm{softmax}(s_{21} & s_{22} & \cdots & s_{2n})\\
+\vdots & \vdots & \ddots & \vdots\\
+\mathrm{softmax}(s_{n1} & s_{n2} & \cdots & s_{nn})\\
 \end{matrix}
 \right]\\
 \therefore &=
 \left[
 \begin{matrix}
-f_{11} &
-f_{12} &
-\cdots &
-f_{1n} \\
-f_{21} &
-f_{22} &
-\cdots &
-f_{2n} \\
-\vdots & \vdots & \ddots & \vdots & 
-\\
-f_{n1} &
-f_{n2} &
-\cdots &
-f_{nn} \\
+f_{11} & f_{12} & \cdots & f_{1n}\\
+f_{21} & f_{22} & \cdots & f_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+f_{n1} & f_{n2} & \cdots & f_{nn}\\
 \end{matrix}
 \right]
 \end{aligned}
