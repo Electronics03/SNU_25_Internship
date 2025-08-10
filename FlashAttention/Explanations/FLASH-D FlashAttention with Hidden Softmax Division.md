@@ -9,7 +9,7 @@ $$
 \mathbf{Q}&=
 \left[
 \begin{matrix}
-\vec{q}_1 \\ \vec{q}_2 \\ \vdots \\ \vec{q}_n
+\vec{q}_1 & \\ \vec{q}_2 & \\ \vdots &  \\ \vec{q}_n &
 \end{matrix}
 \right]
 &
