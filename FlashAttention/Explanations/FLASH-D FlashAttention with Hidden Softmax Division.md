@@ -6,21 +6,21 @@
 
 $$
 \begin{aligned}
-\bold{Q}&=
+\mathbf{Q}&=
 \left[
 \begin{matrix}
 \vec{q}_1 \\ \vec{q}_2 \\ \vdots \\ \vec{q}_n
 \end{matrix}
 \right]
 &
-\bold{K}&=
+\mathbf{K}&=
 \left[
 \begin{matrix}
 \vec{k}_1 \\ \vec{k}_2 \\ \vdots \\ \vec{k}_n
 \end{matrix}
 \right]
 &
-\bold{V}&=
+\mathbf{V}&=
 \left[
 \begin{matrix}
 \vec{v}_1 \\ \vec{v}_2 \\ \vdots \\ \vec{v}_n
@@ -31,7 +31,7 @@ $$
 
 $$
 \begin{aligned}
-\bold{K}^T&=
+\mathbf{K}^T&=
 \left[
 \begin{matrix}
 \vec{k}_1^T & \vec{k}_2^T & \cdots & \vec{k}_n^T
@@ -42,7 +42,7 @@ $$
 
 $$
 \begin{aligned}
-\bold{Q}\bold{K}^T &=
+\mathbf{Q}\mathbf{K}^T &=
 \left[
 \begin{matrix}
 \vec{q}_1 \\ \vec{q}_2 \\ \vdots \\ \vec{q}_n
@@ -96,7 +96,7 @@ $$
 
 $$
 \begin{aligned}
-\bold{F}&=
+\mathbf{F}&=
 \left[
 \begin{matrix}
 \mathrm{softmax}(
@@ -142,7 +142,7 @@ $$
 
 $$
 \begin{aligned}
-\bold{F}\bold{V}&=
+\mathbf{F}\mathbf{V}&=
 \left[
 \begin{matrix}
 f_{11} &
@@ -196,8 +196,8 @@ f_{nn}\vec{v}_n \\
 $$
 
 $$
-\therefore \mathrm{Attention}(\bold{Q},\bold{K},\bold{V})
-=\mathrm{Softmax}(\bold{Q}\bold{K}^T)\bold{V}
+\therefore \mathrm{Attention}(\mathbf{Q},\mathbf{K},\mathbf{V})
+=\mathrm{Softmax}(\mathbf{Q}\mathbf{K}^T)\mathbf{V}
 $$
 
 ### B. Detailed Operation Process (Row)
@@ -211,7 +211,7 @@ f_i=\mathrm{Softmax}(s_i)=\frac{e^{s_i-\mathrm{max}(s)}}{\sum_je^{s_j-\mathrm{ma
 $$
 
 $$
-\therefore \mathrm{Attention}(\vec{q},\bold{K},\bold{V})
+\therefore \mathrm{Attention}(\vec{q},\mathbf{K},\mathbf{V})
 =\sum_if_i\vec{v}_i
 $$
 
@@ -341,7 +341,7 @@ e^{\mathrm{max_{prev}}-\mathrm{max_{new}}}
 $$
 
 $$
-\therefore \mathrm{Attention}(\vec{q},\bold{K},\bold{V})
+\therefore \mathrm{Attention}(\vec{q},\mathbf{K},\mathbf{V})
 =\vec{o}_{N}
 $$
 
@@ -406,7 +406,7 @@ e^{s_j-\mathrm{max_{new}}}
 $$
 
 $$
-\therefore \mathrm{Attention}(\vec{q},\bold{K},\bold{V})
+\therefore \mathrm{Attention}(\vec{q},\mathbf{K},\mathbf{V})
 =\frac{\vec{o}_{N}}{l_\mathrm{new}}
 $$
 
@@ -600,7 +600,7 @@ w_i\\
 $$
 
 $$
-\therefore \mathrm{Attention}(\vec{q},\bold{K},\bold{V})
+\therefore \mathrm{Attention}(\vec{q},\mathbf{K},\mathbf{V})
 =\vec{o}_{N}
 $$
 
