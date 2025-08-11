@@ -1,9 +1,5 @@
 # Softmax design
 
-Softmax??? 소맥?
-소맥먹고싶다
-
-
 
 ## I. Functionality
 
