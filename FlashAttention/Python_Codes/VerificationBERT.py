@@ -128,7 +128,7 @@ def replace_self_attention(model: BertForSequenceClassification, NewSAClass):
         layer.attention.self = new_sa
 
 
-def evaluate_SST2_flashD():
+def evaluate_SST2():
     dataset = datasets.load_dataset("glue", "sst2", split="validation")
     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 
@@ -213,4 +213,4 @@ def evaluate_SST2_flashD():
 
 
 if __name__ == "__main__":
-    evaluate_SST2_flashD()
+    evaluate_SST2()

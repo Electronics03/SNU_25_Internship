@@ -29,7 +29,7 @@ def bert_self_attention_flashd_forward(
     flashd_outputs = torch.zeros_like(query_layer)
 
     if attention_mask is not None:
-        mask = attention_mask.squeeze(1).squeeze(1)  # [B, T]
+        mask = attention_mask.squeeze(1).squeeze(1)
         mask_np = mask.cpu().numpy()
     else:
         mask_np = None
@@ -54,7 +54,7 @@ def bert_self_attention_flashd_forward(
         .contiguous()
         .view(B, T, self.num_attention_heads * self.attention_head_size)
     )
-    return context_layer, None  # dense는 BertAttention에서 처리
+    return context_layer, None
 
 
 def bert_self_attention_approx_forward(
@@ -84,7 +84,7 @@ def bert_self_attention_approx_forward(
     flashd_outputs = torch.zeros_like(query_layer)
 
     if attention_mask is not None:
-        mask = attention_mask.squeeze(1).squeeze(1)  # [B, T]
+        mask = attention_mask.squeeze(1).squeeze(1)
         mask_np = mask.cpu().numpy()
     else:
         mask_np = None
@@ -109,20 +109,17 @@ def bert_self_attention_approx_forward(
         .contiguous()
         .view(B, T, self.num_attention_heads * self.attention_head_size)
     )
-    return context_layer, None  # dense는 BertAttention에서 처리
+    return context_layer, None
 
 
 def evaluate_SST2_flashD():
-    # SST-2 데이터 로드
     dataset = datasets.load_dataset("glue", "sst2", split="validation")
     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 
-    # baseline BERT
     baseline_model = BertForSequenceClassification.from_pretrained(
         "textattack/bert-base-uncased-SST-2"
     ).eval()
 
-    # FLASH-D BERT
     flashd_model = BertForSequenceClassification.from_pretrained(
         "textattack/bert-base-uncased-SST-2"
     ).eval()
@@ -134,7 +131,7 @@ def evaluate_SST2_flashD():
     approx_model = BertForSequenceClassification.from_pretrained(
         "textattack/bert-base-uncased-SST-2"
     ).eval()
-    for layer in flashd_model.bert.encoder.layer:
+    for layer in approx_model.bert.encoder.layer:
         layer.attention.self.forward = types.MethodType(
             bert_self_attention_approx_forward, layer.attention.self
         )
@@ -174,7 +171,7 @@ def evaluate_SST2_flashD():
         else:
             same2 = "X"
         print(
-            f"[{i}] Base:{pred_base} FlashD:{pred_flash} Approx:{pred_approx} Label:{label} {same2}{same1}"
+            f"[{i:3d}] Base:{pred_base} FlashD:{pred_flash} Approx:{pred_approx} Label:{label} {same2}{same1}"
         )
 
     total = len(dataset)
