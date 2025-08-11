@@ -7,8 +7,8 @@ def flash_attention_2(Q, K, V):
     K = np.asarray(K, dtype=np.float64)
     V = np.asarray(V, dtype=np.float64)
 
-    Nq = len(Q)
-    Nk = len(K)
+    Nq, d_k = Q.shape
+    Nk, d_k2 = K.shape
 
     d_v = V.shape[1]
 
@@ -20,7 +20,7 @@ def flash_attention_2(Q, K, V):
         o = np.zeros(d_v)
 
         for i in range(Nk):
-            s = np.dot(K[i], q)
+            s = np.dot(K[i], q) / np.sqrt(d_k)
             m_new = max(m, s)
 
             l = l * np.exp(m - m_new) + np.exp(s - m_new)

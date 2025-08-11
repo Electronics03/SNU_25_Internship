@@ -7,8 +7,8 @@ def flash_D(Q, K, V):
     K = np.asarray(K, dtype=np.float64)
     V = np.asarray(V, dtype=np.float64)
 
-    Nq = len(Q)
-    Nk = len(K)
+    Nq, d_k = Q.shape
+    Nk, d_k2 = K.shape
 
     d_v = V.shape[1]
 
@@ -19,7 +19,7 @@ def flash_D(Q, K, V):
         weight = 1
         s = 0.0
         for i in range(Nk):
-            s_new = np.dot(K[i], q)
+            s_new = np.dot(K[i], q) / np.sqrt(d_k)
             if i != 0:
                 weight = sigmoid(s_new - s + np.log(weight))
 
