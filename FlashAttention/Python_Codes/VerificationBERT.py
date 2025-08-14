@@ -1,5 +1,4 @@
 from typing import Optional, Tuple
-import numpy as np
 import torch
 import datasets
 from transformers import BertTokenizer

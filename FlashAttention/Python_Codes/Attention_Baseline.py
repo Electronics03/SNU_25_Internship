@@ -7,20 +7,28 @@ def attention(Q, K, V):
     K = np.asarray(K, dtype=np.float64)
     V = np.asarray(V, dtype=np.float64)
 
-    Nq, d_k = Q.shape
-    Nk, d_k2 = K.shape
+    Nq, d_kq = Q.shape
+    Nk, d_kk = K.shape
+    Nv, d_kv = V.shape
 
-    outputs = []
+    assert Nq == Nk and d_kq == d_kk, "Dim Error"
 
-    for q in Q:
+    N = Nq
+    d_k = d_kq
+
+    outputs = np.zeros((Nq, d_kv), dtype=np.float64)
+
+    for i, q in enumerate(Q):
         scores = np.dot(K, q) / np.sqrt(d_k)
-        f = approx2_softmax(scores)
+        f = softmax(scores)
         output = np.dot(f, V)
-        outputs.append(output)
-    return np.array(outputs)
+        outputs[i] = output
+
+    return outputs
 
 
 def softmax(scores):
+    scores = np.asarray(scores, dtype=np.float64)
     scores_exp = np.exp(scores - np.max(scores))
     sotmax_out = scores_exp / np.sum(scores_exp)
     return sotmax_out
