@@ -1,8 +1,9 @@
 import numpy as np
-import matplotlib.pyplot as plt
+import serial
+import UART_base
 
 
-def attention(Q, K, V):
+def attention(Q, K, V, ser: serial.Serial):
     Q = np.asarray(Q, dtype=np.float64)
     K = np.asarray(K, dtype=np.float64)
     V = np.asarray(V, dtype=np.float64)
@@ -20,11 +21,45 @@ def attention(Q, K, V):
 
     for i, q in enumerate(Q):
         scores = np.dot(K, q) / np.sqrt(d_k)
-        f = softmax(scores)
+        f = softmax_arduino_varlen(ser, scores)
         output = np.dot(f, V)
         outputs[i] = output
 
     return outputs
+
+
+def softmax_arduino_varlen(
+    ser: serial.Serial, scores, *, pad_value=-32.0, deadline_s=2.0
+):
+
+    x = np.asarray(scores, dtype=np.float64)
+    L = int(x.shape[0])
+    if not (1 <= L <= 64):
+        raise ValueError("길이는 1~64여야 한다.")
+
+    # 1) 64 길이로 패딩
+    payload = np.full(64, pad_value, dtype=np.float64)
+    payload[:L] = x
+
+    # 2) 전송 (Q6.10 -> 128바이트)
+    frame = UART_base.floats_to_q610_bytes(payload, endian="little")
+    UART_base.send_exact(ser, frame)
+
+    # 3) 수신 (128바이트)
+    resp = UART_base.read_exact(ser, 128, deadline_s=deadline_s)
+
+    # 4) Q6.10 -> float64[64]
+    probs64 = UART_base.q610_bytes_to_floats(resp, endian="little")
+
+    # 5) 앞 L개만 사용 + 재정규화 (패딩 항목 제거)
+    p = np.asarray(probs64[:L], dtype=np.float64)
+    # 수치 안전장치: 음수/1초과 방지
+    p = np.clip(p, 0.0, 1.0)
+    s = float(p.sum())
+    if s == 0.0:
+        # 만약 전부 0으로 돌아오면(언더플로 등) 균등분포로 대응
+        return np.full(L, 1.0 / L, dtype=np.float64)
+    return p / s
 
 
 def softmax(scores):

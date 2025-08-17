@@ -6,6 +6,13 @@ from transformers import BertForSequenceClassification
 from transformers.models.bert.modeling_bert import BertSelfAttention
 from Attention_Baseline import attention
 from FlashD import flash_D
+import serial
+import UART_base
+
+PORT = "COM3"
+BAUD = 115200
+
+ser = UART_base.open_serial(PORT, BAUD)
 
 
 class BertSelfAttentionFlashD(BertSelfAttention):
@@ -107,9 +114,9 @@ class BertSelfAttentionSoftmaxApprox(BertSelfAttention):
                 if mask_np is not None:
                     Vm = V_np.copy()
                     Vm[mask_np[b] < 0] = 0
-                    out_np = attention(Q_np, K_np, Vm)
+                    out_np = attention(Q_np, K_np, V_np, ser)
                 else:
-                    out_np = attention(Q_np, K_np, V_np)
+                    out_np = attention(Q_np, K_np, V_np, ser)
                 out[b, h] = torch.tensor(
                     out_np, dtype=query_layer.dtype, device=query_layer.device
                 )

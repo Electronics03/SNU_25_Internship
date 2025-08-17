@@ -78,30 +78,3 @@ def q610_bytes_to_floats(b: bytes, *, endian: str = "little") -> np.ndarray:
     dtype = "<i2" if endian == "little" else ">i2"
     i16 = np.frombuffer(b, dtype=dtype)
     return i16.astype(np.float64) / SCALE
-
-
-def main():
-    PORT = "COM3"
-    BAUD = 115200
-
-    ser = open_serial(PORT, BAUD)
-    try:
-        while True:
-            vec_float = np.random.uniform(low=-3, high=3, size=64)
-            print("보낸 길이:", len(vec_float))
-            print([f"{x:.3}" for x in vec_float])
-            frame = floats_to_q610_bytes(vec_float)
-            send_exact(ser, frame)
-            resp = read_exact(ser, 128, deadline_s=2.0)
-            data = q610_bytes_to_floats(resp)
-            print("받은 길이:", len(data))
-            print([f"{x:.3}" for x in data])
-
-    except TimeoutError as e:
-        print("수신 타임아웃:", e)
-    finally:
-        ser.close()
-
-
-if __name__ == "__main__":
-    main()
