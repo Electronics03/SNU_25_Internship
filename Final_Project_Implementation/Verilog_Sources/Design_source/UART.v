@@ -17,7 +17,8 @@ module uart_softmax_top #(
     wire [7:0] rx_data;
     wire       rx_valid;
     uart_rx #(.CLK_HZ(CLK_HZ), .BAUD(BAUD)) U_RX (
-        .clk(clk), .rst_n(rst_n), .rx_i(uart_rx_i), .data_o(rx_data), .valid_o(rx_valid)
+        .clk(clk), .rst_n(rst_n), .rx_i(uart_rx_i),
+        .data_o(rx_data), .valid_o(rx_valid)
     );
 
     wire [7:0] tx_data;
@@ -28,7 +29,6 @@ module uart_softmax_top #(
     );
 
     // --------------- BRAM (64 x 16b) ---------------
-    // 입력/출력 버퍼를 분리하여 간단히 구성 (Depth 64, Q6.10 signed)
     reg  [15:0] in_mem  [0:N-1];
     reg  [15:0] out_mem [0:N-1];
 
@@ -52,7 +52,6 @@ module uart_softmax_top #(
     wire [N*16-1:0]      prob_flat;
     wire [N*16-1:0]      in_x_flat;
 
-    // in_x_flat 생성 (in_mem -> 플랫 버스)
     genvar gi;
     generate
         for (gi=0; gi<N; gi=gi+1) begin : GEN_IN_FLAT
@@ -60,7 +59,6 @@ module uart_softmax_top #(
         end
     endgenerate
 
-    // 결과 캡처 (prob_flat -> out_mem)
     integer ii;
 
     softmax #(
@@ -76,60 +74,75 @@ module uart_softmax_top #(
     );
 
     // --------------- 컨트롤 FSM ---------------
-    localparam S_IDLE=3'd0, S_RX=3'd1, S_COMPUTE=3'd2, S_WAIT=3'd3, S_LATCH=3'd4, S_TX=3'd5;
+    localparam S_IDLE=3'd0, S_RX=3'd1, S_COMPUTE=3'd2,
+               S_WAIT=3'd3, S_LATCH=3'd4, S_TX=3'd5;
     reg [2:0] state, nstate;
 
     assign busy_o = (state != S_IDLE);
 
-    // 수신·송신 카운터 및 제어
+    // ---------------- 단일 always 블록 ----------------
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            state      <= S_IDLE;
-            rx_cnt     <= 8'd0;
-            have_lo    <= 1'b0;
-            sm_valid_in<= 1'b0;
-            tx_cnt     <= 8'd0;
-            tx_fire    <= 1'b0;
+            state       <= S_IDLE;
+            rx_cnt      <= 8'd0;
+            have_lo     <= 1'b0;
+            sm_valid_in <= 1'b0;
+            tx_cnt      <= 8'd0;
+            tx_fire     <= 1'b0;
         end else begin
-            state      <= nstate;
-            sm_valid_in<= 1'b0;     // 1클럭 펄스로 사용
+            state       <= nstate;
+            sm_valid_in <= 1'b0;   // 기본은 0, 특정 조건에서 1클럭 펄스
 
-            // UART RX 수신 → in_mem 적재 (리틀엔디언: LSB 먼저)
-            if (state==S_RX && rx_valid) begin
-                if (!have_lo) begin
-                    byte_lo <= rx_data;
-                    have_lo <= 1'b1;
-                end else begin
-                    byte_hi <= rx_data;
-                    // 단어 인덱스: rx_cnt>>1
-                    in_mem[rx_cnt[7:1]] <= {rx_data, byte_lo}; // {HI, LO}
-                    have_lo <= 1'b0;
-                    rx_cnt  <= rx_cnt + 8'd2;
+            // 상태별 제어
+            case (state)
+                S_IDLE: begin
+                    if (nstate==S_RX) begin
+                        rx_cnt  <= 8'd0;
+                        have_lo <= 1'b0;
+                    end
                 end
-            end
 
-            // 소프트맥스 결과 캡처
-            if (state==S_LATCH) begin
-                for (ii=0; ii<N; ii=ii+1)
-                    out_mem[ii] <= prob_flat[ii*16 +: 16];
-            end
-
-            // UART TX: out_mem -> 바이트 순차 송신
-            tx_fire <= 1'b0;
-            if (state==S_TX && tx_ready) begin
-                // tx_cnt: 0..127, 짝수=LO, 홀수=HI
-                if (!tx_cnt[0]) begin
-                    tx_data_r <= out_mem[tx_cnt[7:1]][7:0];      // LO 먼저
-                end else begin
-                    tx_data_r <= out_mem[tx_cnt[7:1]][15:8];     // HI 다음
+                S_RX: begin
+                    if (rx_valid) begin
+                        if (!have_lo) begin
+                            byte_lo <= rx_data;
+                            have_lo <= 1'b1;
+                        end else begin
+                            byte_hi <= rx_data;
+                            in_mem[rx_cnt[7:1]] <= {rx_data, byte_lo};
+                            have_lo <= 1'b0;
+                            rx_cnt  <= rx_cnt + 8'd2;
+                        end
+                    end
+                    if (nstate==S_COMPUTE)
+                        sm_valid_in <= 1'b1;  // softmax 시작 펄스
                 end
-                tx_fire <= 1'b1;
-                tx_cnt  <= tx_cnt + 8'd1;
-            end
+
+                S_LATCH: begin
+                    for (ii=0; ii<N; ii=ii+1)
+                        out_mem[ii] <= prob_flat[ii*16 +: 16];
+                    if (nstate==S_TX)
+                        tx_cnt <= 8'd0;
+                end
+
+                S_TX: begin
+                    tx_fire <= 1'b0;
+                    if (tx_ready) begin
+                        if (!tx_cnt[0])
+                            tx_data_r <= out_mem[tx_cnt[7:1]][7:0];  // LO
+                        else
+                            tx_data_r <= out_mem[tx_cnt[7:1]][15:8]; // HI
+                        tx_fire <= 1'b1;
+                        tx_cnt  <= tx_cnt + 8'd1;
+                    end
+                end
+
+                default: ;
+            endcase
         end
     end
 
-    // 다음 상태 로직
+    // ---------------- 상태 전이 ----------------
     always @* begin
         nstate = state;
         case (state)
@@ -142,26 +155,8 @@ module uart_softmax_top #(
             default:   nstate = S_IDLE;
         endcase
     end
-
-    // 상태 진입 시 부가 동작
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            tx_cnt  <= 8'd0;
-            rx_cnt  <= 8'd0;
-        end else begin
-            if (state==S_IDLE && nstate==S_RX) begin
-                rx_cnt  <= 8'd0;
-                have_lo <= 1'b0;
-            end
-            if (state==S_RX && nstate==S_COMPUTE) begin
-                sm_valid_in <= 1'b1; // 1클럭 펄스
-            end
-            if (state==S_LATCH && nstate==S_TX) begin
-                tx_cnt <= 8'd0;
-            end
-        end
-    end
 endmodule
+
 //------------------------------------------------------------------------------
 // Minimal UART RX (8N1)
 //------------------------------------------------------------------------------
@@ -184,11 +179,11 @@ module uart_rx #(parameter CLK_HZ=100_000_000, parameter BAUD=115200)(
                     divcnt <= DIV-1;
                     bitcnt <= bitcnt + 1;
                     case (bitcnt)
-                        4'd0: ;                 // start 비트 샘플링
+                        4'd0: ;
                         4'd1,4'd2,4'd3,4'd4,
-                        4'd5,4'd6,4'd7,4'd8:    // 8 data bits
+                        4'd5,4'd6,4'd7,4'd8:
                             sh[bitcnt-1] <= rx_i;
-                        4'd9: begin             // stop 비트 후 끝
+                        4'd9: begin
                             data_o  <= sh[7:0];
                             valid_o <= 1'b1;
                             busy    <= 1'b0;
@@ -218,9 +213,10 @@ module uart_tx #(parameter CLK_HZ=100_000_000, parameter BAUD=115200)(
         else begin
             if (!busy) begin
                 if (valid_i) begin
-                    // start(0) + 8 data + stop(1)
-                    sh    <= {1'b1, data_i, 1'b0};
-                    busy  <= 1'b1; bitcnt<=4'd0; divcnt<=DIV-1;
+                    sh    <= {1'b1, data_i, 1'b0}; // stop, data, start
+                    busy  <= 1'b1;
+                    bitcnt<=4'd0;
+                    divcnt<=DIV-1;
                 end
             end else begin
                 if (divcnt==0) begin

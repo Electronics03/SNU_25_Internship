@@ -9,7 +9,7 @@ from FlashD import flash_D
 import serial
 import UART_base
 
-PORT = "COM3"
+PORT = "COM6"
 BAUD = 115200
 
 ser = UART_base.open_serial(PORT, BAUD)
