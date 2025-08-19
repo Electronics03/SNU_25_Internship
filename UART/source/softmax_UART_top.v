@@ -304,11 +304,14 @@ endmodule
 // ------------------------------------------------------------
 module uart_softmax64_top (
     input  wire clk,     // 100 MHz
-    input  wire rst,
+    input  wire rst_n,
     input  wire rxd,     // C4 (FTDI TXD -> FPGA RX)
     output wire txd      // D4 (FPGA TX  -> FTDI RXD)
 );
     localparam [2:0] BAUD_SEL = 3'b101; // 115200bps (868)
+    
+    wire rst;
+    assign rst = ~rst_n;
 
     // 128B 수신 버퍼
     wire        block_ready;
