@@ -1,17 +1,17 @@
 module baudrate_gen(
-    input wire clk,
+    input wire clk_in,
     output reg clk_out
 );
     (*keep="true"*) reg [27:0] counter = 28'b0;
     
-    always @(posedge clk)begin
+    always @(posedge clk_in)begin
         if(counter == 867)   
             counter <= 28'b0;
         else 
             counter <= counter + 1;
     end
 
-    always @(posedge clk) begin
+    always @(posedge clk_in) begin
         if(counter == 0)
             clk_out <= 1'b0;
         else if(counter == 434)

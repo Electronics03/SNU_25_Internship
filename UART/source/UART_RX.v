@@ -1,83 +1,56 @@
-module UART_RX (
-    input UART_clk,
-    input rst,
-    input rx_data,
-
-    output reg [7:0] data_out,
+module uart_rx(
+    input wire clk,
+    input wire rx_data,
+    output reg [7:0] dout,
     output reg en
 );
+    localparam IDEL=0, START=1, DATA=2, STOP=3;
+
     (*keep="true"*) reg [1:0] state;
-    (*keep="true"*) reg [4:0] counter;
+    (*keep="true"*) reg [3:0] counter;
     (*keep="true"*) reg [7:0] out_data;
 
-    localparam IDEL = 2'b00;
-    localparam START = 2'b01;
-    localparam DATA = 2'b10;
-    localparam STOP = 2'b11;
-
-    always @(posedge UART_clk) begin
-        if (rst) begin
-            state <= IDEL;
-            counter <= 4'd0;
-            out_data <= 8'd0;
-            data_out <= 8'd0;
-        end
-        else begin
-            case (state)
-                IDEL: begin
-                    if (rx_data==0) begin
-                        state <= START;
-                        counter <= 4'd0;
-                        out_data <= out_data;
-                        data_out <= data_out;
-                        en <= 0;
-                    end
-                    else begin
-                        state <= IDEL;
-                        counter <= 4'd0;
-                        out_data <= out_data;
-                        data_out <= data_out;
-                        en <= 0;
-                    end
-                end
-                START: begin
-                    state <= DATA;
-                    counter <= 4'd1;
-                    out_data[counter] <= rx_data;
-                    data_out <= data_out;
-                    en <= 0;
-                end
-                DATA: begin
-                    if (counter==8) begin
-                        state <= STOP;
-                        counter <= 4'd0;
-                        out_data <= out_data;
-                        data_out <= data_out;
-                        en <= 0;
-                    end
-                    else begin
-                        state <= DATA;
-                        counter <= counter + 1;
-                        out_data[counter] <= rx_data;
-                        data_out <= data_out;
-                        en <= 0;
-                    end
-                end
-                STOP: begin
-                    state <= IDEL;
-                    counter <= 4'd0;
-                    out_data <= out_data;
-                    data_out <= out_data;
-                    en <= 1;
-                end
-                default: begin
-                    state <= IDEL;
-                    counter <= 4'd0;
-                    out_data <= 8'd0;
-                    data_out <= 8'd0;
-                    en <= 0;
-                end 
-            endcase
-        end
+    always @(posedge clk) begin
+        case (state)
+            IDEL  : if(rx_data==0) state <= START;
+                    else state <= IDEL;
+            START : state <= DATA;
+            DATA  : if(counter==8) state <= STOP;
+                    else state <= DATA;
+            STOP :  state <= IDEL;
+            default: state <= IDEL;
+        endcase
     end
+    
+    always @(posedge clk) begin
+        case (state)
+            START : out_data[counter] <= rx_data;  
+            DATA : out_data[counter] <= rx_data;
+            default: out_data <= out_data;
+        endcase
+    end
+
+    always @(posedge clk) begin
+        case (state)
+            STOP : dout <= out_data;
+            default: dout <= dout;
+        endcase
+    end
+
+    always @(posedge clk) begin
+        case (state)
+            STOP : en <= 1;
+            default: en <= 0;
+        endcase
+    end
+
+    always @(posedge clk) begin
+        case (state)
+            START: counter <= 1;
+            DATA :if(counter==8) counter <= 0;
+                  else counter <= counter + 1;
+            default: counter <= 0;
+        endcase
+    end
+
 endmodule

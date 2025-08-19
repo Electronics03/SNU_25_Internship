@@ -85,13 +85,12 @@ def main():
     BAUD = 115200
     ser = open_serial(PORT, BAUD)
     try:
-        while True:
-            frame = bytes(255)
-            send_exact(ser, frame)
-            # resp = read_exact(ser, 1, deadline_s=5.0)
-            # print("받은 길이:", len(resp))
-            # print([f"0x{x:02X}" for x in resp])
-            time.sleep(0.001)
+        frame = bytes(range(128))
+        send_exact(ser, frame)
+        resp = read_exact(ser, 128, deadline_s=5.0)
+        print("받은 길이:", len(resp))
+        print([f"0x{x:02X}" for x in resp])
+        time.sleep(0.001)
     except TimeoutError as e:
         print("수신 타임아웃:", e)
 
