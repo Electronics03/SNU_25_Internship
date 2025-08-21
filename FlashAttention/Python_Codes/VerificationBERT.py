@@ -10,7 +10,7 @@ import serial
 import UART_base
 
 PORT = "COM6"
-BAUD = 115200
+BAUD = 256000
 
 ser = UART_base.open_serial(PORT, BAUD)
 

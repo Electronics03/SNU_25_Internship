@@ -82,7 +82,7 @@ def q610_bytes_to_floats(b: bytes, *, endian: str = "little") -> np.ndarray:
 
 def main():
     PORT = "COM6"
-    BAUD = 115200
+    BAUD = 256000
     ser = open_serial(PORT, BAUD)
     try:
         frame = bytes(range(128))
@@ -90,7 +90,6 @@ def main():
         resp = read_exact(ser, 128, deadline_s=5.0)
         print("받은 길이:", len(resp))
         print([f"0x{x:02X}" for x in resp])
-        time.sleep(0.001)
     except TimeoutError as e:
         print("수신 타임아웃:", e)
 

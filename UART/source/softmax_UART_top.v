@@ -44,8 +44,8 @@ module uart_tx (
      
     always @(*) begin
         case (baud_rate_select)
-            3'b101: baud_rate = 11'd868; // 115200
-            default: baud_rate = 11'd868;
+            3'b101: baud_rate = 11'd391; // 115200
+            default: baud_rate = 11'd391;
         endcase
     end
     
@@ -157,8 +157,8 @@ module uart_rx (
     
     always @(*) begin
         case (baud_rate_select)
-            3'b101: baud_rate = 11'd868; // 115200
-            default: baud_rate = 11'd868;
+            3'b101: baud_rate = 11'd391; // 115200
+            default: baud_rate = 11'd391;
         endcase
     end
     

@@ -21,16 +21,14 @@ def attention(Q, K, V, ser: serial.Serial):
 
     for i, q in enumerate(Q):
         scores = np.dot(K, q) / np.sqrt(d_k)
-        f = softmax_arduino_varlen(ser, scores)
+        f = softmax_FPGA_UART(ser, scores)
         output = np.dot(f, V)
         outputs[i] = output
 
     return outputs
 
 
-def softmax_arduino_varlen(
-    ser: serial.Serial, scores, *, pad_value=-32.0, deadline_s=2.0
-):
+def softmax_FPGA_UART(ser: serial.Serial, scores, *, pad_value=-32.0, deadline_s=2.0):
 
     x = np.asarray(scores, dtype=np.float64)
     L = int(x.shape[0])
@@ -51,15 +49,15 @@ def softmax_arduino_varlen(
     # 4) Q6.10 -> float64[64]
     probs64 = UART_base.q610_bytes_to_floats(resp, endian="little")
 
-    # 5) 앞 L개만 사용 + 재정규화 (패딩 항목 제거)
     p = np.asarray(probs64[:L], dtype=np.float64)
     # 수치 안전장치: 음수/1초과 방지
-    p = np.clip(p, 0.0, 1.0)
+    """p = np.clip(p, 0.0, 1.0)
     s = float(p.sum())
     if s == 0.0:
         # 만약 전부 0으로 돌아오면(언더플로 등) 균등분포로 대응
-        return np.full(L, 1.0 / L, dtype=np.float64)
-    return p / s
+        return np.full(L, 1.0 / L, dtype=np.float64)"""
+
+    return p  # / s
 
 
 def softmax(scores):

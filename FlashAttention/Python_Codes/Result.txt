@@ -994,3 +994,883 @@ Approx BERT Accuracy : 92.20% (804/872)
 
 Prediction Match Rate flashd : 100.00% (872/872)
 Prediction Match Rate Approx : 99.77% (870/872)
+
+[  0] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[  1] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[  2] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[  3] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[  4] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[  5] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[  6] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[  7] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[  8] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[  9] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 10] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 11] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 12] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 13] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[ 14] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 15] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 16] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 17] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 18] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 19] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 20] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 21] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 22] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[ 23] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 24] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 25] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 26] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 27] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 28] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 29] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 30] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 31] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 32] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 33] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 34] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 35] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 36] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 37] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 38] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 39] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 40] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 41] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 42] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 43] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 44] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 45] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 46] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[ 47] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 48] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 49] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 50] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 51] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 52] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 53] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 54] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 55] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 56] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 57] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 58] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[ 59] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 60] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 61] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 62] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 63] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 64] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 65] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 66] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 67] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 68] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 69] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[ 70] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 71] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 72] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 73] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 74] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 75] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 76] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 77] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 78] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 79] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 80] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 81] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 82] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 83] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 84] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 85] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 86] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 87] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 88] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 89] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 90] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 91] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 92] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[ 93] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[ 94] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 95] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[ 96] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 97] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[ 98] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[ 99] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[100] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[101] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[102] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[103] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[104] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[105] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[106] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[107] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[108] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[109] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[110] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[111] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[112] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[113] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[114] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[115] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[116] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[117] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[118] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[119] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[120] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[121] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[122] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[123] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[124] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[125] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[126] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[127] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[128] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[129] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[130] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[131] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[132] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[133] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[134] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[135] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[136] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[137] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[138] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[139] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[140] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[141] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[142] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[143] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[144] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[145] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[146] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[147] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[148] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[149] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[150] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[151] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[152] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[153] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[154] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[155] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[156] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[157] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[158] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[159] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[160] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[161] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[162] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[163] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[164] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[165] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[166] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[167] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[168] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[169] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[170] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[171] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[172] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[173] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[174] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[175] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[176] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[177] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[178] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[179] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[180] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[181] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[182] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[183] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[184] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[185] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[186] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[187] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[188] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[189] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[190] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[191] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[192] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[193] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[194] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[195] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[196] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[197] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[198] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[199] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[200] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[201] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[202] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[203] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[204] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[205] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[206] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[207] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[208] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[209] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[210] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[211] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[212] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[213] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[214] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[215] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[216] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[217] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[218] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[219] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[220] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[221] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[222] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[223] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[224] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[225] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[226] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[227] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[228] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[229] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[230] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[231] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[232] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[233] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[234] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[235] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[236] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[237] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[238] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[239] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[240] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[241] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[242] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[243] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[244] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[245] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[246] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[247] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[248] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[249] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[250] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[251] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[252] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[253] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[254] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[255] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[256] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[257] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[258] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[259] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[260] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[261] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[262] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[263] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[264] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[265] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[266] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[267] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[268] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[269] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[270] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[271] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[272] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[273] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[274] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[275] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[276] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[277] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[278] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[279] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[280] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[281] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[282] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[283] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[284] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[285] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[286] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[287] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[288] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[289] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[290] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[291] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[292] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[293] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[294] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[295] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[296] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[297] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[298] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[299] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[300] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[301] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[302] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[303] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[304] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[305] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[306] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[307] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[308] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[309] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[310] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[311] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[312] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[313] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[314] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[315] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[316] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[317] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[318] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[319] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[320] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[321] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[322] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[323] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[324] Base:1 FlashD:1 Approx:0 Label:1 Match Result OX
+[325] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[326] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[327] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[328] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[329] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[330] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[331] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[332] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[333] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[334] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[335] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[336] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[337] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[338] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[339] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[340] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[341] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[342] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[343] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[344] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[345] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[346] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[347] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[348] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[349] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[350] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[351] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[352] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[353] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[354] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[355] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[356] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[357] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[358] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[359] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[360] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[361] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[362] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[363] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[364] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[365] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[366] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[367] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[368] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[369] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[370] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[371] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[372] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[373] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[374] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[375] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[376] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[377] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[378] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[379] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[380] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[381] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[382] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[383] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[384] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[385] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[386] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[387] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[388] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[389] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[390] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[391] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[392] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[393] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[394] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[395] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[396] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[397] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[398] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[399] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[400] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[401] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[402] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[403] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[404] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[405] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[406] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[407] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[408] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[409] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[410] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[411] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[412] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[413] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[414] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[415] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[416] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[417] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[418] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[419] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[420] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[421] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[422] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[423] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[424] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[425] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[426] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[427] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[428] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[429] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[430] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[431] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[432] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[433] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[434] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[435] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[436] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[437] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[438] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[439] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[440] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[441] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[442] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[443] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[444] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[445] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[446] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[447] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[448] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[449] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[450] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[451] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[452] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[453] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[454] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[455] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[456] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[457] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[458] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[459] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[460] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[461] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[462] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[463] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[464] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[465] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[466] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[467] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[468] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[469] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[470] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[471] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[472] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[473] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[474] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[475] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[476] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[477] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[478] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[479] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[480] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[481] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[482] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[483] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[484] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[485] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[486] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[487] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[488] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[489] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[490] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[491] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[492] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[493] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[494] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[495] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[496] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[497] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[498] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[499] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[500] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[501] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[502] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[503] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[504] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[505] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[506] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[507] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[508] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[509] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[510] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[511] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[512] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[513] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[514] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[515] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[516] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[517] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[518] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[519] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[520] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[521] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[522] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[523] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[524] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[525] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[526] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[527] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[528] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[529] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[530] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[531] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[532] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[533] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[534] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[535] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[536] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[537] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[538] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[539] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[540] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[541] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[542] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[543] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[544] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[545] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[546] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[547] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[548] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[549] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[550] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[551] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[552] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[553] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[554] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[555] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[556] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[557] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[558] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[559] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[560] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[561] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[562] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[563] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[564] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[565] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[566] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[567] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[568] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[569] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[570] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[571] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[572] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[573] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[574] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[575] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[576] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[577] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[578] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[579] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[580] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[581] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[582] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[583] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[584] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[585] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[586] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[587] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[588] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[589] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[590] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[591] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[592] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[593] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[594] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[595] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[596] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[597] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[598] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[599] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[600] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[601] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[602] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[603] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[604] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[605] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[606] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[607] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[608] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[609] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[610] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[611] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[612] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[613] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[614] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[615] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[616] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[617] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[618] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[619] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[620] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[621] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[622] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[623] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[624] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[625] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[626] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[627] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[628] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[629] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[630] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[631] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[632] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[633] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[634] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[635] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[636] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[637] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[638] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[639] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[640] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[641] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[642] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[643] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[644] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[645] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[646] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[647] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[648] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[649] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[650] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[651] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[652] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[653] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[654] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[655] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[656] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[657] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[658] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[659] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[660] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[661] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[662] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[663] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[664] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[665] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[666] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[667] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[668] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[669] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[670] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[671] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[672] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[673] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[674] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[675] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[676] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[677] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[678] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[679] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[680] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[681] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[682] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[683] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[684] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[685] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[686] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[687] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[688] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[689] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[690] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[691] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[692] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[693] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[694] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[695] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[696] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[697] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[698] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[699] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[700] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[701] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[702] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[703] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[704] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[705] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[706] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[707] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[708] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[709] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[710] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[711] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[712] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[713] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[714] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[715] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[716] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[717] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[718] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[719] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[720] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[721] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[722] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[723] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[724] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[725] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[726] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[727] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[728] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[729] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[730] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[731] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[732] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[733] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[734] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[735] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[736] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[737] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[738] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[739] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[740] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[741] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[742] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[743] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[744] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[745] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[746] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[747] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[748] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[749] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[750] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[751] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[752] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[753] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[754] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[755] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[756] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[757] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[758] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[759] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[760] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[761] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[762] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[763] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[764] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[765] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[766] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[767] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[768] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[769] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[770] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[771] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[772] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[773] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[774] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[775] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[776] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[777] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[778] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[779] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[780] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[781] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[782] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[783] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[784] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[785] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[786] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[787] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[788] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[789] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[790] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[791] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[792] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[793] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[794] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[795] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[796] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[797] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[798] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[799] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[800] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[801] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[802] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[803] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[804] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[805] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[806] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[807] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[808] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[809] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[810] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[811] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[812] Base:0 FlashD:0 Approx:0 Label:1 Match Result OO
+[813] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[814] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[815] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[816] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[817] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[818] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[819] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[820] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[821] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[822] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[823] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[824] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[825] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[826] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[827] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[828] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[829] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[830] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[831] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[832] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[833] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[834] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[835] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[836] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[837] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[838] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[839] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[840] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[841] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[842] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[843] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[844] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[845] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[846] Base:1 FlashD:1 Approx:1 Label:0 Match Result OO
+[847] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[848] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[849] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[850] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[851] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[852] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[853] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[854] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[855] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[856] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[857] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[858] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[859] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[860] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[861] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[862] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[863] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[864] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[865] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[866] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[867] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[868] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+[869] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[870] Base:0 FlashD:0 Approx:0 Label:0 Match Result OO
+[871] Base:1 FlashD:1 Approx:1 Label:1 Match Result OO
+
+Evaluation Results :
+Baseline BERT Accuracy : 92.43% (806/872)
+FLASH-D BERT Accuracy : 92.43% (806/872)
+Approx BERT Accuracy : 92.32% (805/872)
+Prediction Match Rate flashd : 100.00% (872/872)
+Prediction Match Rate Approx : 99.89% (871/872)
