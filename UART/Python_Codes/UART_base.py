@@ -57,12 +57,14 @@ def floats_to_q610_bytes(
 
     x = np.asarray(x64, dtype=np.float64)
     if x.shape != (64,):
-        raise ValueError("입력은 길이 64의 1차원 배열이어야 한다.")
+        raise ValueError("Input must be a 1D array of length 64.")
 
     if mode == "strict":
         if np.any(x < Q610_MIN) or np.any(x > Q610_MAX):
             idx = int(np.where((x < Q610_MIN) | (x > Q610_MAX))[0][0])
-            raise OverflowError(f"Q6.10 범위 초과(index={idx}, value={x[idx]:.6f})")
+            raise OverflowError(
+                f"Q6.10 range exceeded (index={idx}, value={x[idx]:.6f})"
+            )
 
     scaled = np.rint(x * SCALE).astype(np.int32)
 
@@ -74,28 +76,7 @@ def floats_to_q610_bytes(
 
 def q610_bytes_to_floats(b: bytes, *, endian: str = "little") -> np.ndarray:
     if len(b) != 128:
-        raise ValueError(f"입력 바이트 길이가 128이 아니다(len={len(b)})")
+        raise ValueError(f"Input byte length must be 128 (len={len(b)})")
     dtype = "<i2" if endian == "little" else ">i2"
     i16 = np.frombuffer(b, dtype=dtype)
     return i16.astype(np.float64) / SCALE
-
-
-def main():
-    PORT = "COM6"
-    BAUD = 256000
-    ser = open_serial(PORT, BAUD)
-    try:
-        frame = bytes(range(128))
-        send_exact(ser, frame)
-        resp = read_exact(ser, 128, deadline_s=5.0)
-        print("받은 길이:", len(resp))
-        print([f"0x{x:02X}" for x in resp])
-    except TimeoutError as e:
-        print("수신 타임아웃:", e)
-
-    finally:
-        ser.close()
-
-
-if __name__ == "__main__":
-    main()
