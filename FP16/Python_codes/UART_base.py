@@ -1,174 +1,138 @@
-############################
-### Host -> FPGA -> Host ###
-### 64 x FP16 (128 bytes) ###
-############################
-
-import serial
-import time
-import numpy as np
-
-# ===== UART 기본 설정 =====
-PORT = "COM6"
-BAUD = 115200
-READ_TIMEOUT_S = 5.0
-WRITE_TIMEOUT_S = 5.0
-
-# ===== 프로토콜 파라미터 =====
-N_ELEMS = 64  # 64개 half -> 128바이트
-ENDIAN = "little"  # LSB-first 전송 (FPGA가 LSB 먼저 받는 경우)
-SEND_NUMSETS_HEADER = False  # True면 전송 전에 1바이트로 세트 개수 보냄
-NUM_SETS_TO_SEND = 1  # 헤더를 보낼 때 세트 개수 값
+import serial, time, numpy as np
 
 
-# ===== 유틸: 포트 열기/닫기/전송/수신 =====
-def open_serial(
-    port: str,
-    baud: int = 115200,
-    read_timeout: float = READ_TIMEOUT_S,
-    write_timeout: float = WRITE_TIMEOUT_S,
-) -> serial.Serial:
+# ---------------- UART helpers ----------------
+def open_serial(port="COM6", baud=256000, timeout=1.0):
     ser = serial.Serial(
         port=port,
         baudrate=baud,
-        bytesize=serial.EIGHTBITS,
-        parity=serial.PARITY_NONE,
-        stopbits=serial.STOPBITS_ONE,
-        timeout=read_timeout,
-        write_timeout=write_timeout,
+        bytesize=8,
+        parity="N",
+        stopbits=1,
+        timeout=timeout,
+        write_timeout=timeout,
         xonxoff=False,
         rtscts=False,
         dsrdtr=False,
     )
-    # 보드 리셋/포트 오픈 안정화 대기
-    time.sleep(0.5)
+    time.sleep(2.0)  # Windows/USB CDC 안정화
     ser.reset_input_buffer()
     ser.reset_output_buffer()
     return ser
 
 
-def send_exact(ser: serial.Serial, frame: bytes) -> None:
-    # 필요시 입력 버퍼 비워서 에코/잔여 데이터가 혼입되지 않게 함
+def send_exact(ser, frame: bytes):
     ser.reset_input_buffer()
     ser.write(frame)
     ser.flush()
 
 
-def read_exact(ser: serial.Serial, nbytes: int, deadline_s: float) -> bytes:
-    end_t = time.perf_counter() + deadline_s
+def read_exact(ser, n, deadline_s=5.0) -> bytes:
+    end = time.perf_counter() + deadline_s
     buf = bytearray()
-    while len(buf) < nbytes:
-        chunk = ser.read(nbytes - len(buf))
+    while len(buf) < n:
+        chunk = ser.read(n - len(buf))
         if chunk:
             buf.extend(chunk)
-        else:
-            if time.perf_counter() > end_t:
-                raise TimeoutError(f"read_exact timeout: {len(buf)}/{nbytes} bytes")
+        elif time.perf_counter() > end:
+            raise TimeoutError(f"timeout: [{len(buf)}/{n}]")
     return bytes(buf)
 
 
-# ===== FP16 <-> bytes 변환 =====
-def floats_to_fp16_bytes(x64, *, endian: str = "little", strict: bool = False) -> bytes:
-    """
-    x64: 길이 64의 실수 배열 -> 128바이트 (FP16)로 직렬화
-    endian='little'이면 각 16b 워드는 LSB->MSB 순으로 바이트화됨.
-    strict=True면 |x|>65504, NaN/Inf 존재 시 에러.
-    """
+# ------------- (A) float32 <-> FP16 bytes -------------
+def floats_to_fp16_bytes(x64, *, little_endian=True) -> bytes:
     x = np.asarray(x64, dtype=np.float32)
     if x.shape != (64,):
-        raise ValueError("입력은 길이 64의 1차원 배열이어야 한다.")
-
-    if strict:
-        if not np.all(np.isfinite(x)):
-            bad = np.where(~np.isfinite(x))[0][0]
-            raise ValueError(f"NaN/Inf 포함(index={bad})")
-        if np.any(np.abs(x) > 65504.0):
-            bad = np.where(np.abs(x) > 65504.0)[0][0]
-            raise OverflowError(f"FP16 표현 범위 초과(index={bad}, value={x[bad]})")
-
-    half = x.astype(np.float16)
-    dt = "<f2" if endian == "little" else ">f2"
-    return half.astype(dt, copy=False).tobytes()
+        raise ValueError("need shape (64,)")
+    u16 = x.astype(np.float16).view(np.uint16)
+    dt = np.dtype("<u2" if little_endian else ">u2")
+    return u16.astype(dt, copy=False).tobytes()
 
 
-def fp16_bytes_to_floats(b: bytes, *, endian: str = "little") -> np.ndarray:
-    """
-    128바이트(64 x FP16)를 받아 float64 배열(길이 64)로 반환
-    """
+def fp16_bytes_to_f32(b: bytes, *, little_endian=True) -> np.ndarray:
     if len(b) != 128:
-        raise ValueError(f"입력 바이트 길이가 128이 아니다(len={len(b)})")
-    dt = "<f2" if endian == "little" else ">f2"
-    return np.frombuffer(b, dtype=dt).astype(np.float64)
+        raise ValueError(f"expected 128B, got {len(b)}")
+    dt = np.dtype("<u2" if little_endian else ">u2")
+    u16 = np.frombuffer(b, dtype=dt)
+    return u16.view(np.float16).astype(np.float32)
 
 
-# ===== 한 세트 송수신 =====
-def send_one_fp16_set(
-    ser: serial.Serial,
-    vec64,
-    *,
-    endian: str = "little",
-    send_header: bool = False,
-    header_count: int = 1,
-    rx_deadline_s: float = 2.0,
-) -> np.ndarray:
-    """
-    vec64: 길이 64 실수 배열 (float) -> 64 x FP16 로 전송
-    send_header=True면 전송 전에 1바이트로 header_count를 보냄
-    수신도 128바이트(=64 x FP16)로 가정
-    """
-    frame = floats_to_fp16_bytes(vec64, endian=endian)
-
-    # (선택) 헤더 전송: 테스트셋 개수 등
-    if send_header:
-        if not (0 <= header_count <= 255):
-            raise ValueError("header_count는 0~255 범위여야 한다.")
-        send_exact(ser, bytes([header_count]))
-
-    # 본문(128바이트) 전송
-    send_exact(ser, frame)
-
-    # 결과 수신(128바이트)
-    resp = read_exact(ser, 128, deadline_s=rx_deadline_s)
-    return fp16_bytes_to_floats(resp, endian=endian)
+# ------------- (B) "워드 4개 문자열 × 16줄" -> 128B -------------
+def build_frame_from_words16(
+    rows, *, half_little_endian=True, word_order_msb_first=True
+) -> bytes:
+    if len(rows) != 16:
+        raise ValueError("rows must be 16 lines (4×16b × 16 = 128B)")
+    words16 = []
+    for line in rows:
+        toks = [t for t in line.replace(",", " ").split() if t]
+        if len(toks) != 4:
+            raise ValueError(f"each line needs 4 tokens: {line}")
+        vals = [int(t, 16) & 0xFFFF for t in toks]
+        words16.extend(vals if word_order_msb_first else vals[::-1])
+    if len(words16) != 64:
+        raise AssertionError("need 64 half-words")
+    out = bytearray()
+    for w in words16:
+        if half_little_endian:
+            out += bytes((w & 0xFF, (w >> 8) & 0xFF))  # LSB, MSB
+        else:
+            out += bytes(((w >> 8) & 0xFF, w & 0xFF))  # MSB, LSB
+    return bytes(out)
 
 
-# ===== 데모 메인 =====
+# ---------------- Demo ----------------
 def main():
+    PORT, BAUD = "COM6", 256000
     ser = open_serial(PORT, BAUD)
+
     try:
-        # 예시 입력: -4.0 ~ +4.0 사이 균등분포 64개
-        tx_vec = np.linspace(-4.0, 4.0, 64, dtype=np.float32)
+        # ==== A) float32 테스트 ====
+        x = np.ones(64, dtype=np.float32)  # 모두 1.0 → softmax는 대략 1/64
+        tx = floats_to_fp16_bytes(x, little_endian=True)
+        send_exact(ser, tx)
+        rx = read_exact(ser, 128, deadline_s=5.0)
+        y = fp16_bytes_to_f32(rx, little_endian=True)
 
-        # 필요 시 헤더 1바이트(세트 개수) 먼저 전송
-        rx_vec = send_one_fp16_set(
-            ser,
-            tx_vec,
-            endian=ENDIAN,
-            send_header=SEND_NUMSETS_HEADER,
-            header_count=NUM_SETS_TO_SEND,
-            rx_deadline_s=READ_TIMEOUT_S,
+        np.set_printoptions(precision=6, suppress=True)
+        print("A) sum(y) ≈", float(np.sum(y)), "  y[:8]:", y[:8])
+        print("A) TX[0:16]:", [f"0x{b:02X}" for b in tx[:16]])
+        print("A) RX[0:16]:", [f"0x{b:02X}" for b in rx[:16]])
+
+        # ==== B) 16줄 워드 입력 테스트 ====
+        WORDS16_ROWS = [
+            "BFC2 BCDB BA94 419E",
+            "3370 B778 3B79 3DC8",
+            "3C12 BE93 407E BB88",
+            "B954 3EE9 3B67 C1B7",
+            "C187 41C4 C1EC 3E55",
+            "C072 B657 C0CC 40CB",
+            "B3B1 BEBB 3FE8 BFAD",
+            "B7C9 BF47 3C1B 35CF",
+            "3AF3 3C99 3C92 BFF7",
+            "4095 B75D 1192 B917",
+            "BF5C BF55 4113 BFB1",
+            "3A34 3030 B208 BB61",
+            "4130 BFCF BC60 41E1",
+            "A999 4085 BDF9 41F2",
+            "3F89 BEF5 B961 B727",
+            "3A91 C050 BD7E BF7C",
+        ]
+        tx2 = build_frame_from_words16(
+            WORDS16_ROWS, half_little_endian=True, word_order_msb_first=True
         )
+        send_exact(ser, tx2)
+        rx2 = read_exact(ser, 128, deadline_s=5.0)
+        y2 = fp16_bytes_to_f32(rx2, little_endian=True)
 
-        # 전송/수신 확인 출력
-        print("[TX first 8] :", np.array2string(tx_vec[:8], precision=6))
-        print("[RX first 8] :", np.array2string(rx_vec[:8], precision=6))
-        print(f"RX length   : {len(rx_vec)} (expect 64)")
-
-        # 원하면 HEX 프리뷰 (각 원소 16비트 워드 기반)
-        tx_bytes = floats_to_fp16_bytes(tx_vec, endian=ENDIAN)
-        rx_bytes = floats_to_fp16_bytes(rx_vec.astype(np.float32), endian=ENDIAN)
-
-        def words_hex(b):
-            u16 = np.frombuffer(b, dtype=("<u2" if ENDIAN == "little" else ">u2"))
-            return " ".join(f"{w:04X}" for w in u16[:8])
-
-        print("[TX HEX 8]  :", words_hex(tx_bytes))
-        print("[RX HEX 8]  :", words_hex(rx_bytes))
+        print("B) sum(y2) ≈", float(np.sum(y2)), "  y2[:8]:", y2[:8])
+        print("B) TX2[0:16]:", [f"0x{b:02X}" for b in tx2[:16]])
+        print("B) RX2[0:16]:", [f"0x{b:02X}" for b in rx2[:16]])
 
     except TimeoutError as e:
         print("수신 타임아웃:", e)
     finally:
         ser.close()
-        print("Serial port closed.")
 
 
 if __name__ == "__main__":

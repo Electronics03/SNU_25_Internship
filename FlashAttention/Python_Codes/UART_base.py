@@ -82,7 +82,7 @@ def q610_bytes_to_floats(b: bytes, *, endian: str = "little") -> np.ndarray:
 
 def main():
     PORT = "COM6"
-    BAUD = 115200
+    BAUD = 256000
     ser = open_serial(PORT, BAUD)
     try:
         while True:
