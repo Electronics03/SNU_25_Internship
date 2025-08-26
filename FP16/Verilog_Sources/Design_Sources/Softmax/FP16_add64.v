@@ -1,5 +1,3 @@
-// Add 64 16bit FP data, and get Sum
-
 module FP16_add64(
     input wire clk,
     input wire rst_n,
@@ -11,8 +9,7 @@ module FP16_add64(
     output wire [15:0] sum
     );
     
-    //// for 1 : n data transfer ////
-    wire [63:0] level0_ready; //for & operation
+    wire [63:0] level0_ready;
     
     wire level0_valid[0:31], level1_ready[0:31];
     wire [15:0] level0_sum [0:31];

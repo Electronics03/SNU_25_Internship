@@ -1,5 +1,3 @@
-// Compare 64 16bit FP data, and get Max
-
 module FP16_max64(
     input wire clk,
     input wire rst_n,
@@ -10,9 +8,8 @@ module FP16_max64(
     output wire max_valid, 
     output wire [15:0] max
     );
-    
-    //// for 1 : n data transfer ////
-    wire [63:0] level0_ready; //for & operation
+
+    wire [63:0] level0_ready;
     
     wire level0_valid[0:31], level1_ready[0:31];
     wire [15:0] level0_max [0:31];

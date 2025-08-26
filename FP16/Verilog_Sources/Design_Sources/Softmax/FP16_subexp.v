@@ -1,5 +1,3 @@
-// Subtract 16bit FP from another one, and apply exponential function.
-
 module FP16_subexp(
     input wire clk,
     input wire rst_n,

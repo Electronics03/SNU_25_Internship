@@ -1,4 +1,3 @@
-// Input if it is DELAYed and not valid, output if next_ready is high 
 module pipelined_reg #(
     parameter WIDTH = 16,
     parameter DEPTH = 64,

@@ -4,7 +4,7 @@ import datasets
 from transformers import BertTokenizer
 from transformers import BertForSequenceClassification
 from transformers.models.bert.modeling_bert import BertSelfAttention
-from Attention_approx import attention
+from Attention_FP16 import attention
 import UART_base
 
 PORT = "COM6"
@@ -13,7 +13,7 @@ BAUD = 256000
 ser = UART_base.open_serial(PORT, BAUD)
 
 
-class BertSelfAttentionSoftmaxApprox(BertSelfAttention):
+class BertSelfAttentionSoftmaxFP16(BertSelfAttention):
     def forward(
         self,
         hidden_states: torch.Tensor,
@@ -85,14 +85,14 @@ def evaluate_SST2():
         "textattack/bert-base-uncased-SST-2"
     ).eval()
 
-    approx_model = BertForSequenceClassification.from_pretrained(
+    FP16_model = BertForSequenceClassification.from_pretrained(
         "textattack/bert-base-uncased-SST-2"
     ).eval()
-    replace_self_attention(approx_model, BertSelfAttentionSoftmaxApprox)
+    replace_self_attention(FP16_model, BertSelfAttentionSoftmaxFP16)
 
     correct_baseline = 0
-    correct_approx = 0
-    match_count_approx = 0
+    correct_FP16 = 0
+    match_count_FP16 = 0
 
     for i, item in enumerate(dataset):
         inputs = tokenizer(item["sentence"], return_tensors="pt")
@@ -100,25 +100,25 @@ def evaluate_SST2():
 
         with torch.no_grad():
             out_base = baseline_model(**inputs).logits
-            out_approx = approx_model(**inputs).logits
+            out_FP16 = FP16_model(**inputs).logits
 
         pred_base = out_base.argmax(dim=-1).item()
-        pred_approx = out_approx.argmax(dim=-1).item()
+        pred_FP16 = out_FP16.argmax(dim=-1).item()
 
         if pred_base == label:
             correct_baseline += 1
-        if pred_approx == label:
-            correct_approx += 1
-        if pred_base == pred_approx:
-            match_count_approx += 1
+        if pred_FP16 == label:
+            correct_FP16 += 1
+        if pred_base == pred_FP16:
+            match_count_FP16 += 1
 
-        if pred_base == pred_approx:
-            same_approx = "O"
+        if pred_base == pred_FP16:
+            same_FP16 = "O"
         else:
-            same_approx = "X"
+            same_FP16 = "X"
 
         print(
-            f"[{i:3d}] Base:{pred_base} Approx:{pred_approx} Label:{label} Match Result {same_approx}"
+            f"[{i:3d}] Base:{pred_base} FP16:{pred_FP16} Label:{label} Match Result {same_FP16}"
         )
 
     total = len(dataset)
@@ -127,10 +127,10 @@ def evaluate_SST2():
         f"Baseline BERT Accuracy : {correct_baseline/total*100:.2f}% ({correct_baseline}/{total})"
     )
     print(
-        f"Approx BERT Accuracy : {correct_approx/total*100:.2f}% ({correct_approx}/{total})"
+        f"FP16 BERT Accuracy : {correct_FP16/total*100:.2f}% ({correct_FP16}/{total})"
     )
     print(
-        f"Prediction Match Rate Approx : {match_count_approx/total*100:.2f}% ({match_count_approx}/{total})"
+        f"Prediction Match Rate FP16 : {match_count_FP16/total*100:.2f}% ({match_count_FP16}/{total})"
     )
 
 
