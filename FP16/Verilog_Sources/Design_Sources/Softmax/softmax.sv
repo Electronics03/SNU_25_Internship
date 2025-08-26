@@ -149,7 +149,7 @@ module softmax #(
         .next_ready(x_delayed_ready[3]),
         .x_delayed_ready(x_delayed_ready[2]),
         .x_delayed_valid(x_delayed_valid[2]),
-        .modified_x_delayed_valid3(x_delayed[2])
+        .x_delayed(x_delayed[2])
     );
 
     pipelined_reg #(.WIDTH(16), .DEPTH(64), .DELAY(15)) u_pr3 (
