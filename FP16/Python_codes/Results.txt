@@ -1,0 +1,877 @@
+[  0] Base:1 FP16:1 Label:1 Match Result O
+[  1] Base:0 FP16:0 Label:0 Match Result O
+[  2] Base:1 FP16:1 Label:1 Match Result O
+[  3] Base:1 FP16:1 Label:1 Match Result O
+[  4] Base:0 FP16:0 Label:0 Match Result O
+[  5] Base:1 FP16:1 Label:1 Match Result O
+[  6] Base:0 FP16:0 Label:0 Match Result O
+[  7] Base:0 FP16:0 Label:0 Match Result O
+[  8] Base:1 FP16:1 Label:1 Match Result O
+[  9] Base:0 FP16:0 Label:0 Match Result O
+[ 10] Base:1 FP16:1 Label:1 Match Result O
+[ 11] Base:0 FP16:0 Label:0 Match Result O
+[ 12] Base:0 FP16:0 Label:0 Match Result O
+[ 13] Base:0 FP16:0 Label:1 Match Result O
+[ 14] Base:0 FP16:0 Label:0 Match Result O
+[ 15] Base:1 FP16:1 Label:1 Match Result O
+[ 16] Base:1 FP16:1 Label:1 Match Result O
+[ 17] Base:1 FP16:1 Label:1 Match Result O
+[ 18] Base:0 FP16:0 Label:0 Match Result O
+[ 19] Base:0 FP16:0 Label:0 Match Result O
+[ 20] Base:0 FP16:0 Label:0 Match Result O
+[ 21] Base:0 FP16:0 Label:0 Match Result O
+[ 22] Base:1 FP16:1 Label:0 Match Result O
+[ 23] Base:1 FP16:1 Label:1 Match Result O
+[ 24] Base:1 FP16:1 Label:1 Match Result O
+[ 25] Base:0 FP16:0 Label:0 Match Result O
+[ 26] Base:0 FP16:0 Label:0 Match Result O
+[ 27] Base:1 FP16:1 Label:1 Match Result O
+[ 28] Base:0 FP16:0 Label:0 Match Result O
+[ 29] Base:0 FP16:0 Label:0 Match Result O
+[ 30] Base:1 FP16:1 Label:1 Match Result O
+[ 31] Base:0 FP16:0 Label:0 Match Result O
+[ 32] Base:1 FP16:1 Label:1 Match Result O
+[ 33] Base:0 FP16:0 Label:0 Match Result O
+[ 34] Base:0 FP16:0 Label:0 Match Result O
+[ 35] Base:0 FP16:0 Label:0 Match Result O
+[ 36] Base:1 FP16:1 Label:1 Match Result O
+[ 37] Base:0 FP16:0 Label:0 Match Result O
+[ 38] Base:1 FP16:1 Label:1 Match Result O
+[ 39] Base:1 FP16:1 Label:1 Match Result O
+[ 40] Base:1 FP16:1 Label:1 Match Result O
+[ 41] Base:1 FP16:1 Label:1 Match Result O
+[ 42] Base:1 FP16:1 Label:1 Match Result O
+[ 43] Base:1 FP16:1 Label:1 Match Result O
+[ 44] Base:0 FP16:0 Label:0 Match Result O
+[ 45] Base:0 FP16:0 Label:0 Match Result O
+[ 46] Base:1 FP16:1 Label:0 Match Result O
+[ 47] Base:1 FP16:1 Label:1 Match Result O
+[ 48] Base:1 FP16:1 Label:1 Match Result O
+[ 49] Base:0 FP16:0 Label:0 Match Result O
+[ 50] Base:0 FP16:0 Label:0 Match Result O
+[ 51] Base:1 FP16:1 Label:1 Match Result O
+[ 52] Base:1 FP16:1 Label:1 Match Result O
+[ 53] Base:1 FP16:1 Label:1 Match Result O
+[ 54] Base:0 FP16:0 Label:0 Match Result O
+[ 55] Base:1 FP16:1 Label:1 Match Result O
+[ 56] Base:0 FP16:0 Label:0 Match Result O
+[ 57] Base:0 FP16:0 Label:0 Match Result O
+[ 58] Base:1 FP16:1 Label:0 Match Result O
+[ 59] Base:0 FP16:0 Label:0 Match Result O
+[ 60] Base:1 FP16:1 Label:1 Match Result O
+[ 61] Base:0 FP16:0 Label:0 Match Result O
+[ 62] Base:1 FP16:1 Label:1 Match Result O
+[ 63] Base:1 FP16:1 Label:1 Match Result O
+[ 64] Base:0 FP16:0 Label:0 Match Result O
+[ 65] Base:0 FP16:0 Label:0 Match Result O
+[ 66] Base:1 FP16:1 Label:1 Match Result O
+[ 67] Base:1 FP16:1 Label:1 Match Result O
+[ 68] Base:1 FP16:1 Label:1 Match Result O
+[ 69] Base:1 FP16:1 Label:0 Match Result O
+[ 70] Base:0 FP16:0 Label:0 Match Result O
+[ 71] Base:1 FP16:1 Label:1 Match Result O
+[ 72] Base:1 FP16:1 Label:1 Match Result O
+[ 73] Base:1 FP16:1 Label:1 Match Result O
+[ 74] Base:0 FP16:0 Label:0 Match Result O
+[ 75] Base:1 FP16:1 Label:1 Match Result O
+[ 76] Base:0 FP16:0 Label:0 Match Result O
+[ 77] Base:1 FP16:1 Label:1 Match Result O
+[ 78] Base:1 FP16:1 Label:1 Match Result O
+[ 79] Base:0 FP16:0 Label:0 Match Result O
+[ 80] Base:1 FP16:1 Label:1 Match Result O
+[ 81] Base:0 FP16:0 Label:0 Match Result O
+[ 82] Base:0 FP16:0 Label:0 Match Result O
+[ 83] Base:1 FP16:1 Label:1 Match Result O
+[ 84] Base:1 FP16:1 Label:1 Match Result O
+[ 85] Base:1 FP16:1 Label:1 Match Result O
+[ 86] Base:0 FP16:0 Label:0 Match Result O
+[ 87] Base:1 FP16:1 Label:1 Match Result O
+[ 88] Base:1 FP16:1 Label:1 Match Result O
+[ 89] Base:1 FP16:1 Label:1 Match Result O
+[ 90] Base:1 FP16:1 Label:1 Match Result O
+[ 91] Base:1 FP16:1 Label:1 Match Result O
+[ 92] Base:1 FP16:1 Label:0 Match Result O
+[ 93] Base:0 FP16:0 Label:1 Match Result O
+[ 94] Base:1 FP16:1 Label:1 Match Result O
+[ 95] Base:1 FP16:1 Label:0 Match Result O
+[ 96] Base:0 FP16:0 Label:0 Match Result O
+[ 97] Base:1 FP16:1 Label:1 Match Result O
+[ 98] Base:0 FP16:0 Label:0 Match Result O
+[ 99] Base:0 FP16:0 Label:0 Match Result O
+[100] Base:1 FP16:1 Label:1 Match Result O
+[101] Base:0 FP16:0 Label:0 Match Result O
+[102] Base:1 FP16:1 Label:1 Match Result O
+[103] Base:1 FP16:1 Label:1 Match Result O
+[104] Base:1 FP16:1 Label:1 Match Result O
+[105] Base:0 FP16:0 Label:0 Match Result O
+[106] Base:1 FP16:1 Label:1 Match Result O
+[107] Base:0 FP16:0 Label:0 Match Result O
+[108] Base:0 FP16:0 Label:0 Match Result O
+[109] Base:1 FP16:1 Label:1 Match Result O
+[110] Base:0 FP16:0 Label:0 Match Result O
+[111] Base:0 FP16:0 Label:0 Match Result O
+[112] Base:0 FP16:0 Label:1 Match Result O
+[113] Base:0 FP16:0 Label:0 Match Result O
+[114] Base:1 FP16:1 Label:1 Match Result O
+[115] Base:1 FP16:1 Label:0 Match Result O
+[116] Base:1 FP16:1 Label:1 Match Result O
+[117] Base:1 FP16:1 Label:1 Match Result O
+[118] Base:1 FP16:1 Label:0 Match Result O
+[119] Base:0 FP16:0 Label:0 Match Result O
+[120] Base:1 FP16:1 Label:1 Match Result O
+[121] Base:1 FP16:1 Label:0 Match Result O
+[122] Base:1 FP16:1 Label:1 Match Result O
+[123] Base:1 FP16:1 Label:1 Match Result O
+[124] Base:1 FP16:1 Label:1 Match Result O
+[125] Base:1 FP16:1 Label:1 Match Result O
+[126] Base:0 FP16:0 Label:0 Match Result O
+[127] Base:0 FP16:0 Label:0 Match Result O
+[128] Base:1 FP16:1 Label:1 Match Result O
+[129] Base:1 FP16:1 Label:1 Match Result O
+[130] Base:0 FP16:0 Label:0 Match Result O
+[131] Base:0 FP16:0 Label:0 Match Result O
+[132] Base:1 FP16:1 Label:1 Match Result O
+[133] Base:0 FP16:0 Label:0 Match Result O
+[134] Base:0 FP16:0 Label:0 Match Result O
+[135] Base:0 FP16:0 Label:0 Match Result O
+[136] Base:0 FP16:0 Label:0 Match Result O
+[137] Base:0 FP16:0 Label:0 Match Result O
+[138] Base:1 FP16:1 Label:1 Match Result O
+[139] Base:0 FP16:0 Label:0 Match Result O
+[140] Base:0 FP16:0 Label:0 Match Result O
+[141] Base:0 FP16:0 Label:0 Match Result O
+[142] Base:0 FP16:0 Label:1 Match Result O
+[143] Base:0 FP16:0 Label:1 Match Result O
+[144] Base:0 FP16:0 Label:0 Match Result O
+[145] Base:0 FP16:0 Label:0 Match Result O
+[146] Base:1 FP16:1 Label:1 Match Result O
+[147] Base:0 FP16:0 Label:0 Match Result O
+[148] Base:0 FP16:0 Label:0 Match Result O
+[149] Base:1 FP16:1 Label:1 Match Result O
+[150] Base:1 FP16:1 Label:1 Match Result O
+[151] Base:1 FP16:1 Label:1 Match Result O
+[152] Base:1 FP16:1 Label:1 Match Result O
+[153] Base:0 FP16:0 Label:0 Match Result O
+[154] Base:1 FP16:1 Label:1 Match Result O
+[155] Base:0 FP16:0 Label:0 Match Result O
+[156] Base:1 FP16:1 Label:1 Match Result O
+[157] Base:0 FP16:0 Label:0 Match Result O
+[158] Base:0 FP16:0 Label:0 Match Result O
+[159] Base:1 FP16:1 Label:1 Match Result O
+[160] Base:0 FP16:0 Label:0 Match Result O
+[161] Base:0 FP16:0 Label:0 Match Result O
+[162] Base:0 FP16:0 Label:0 Match Result O
+[163] Base:0 FP16:0 Label:0 Match Result O
+[164] Base:1 FP16:1 Label:1 Match Result O
+[165] Base:0 FP16:0 Label:0 Match Result O
+[166] Base:0 FP16:0 Label:0 Match Result O
+[167] Base:0 FP16:0 Label:0 Match Result O
+[168] Base:1 FP16:1 Label:1 Match Result O
+[169] Base:1 FP16:1 Label:1 Match Result O
+[170] Base:1 FP16:1 Label:1 Match Result O
+[171] Base:1 FP16:1 Label:0 Match Result O
+[172] Base:0 FP16:0 Label:1 Match Result O
+[173] Base:0 FP16:0 Label:0 Match Result O
+[174] Base:1 FP16:1 Label:1 Match Result O
+[175] Base:1 FP16:1 Label:1 Match Result O
+[176] Base:0 FP16:0 Label:0 Match Result O
+[177] Base:0 FP16:0 Label:0 Match Result O
+[178] Base:0 FP16:0 Label:0 Match Result O
+[179] Base:1 FP16:1 Label:1 Match Result O
+[180] Base:0 FP16:0 Label:0 Match Result O
+[181] Base:0 FP16:0 Label:0 Match Result O
+[182] Base:0 FP16:0 Label:0 Match Result O
+[183] Base:1 FP16:1 Label:0 Match Result O
+[184] Base:0 FP16:0 Label:0 Match Result O
+[185] Base:1 FP16:1 Label:1 Match Result O
+[186] Base:1 FP16:1 Label:1 Match Result O
+[187] Base:1 FP16:1 Label:1 Match Result O
+[188] Base:0 FP16:0 Label:0 Match Result O
+[189] Base:0 FP16:0 Label:0 Match Result O
+[190] Base:0 FP16:0 Label:0 Match Result O
+[191] Base:1 FP16:1 Label:1 Match Result O
+[192] Base:1 FP16:1 Label:1 Match Result O
+[193] Base:1 FP16:1 Label:1 Match Result O
+[194] Base:1 FP16:1 Label:1 Match Result O
+[195] Base:1 FP16:1 Label:1 Match Result O
+[196] Base:1 FP16:1 Label:1 Match Result O
+[197] Base:0 FP16:0 Label:0 Match Result O
+[198] Base:1 FP16:1 Label:1 Match Result O
+[199] Base:0 FP16:0 Label:0 Match Result O
+[200] Base:1 FP16:1 Label:1 Match Result O
+[201] Base:1 FP16:1 Label:1 Match Result O
+[202] Base:0 FP16:0 Label:0 Match Result O
+[203] Base:0 FP16:0 Label:0 Match Result O
+[204] Base:1 FP16:1 Label:1 Match Result O
+[205] Base:0 FP16:0 Label:1 Match Result O
+[206] Base:1 FP16:1 Label:1 Match Result O
+[207] Base:1 FP16:1 Label:1 Match Result O
+[208] Base:0 FP16:0 Label:0 Match Result O
+[209] Base:0 FP16:0 Label:0 Match Result O
+[210] Base:1 FP16:1 Label:1 Match Result O
+[211] Base:0 FP16:0 Label:0 Match Result O
+[212] Base:0 FP16:0 Label:0 Match Result O
+[213] Base:0 FP16:0 Label:0 Match Result O
+[214] Base:0 FP16:0 Label:0 Match Result O
+[215] Base:1 FP16:1 Label:1 Match Result O
+[216] Base:1 FP16:1 Label:1 Match Result O
+[217] Base:0 FP16:0 Label:0 Match Result O
+[218] Base:0 FP16:0 Label:0 Match Result O
+[219] Base:1 FP16:1 Label:1 Match Result O
+[220] Base:1 FP16:1 Label:1 Match Result O
+[221] Base:0 FP16:0 Label:0 Match Result O
+[222] Base:1 FP16:1 Label:1 Match Result O
+[223] Base:1 FP16:1 Label:1 Match Result O
+[224] Base:1 FP16:1 Label:1 Match Result O
+[225] Base:1 FP16:1 Label:1 Match Result O
+[226] Base:0 FP16:0 Label:0 Match Result O
+[227] Base:1 FP16:1 Label:1 Match Result O
+[228] Base:1 FP16:1 Label:1 Match Result O
+[229] Base:0 FP16:0 Label:0 Match Result O
+[230] Base:0 FP16:0 Label:1 Match Result O
+[231] Base:1 FP16:1 Label:1 Match Result O
+[232] Base:0 FP16:0 Label:0 Match Result O
+[233] Base:0 FP16:0 Label:0 Match Result O
+[234] Base:1 FP16:1 Label:1 Match Result O
+[235] Base:1 FP16:1 Label:1 Match Result O
+[236] Base:1 FP16:1 Label:1 Match Result O
+[237] Base:0 FP16:0 Label:0 Match Result O
+[238] Base:0 FP16:0 Label:0 Match Result O
+[239] Base:1 FP16:1 Label:1 Match Result O
+[240] Base:1 FP16:1 Label:1 Match Result O
+[241] Base:0 FP16:0 Label:0 Match Result O
+[242] Base:0 FP16:0 Label:0 Match Result O
+[243] Base:1 FP16:1 Label:1 Match Result O
+[244] Base:1 FP16:1 Label:1 Match Result O
+[245] Base:1 FP16:1 Label:1 Match Result O
+[246] Base:1 FP16:1 Label:1 Match Result O
+[247] Base:0 FP16:0 Label:0 Match Result O
+[248] Base:0 FP16:0 Label:1 Match Result O
+[249] Base:1 FP16:1 Label:1 Match Result O
+[250] Base:1 FP16:1 Label:1 Match Result O
+[251] Base:0 FP16:0 Label:0 Match Result O
+[252] Base:1 FP16:1 Label:1 Match Result O
+[253] Base:0 FP16:0 Label:0 Match Result O
+[254] Base:0 FP16:0 Label:0 Match Result O
+[255] Base:0 FP16:0 Label:0 Match Result O
+[256] Base:0 FP16:0 Label:0 Match Result O
+[257] Base:0 FP16:0 Label:0 Match Result O
+[258] Base:0 FP16:0 Label:0 Match Result O
+[259] Base:1 FP16:1 Label:1 Match Result O
+[260] Base:0 FP16:0 Label:0 Match Result O
+[261] Base:1 FP16:1 Label:1 Match Result O
+[262] Base:0 FP16:0 Label:0 Match Result O
+[263] Base:1 FP16:1 Label:1 Match Result O
+[264] Base:0 FP16:0 Label:0 Match Result O
+[265] Base:0 FP16:0 Label:0 Match Result O
+[266] Base:0 FP16:0 Label:1 Match Result O
+[267] Base:0 FP16:0 Label:0 Match Result O
+[268] Base:0 FP16:0 Label:0 Match Result O
+[269] Base:0 FP16:0 Label:0 Match Result O
+[270] Base:1 FP16:1 Label:1 Match Result O
+[271] Base:0 FP16:0 Label:1 Match Result O
+[272] Base:0 FP16:0 Label:0 Match Result O
+[273] Base:0 FP16:0 Label:1 Match Result O
+[274] Base:0 FP16:0 Label:0 Match Result O
+[275] Base:1 FP16:1 Label:1 Match Result O
+[276] Base:1 FP16:1 Label:1 Match Result O
+[277] Base:1 FP16:1 Label:1 Match Result O
+[278] Base:0 FP16:0 Label:0 Match Result O
+[279] Base:1 FP16:1 Label:1 Match Result O
+[280] Base:1 FP16:1 Label:1 Match Result O
+[281] Base:0 FP16:0 Label:0 Match Result O
+[282] Base:0 FP16:0 Label:1 Match Result O
+[283] Base:1 FP16:1 Label:1 Match Result O
+[284] Base:0 FP16:0 Label:0 Match Result O
+[285] Base:0 FP16:0 Label:0 Match Result O
+[286] Base:1 FP16:1 Label:1 Match Result O
+[287] Base:1 FP16:1 Label:1 Match Result O
+[288] Base:1 FP16:1 Label:1 Match Result O
+[289] Base:1 FP16:1 Label:1 Match Result O
+[290] Base:1 FP16:1 Label:1 Match Result O
+[291] Base:0 FP16:0 Label:0 Match Result O
+[292] Base:1 FP16:1 Label:0 Match Result O
+[293] Base:1 FP16:1 Label:1 Match Result O
+[294] Base:1 FP16:1 Label:1 Match Result O
+[295] Base:1 FP16:1 Label:1 Match Result O
+[296] Base:0 FP16:0 Label:0 Match Result O
+[297] Base:1 FP16:1 Label:1 Match Result O
+[298] Base:0 FP16:0 Label:0 Match Result O
+[299] Base:1 FP16:1 Label:1 Match Result O
+[300] Base:1 FP16:1 Label:1 Match Result O
+[301] Base:0 FP16:0 Label:0 Match Result O
+[302] Base:1 FP16:1 Label:1 Match Result O
+[303] Base:1 FP16:1 Label:1 Match Result O
+[304] Base:1 FP16:1 Label:1 Match Result O
+[305] Base:0 FP16:0 Label:0 Match Result O
+[306] Base:1 FP16:1 Label:1 Match Result O
+[307] Base:1 FP16:1 Label:1 Match Result O
+[308] Base:1 FP16:1 Label:1 Match Result O
+[309] Base:1 FP16:1 Label:1 Match Result O
+[310] Base:1 FP16:1 Label:1 Match Result O
+[311] Base:1 FP16:1 Label:1 Match Result O
+[312] Base:1 FP16:1 Label:0 Match Result O
+[313] Base:1 FP16:1 Label:1 Match Result O
+[314] Base:1 FP16:1 Label:1 Match Result O
+[315] Base:0 FP16:0 Label:0 Match Result O
+[316] Base:1 FP16:1 Label:1 Match Result O
+[317] Base:1 FP16:1 Label:1 Match Result O
+[318] Base:0 FP16:0 Label:0 Match Result O
+[319] Base:0 FP16:0 Label:0 Match Result O
+[320] Base:1 FP16:1 Label:1 Match Result O
+[321] Base:0 FP16:0 Label:0 Match Result O
+[322] Base:0 FP16:0 Label:0 Match Result O
+[323] Base:1 FP16:1 Label:1 Match Result O
+[324] Base:1 FP16:1 Label:1 Match Result O
+[325] Base:1 FP16:1 Label:1 Match Result O
+[326] Base:1 FP16:1 Label:1 Match Result O
+[327] Base:1 FP16:1 Label:1 Match Result O
+[328] Base:0 FP16:0 Label:0 Match Result O
+[329] Base:0 FP16:0 Label:0 Match Result O
+[330] Base:0 FP16:0 Label:0 Match Result O
+[331] Base:1 FP16:1 Label:1 Match Result O
+[332] Base:1 FP16:1 Label:1 Match Result O
+[333] Base:1 FP16:1 Label:1 Match Result O
+[334] Base:1 FP16:1 Label:1 Match Result O
+[335] Base:0 FP16:0 Label:0 Match Result O
+[336] Base:1 FP16:1 Label:1 Match Result O
+[337] Base:0 FP16:0 Label:0 Match Result O
+[338] Base:0 FP16:0 Label:0 Match Result O
+[339] Base:1 FP16:1 Label:1 Match Result O
+[340] Base:0 FP16:0 Label:0 Match Result O
+[341] Base:1 FP16:1 Label:1 Match Result O
+[342] Base:0 FP16:0 Label:0 Match Result O
+[343] Base:0 FP16:0 Label:0 Match Result O
+[344] Base:1 FP16:1 Label:1 Match Result O
+[345] Base:1 FP16:1 Label:1 Match Result O
+[346] Base:0 FP16:0 Label:0 Match Result O
+[347] Base:0 FP16:0 Label:0 Match Result O
+[348] Base:0 FP16:0 Label:0 Match Result O
+[349] Base:0 FP16:0 Label:0 Match Result O
+[350] Base:0 FP16:0 Label:0 Match Result O
+[351] Base:1 FP16:1 Label:1 Match Result O
+[352] Base:1 FP16:1 Label:1 Match Result O
+[353] Base:1 FP16:1 Label:1 Match Result O
+[354] Base:1 FP16:1 Label:1 Match Result O
+[355] Base:0 FP16:0 Label:0 Match Result O
+[356] Base:0 FP16:0 Label:0 Match Result O
+[357] Base:0 FP16:0 Label:0 Match Result O
+[358] Base:0 FP16:0 Label:1 Match Result O
+[359] Base:1 FP16:1 Label:1 Match Result O
+[360] Base:1 FP16:1 Label:1 Match Result O
+[361] Base:0 FP16:0 Label:0 Match Result O
+[362] Base:1 FP16:1 Label:1 Match Result O
+[363] Base:0 FP16:0 Label:0 Match Result O
+[364] Base:0 FP16:0 Label:0 Match Result O
+[365] Base:0 FP16:0 Label:0 Match Result O
+[366] Base:1 FP16:1 Label:1 Match Result O
+[367] Base:1 FP16:1 Label:1 Match Result O
+[368] Base:0 FP16:0 Label:0 Match Result O
+[369] Base:1 FP16:1 Label:1 Match Result O
+[370] Base:0 FP16:0 Label:0 Match Result O
+[371] Base:1 FP16:1 Label:1 Match Result O
+[372] Base:1 FP16:1 Label:1 Match Result O
+[373] Base:0 FP16:0 Label:0 Match Result O
+[374] Base:0 FP16:0 Label:0 Match Result O
+[375] Base:1 FP16:1 Label:1 Match Result O
+[376] Base:0 FP16:0 Label:0 Match Result O
+[377] Base:0 FP16:0 Label:0 Match Result O
+[378] Base:0 FP16:0 Label:0 Match Result O
+[379] Base:0 FP16:0 Label:0 Match Result O
+[380] Base:0 FP16:0 Label:0 Match Result O
+[381] Base:1 FP16:1 Label:1 Match Result O
+[382] Base:0 FP16:0 Label:0 Match Result O
+[383] Base:1 FP16:1 Label:1 Match Result O
+[384] Base:0 FP16:0 Label:0 Match Result O
+[385] Base:0 FP16:0 Label:0 Match Result O
+[386] Base:1 FP16:1 Label:1 Match Result O
+[387] Base:1 FP16:1 Label:1 Match Result O
+[388] Base:0 FP16:0 Label:0 Match Result O
+[389] Base:1 FP16:1 Label:1 Match Result O
+[390] Base:0 FP16:0 Label:0 Match Result O
+[391] Base:0 FP16:0 Label:0 Match Result O
+[392] Base:0 FP16:0 Label:0 Match Result O
+[393] Base:1 FP16:1 Label:1 Match Result O
+[394] Base:1 FP16:1 Label:1 Match Result O
+[395] Base:0 FP16:0 Label:0 Match Result O
+[396] Base:1 FP16:1 Label:1 Match Result O
+[397] Base:1 FP16:1 Label:1 Match Result O
+[398] Base:1 FP16:1 Label:1 Match Result O
+[399] Base:1 FP16:1 Label:0 Match Result O
+[400] Base:1 FP16:1 Label:1 Match Result O
+[401] Base:1 FP16:1 Label:1 Match Result O
+[402] Base:0 FP16:0 Label:0 Match Result O
+[403] Base:0 FP16:0 Label:0 Match Result O
+[404] Base:1 FP16:1 Label:1 Match Result O
+[405] Base:0 FP16:0 Label:0 Match Result O
+[406] Base:1 FP16:1 Label:1 Match Result O
+[407] Base:0 FP16:0 Label:0 Match Result O
+[408] Base:0 FP16:0 Label:0 Match Result O
+[409] Base:0 FP16:0 Label:0 Match Result O
+[410] Base:1 FP16:1 Label:1 Match Result O
+[411] Base:1 FP16:1 Label:0 Match Result O
+[412] Base:0 FP16:0 Label:0 Match Result O
+[413] Base:0 FP16:0 Label:0 Match Result O
+[414] Base:1 FP16:1 Label:1 Match Result O
+[415] Base:1 FP16:1 Label:1 Match Result O
+[416] Base:1 FP16:1 Label:1 Match Result O
+[417] Base:1 FP16:1 Label:1 Match Result O
+[418] Base:1 FP16:1 Label:1 Match Result O
+[419] Base:0 FP16:0 Label:0 Match Result O
+[420] Base:0 FP16:0 Label:0 Match Result O
+[421] Base:1 FP16:1 Label:1 Match Result O
+[422] Base:0 FP16:0 Label:1 Match Result O
+[423] Base:0 FP16:0 Label:0 Match Result O
+[424] Base:1 FP16:1 Label:1 Match Result O
+[425] Base:1 FP16:1 Label:1 Match Result O
+[426] Base:1 FP16:1 Label:1 Match Result O
+[427] Base:1 FP16:1 Label:1 Match Result O
+[428] Base:1 FP16:1 Label:1 Match Result O
+[429] Base:0 FP16:0 Label:0 Match Result O
+[430] Base:1 FP16:1 Label:1 Match Result O
+[431] Base:0 FP16:0 Label:0 Match Result O
+[432] Base:0 FP16:0 Label:0 Match Result O
+[433] Base:1 FP16:1 Label:1 Match Result O
+[434] Base:0 FP16:0 Label:0 Match Result O
+[435] Base:1 FP16:1 Label:1 Match Result O
+[436] Base:0 FP16:0 Label:0 Match Result O
+[437] Base:1 FP16:1 Label:1 Match Result O
+[438] Base:1 FP16:1 Label:1 Match Result O
+[439] Base:1 FP16:1 Label:1 Match Result O
+[440] Base:1 FP16:1 Label:1 Match Result O
+[441] Base:0 FP16:0 Label:0 Match Result O
+[442] Base:0 FP16:0 Label:0 Match Result O
+[443] Base:1 FP16:1 Label:1 Match Result O
+[444] Base:0 FP16:0 Label:0 Match Result O
+[445] Base:1 FP16:1 Label:1 Match Result O
+[446] Base:1 FP16:1 Label:0 Match Result O
+[447] Base:1 FP16:1 Label:1 Match Result O
+[448] Base:1 FP16:1 Label:1 Match Result O
+[449] Base:0 FP16:0 Label:0 Match Result O
+[450] Base:1 FP16:1 Label:1 Match Result O
+[451] Base:1 FP16:1 Label:1 Match Result O
+[452] Base:0 FP16:0 Label:0 Match Result O
+[453] Base:1 FP16:1 Label:1 Match Result O
+[454] Base:0 FP16:0 Label:0 Match Result O
+[455] Base:1 FP16:1 Label:1 Match Result O
+[456] Base:0 FP16:0 Label:0 Match Result O
+[457] Base:1 FP16:1 Label:1 Match Result O
+[458] Base:1 FP16:1 Label:1 Match Result O
+[459] Base:1 FP16:1 Label:1 Match Result O
+[460] Base:1 FP16:1 Label:1 Match Result O
+[461] Base:0 FP16:0 Label:0 Match Result O
+[462] Base:0 FP16:0 Label:0 Match Result O
+[463] Base:0 FP16:0 Label:0 Match Result O
+[464] Base:0 FP16:0 Label:1 Match Result O
+[465] Base:0 FP16:0 Label:0 Match Result O
+[466] Base:1 FP16:1 Label:1 Match Result O
+[467] Base:1 FP16:1 Label:1 Match Result O
+[468] Base:1 FP16:1 Label:1 Match Result O
+[469] Base:0 FP16:0 Label:0 Match Result O
+[470] Base:1 FP16:1 Label:1 Match Result O
+[471] Base:0 FP16:0 Label:0 Match Result O
+[472] Base:1 FP16:1 Label:1 Match Result O
+[473] Base:1 FP16:1 Label:1 Match Result O
+[474] Base:0 FP16:0 Label:0 Match Result O
+[475] Base:1 FP16:1 Label:1 Match Result O
+[476] Base:0 FP16:0 Label:0 Match Result O
+[477] Base:0 FP16:0 Label:0 Match Result O
+[478] Base:0 FP16:0 Label:0 Match Result O
+[479] Base:1 FP16:1 Label:1 Match Result O
+[480] Base:1 FP16:1 Label:1 Match Result O
+[481] Base:1 FP16:1 Label:1 Match Result O
+[482] Base:1 FP16:1 Label:1 Match Result O
+[483] Base:1 FP16:1 Label:1 Match Result O
+[484] Base:1 FP16:1 Label:1 Match Result O
+[485] Base:1 FP16:1 Label:1 Match Result O
+[486] Base:0 FP16:0 Label:0 Match Result O
+[487] Base:0 FP16:0 Label:0 Match Result O
+[488] Base:1 FP16:1 Label:1 Match Result O
+[489] Base:0 FP16:0 Label:0 Match Result O
+[490] Base:0 FP16:0 Label:0 Match Result O
+[491] Base:0 FP16:0 Label:0 Match Result O
+[492] Base:1 FP16:1 Label:1 Match Result O
+[493] Base:0 FP16:0 Label:0 Match Result O
+[494] Base:1 FP16:1 Label:0 Match Result O
+[495] Base:1 FP16:1 Label:1 Match Result O
+[496] Base:1 FP16:1 Label:1 Match Result O
+[497] Base:0 FP16:0 Label:0 Match Result O
+[498] Base:1 FP16:1 Label:1 Match Result O
+[499] Base:1 FP16:1 Label:1 Match Result O
+[500] Base:0 FP16:0 Label:0 Match Result O
+[501] Base:0 FP16:0 Label:1 Match Result O
+[502] Base:0 FP16:0 Label:0 Match Result O
+[503] Base:0 FP16:0 Label:0 Match Result O
+[504] Base:1 FP16:1 Label:1 Match Result O
+[505] Base:1 FP16:1 Label:1 Match Result O
+[506] Base:1 FP16:1 Label:1 Match Result O
+[507] Base:1 FP16:1 Label:1 Match Result O
+[508] Base:1 FP16:1 Label:1 Match Result O
+[509] Base:0 FP16:0 Label:1 Match Result O
+[510] Base:1 FP16:1 Label:1 Match Result O
+[511] Base:1 FP16:1 Label:1 Match Result O
+[512] Base:0 FP16:0 Label:0 Match Result O
+[513] Base:0 FP16:0 Label:0 Match Result O
+[514] Base:1 FP16:1 Label:1 Match Result O
+[515] Base:0 FP16:0 Label:0 Match Result O
+[516] Base:0 FP16:0 Label:0 Match Result O
+[517] Base:1 FP16:1 Label:1 Match Result O
+[518] Base:1 FP16:1 Label:1 Match Result O
+[519] Base:1 FP16:1 Label:0 Match Result O
+[520] Base:1 FP16:1 Label:1 Match Result O
+[521] Base:0 FP16:0 Label:0 Match Result O
+[522] Base:0 FP16:0 Label:0 Match Result O
+[523] Base:1 FP16:1 Label:1 Match Result O
+[524] Base:1 FP16:1 Label:1 Match Result O
+[525] Base:1 FP16:1 Label:1 Match Result O
+[526] Base:0 FP16:0 Label:0 Match Result O
+[527] Base:1 FP16:1 Label:0 Match Result O
+[528] Base:1 FP16:1 Label:1 Match Result O
+[529] Base:0 FP16:0 Label:0 Match Result O
+[530] Base:1 FP16:1 Label:1 Match Result O
+[531] Base:0 FP16:0 Label:0 Match Result O
+[532] Base:1 FP16:1 Label:1 Match Result O
+[533] Base:1 FP16:1 Label:1 Match Result O
+[534] Base:1 FP16:1 Label:1 Match Result O
+[535] Base:1 FP16:1 Label:1 Match Result O
+[536] Base:0 FP16:0 Label:0 Match Result O
+[537] Base:1 FP16:1 Label:1 Match Result O
+[538] Base:0 FP16:0 Label:0 Match Result O
+[539] Base:0 FP16:0 Label:0 Match Result O
+[540] Base:1 FP16:1 Label:1 Match Result O
+[541] Base:1 FP16:1 Label:1 Match Result O
+[542] Base:0 FP16:0 Label:0 Match Result O
+[543] Base:0 FP16:0 Label:0 Match Result O
+[544] Base:1 FP16:1 Label:0 Match Result O
+[545] Base:0 FP16:0 Label:0 Match Result O
+[546] Base:0 FP16:0 Label:1 Match Result O
+[547] Base:0 FP16:0 Label:0 Match Result O
+[548] Base:0 FP16:0 Label:0 Match Result O
+[549] Base:0 FP16:0 Label:0 Match Result O
+[550] Base:0 FP16:0 Label:0 Match Result O
+[551] Base:0 FP16:0 Label:0 Match Result O
+[552] Base:0 FP16:0 Label:0 Match Result O
+[553] Base:1 FP16:1 Label:1 Match Result O
+[554] Base:0 FP16:0 Label:0 Match Result O
+[555] Base:0 FP16:0 Label:0 Match Result O
+[556] Base:0 FP16:0 Label:0 Match Result O
+[557] Base:1 FP16:1 Label:1 Match Result O
+[558] Base:1 FP16:1 Label:1 Match Result O
+[559] Base:0 FP16:0 Label:0 Match Result O
+[560] Base:0 FP16:0 Label:0 Match Result O
+[561] Base:0 FP16:0 Label:1 Match Result O
+[562] Base:0 FP16:0 Label:0 Match Result O
+[563] Base:1 FP16:1 Label:1 Match Result O
+[564] Base:0 FP16:0 Label:0 Match Result O
+[565] Base:1 FP16:1 Label:1 Match Result O
+[566] Base:0 FP16:0 Label:0 Match Result O
+[567] Base:1 FP16:1 Label:1 Match Result O
+[568] Base:0 FP16:0 Label:0 Match Result O
+[569] Base:1 FP16:1 Label:1 Match Result O
+[570] Base:1 FP16:1 Label:1 Match Result O
+[571] Base:0 FP16:0 Label:0 Match Result O
+[572] Base:0 FP16:0 Label:0 Match Result O
+[573] Base:1 FP16:1 Label:1 Match Result O
+[574] Base:0 FP16:0 Label:0 Match Result O
+[575] Base:0 FP16:0 Label:0 Match Result O
+[576] Base:0 FP16:0 Label:0 Match Result O
+[577] Base:1 FP16:1 Label:1 Match Result O
+[578] Base:0 FP16:0 Label:0 Match Result O
+[579] Base:1 FP16:1 Label:0 Match Result O
+[580] Base:1 FP16:1 Label:0 Match Result O
+[581] Base:0 FP16:0 Label:0 Match Result O
+[582] Base:0 FP16:0 Label:0 Match Result O
+[583] Base:0 FP16:0 Label:0 Match Result O
+[584] Base:0 FP16:0 Label:0 Match Result O
+[585] Base:0 FP16:0 Label:0 Match Result O
+[586] Base:0 FP16:0 Label:0 Match Result O
+[587] Base:0 FP16:0 Label:0 Match Result O
+[588] Base:1 FP16:1 Label:1 Match Result O
+[589] Base:1 FP16:1 Label:1 Match Result O
+[590] Base:0 FP16:0 Label:0 Match Result O
+[591] Base:0 FP16:0 Label:0 Match Result O
+[592] Base:0 FP16:0 Label:0 Match Result O
+[593] Base:1 FP16:1 Label:1 Match Result O
+[594] Base:1 FP16:1 Label:1 Match Result O
+[595] Base:0 FP16:0 Label:0 Match Result O
+[596] Base:0 FP16:0 Label:0 Match Result O
+[597] Base:0 FP16:0 Label:0 Match Result O
+[598] Base:0 FP16:0 Label:0 Match Result O
+[599] Base:0 FP16:0 Label:0 Match Result O
+[600] Base:0 FP16:0 Label:0 Match Result O
+[601] Base:0 FP16:0 Label:0 Match Result O
+[602] Base:1 FP16:1 Label:1 Match Result O
+[603] Base:1 FP16:1 Label:1 Match Result O
+[604] Base:1 FP16:1 Label:0 Match Result O
+[605] Base:1 FP16:1 Label:1 Match Result O
+[606] Base:0 FP16:0 Label:0 Match Result O
+[607] Base:1 FP16:1 Label:1 Match Result O
+[608] Base:1 FP16:1 Label:1 Match Result O
+[609] Base:1 FP16:1 Label:1 Match Result O
+[610] Base:0 FP16:0 Label:0 Match Result O
+[611] Base:1 FP16:1 Label:1 Match Result O
+[612] Base:0 FP16:0 Label:0 Match Result O
+[613] Base:1 FP16:1 Label:1 Match Result O
+[614] Base:1 FP16:1 Label:1 Match Result O
+[615] Base:0 FP16:0 Label:0 Match Result O
+[616] Base:1 FP16:1 Label:1 Match Result O
+[617] Base:0 FP16:0 Label:0 Match Result O
+[618] Base:0 FP16:0 Label:0 Match Result O
+[619] Base:0 FP16:0 Label:0 Match Result O
+[620] Base:0 FP16:0 Label:0 Match Result O
+[621] Base:1 FP16:1 Label:1 Match Result O
+[622] Base:1 FP16:1 Label:1 Match Result O
+[623] Base:1 FP16:1 Label:1 Match Result O
+[624] Base:1 FP16:1 Label:1 Match Result O
+[625] Base:1 FP16:1 Label:1 Match Result O
+[626] Base:0 FP16:0 Label:1 Match Result O
+[627] Base:0 FP16:0 Label:0 Match Result O
+[628] Base:1 FP16:1 Label:1 Match Result O
+[629] Base:0 FP16:0 Label:0 Match Result O
+[630] Base:1 FP16:1 Label:1 Match Result O
+[631] Base:0 FP16:0 Label:0 Match Result O
+[632] Base:0 FP16:0 Label:0 Match Result O
+[633] Base:1 FP16:1 Label:1 Match Result O
+[634] Base:1 FP16:1 Label:1 Match Result O
+[635] Base:0 FP16:0 Label:0 Match Result O
+[636] Base:1 FP16:1 Label:1 Match Result O
+[637] Base:0 FP16:0 Label:0 Match Result O
+[638] Base:1 FP16:1 Label:1 Match Result O
+[639] Base:0 FP16:0 Label:0 Match Result O
+[640] Base:1 FP16:1 Label:1 Match Result O
+[641] Base:1 FP16:1 Label:1 Match Result O
+[642] Base:0 FP16:0 Label:0 Match Result O
+[643] Base:0 FP16:0 Label:1 Match Result O
+[644] Base:1 FP16:1 Label:1 Match Result O
+[645] Base:1 FP16:1 Label:0 Match Result O
+[646] Base:1 FP16:1 Label:0 Match Result O
+[647] Base:0 FP16:0 Label:0 Match Result O
+[648] Base:1 FP16:1 Label:1 Match Result O
+[649] Base:0 FP16:0 Label:0 Match Result O
+[650] Base:0 FP16:0 Label:0 Match Result O
+[651] Base:0 FP16:0 Label:0 Match Result O
+[652] Base:0 FP16:0 Label:0 Match Result O
+[653] Base:0 FP16:0 Label:0 Match Result O
+[654] Base:0 FP16:0 Label:0 Match Result O
+[655] Base:1 FP16:1 Label:1 Match Result O
+[656] Base:0 FP16:0 Label:1 Match Result O
+[657] Base:0 FP16:0 Label:0 Match Result O
+[658] Base:1 FP16:1 Label:1 Match Result O
+[659] Base:0 FP16:0 Label:0 Match Result O
+[660] Base:1 FP16:1 Label:1 Match Result O
+[661] Base:0 FP16:0 Label:0 Match Result O
+[662] Base:0 FP16:0 Label:0 Match Result O
+[663] Base:1 FP16:1 Label:1 Match Result O
+[664] Base:1 FP16:1 Label:1 Match Result O
+[665] Base:1 FP16:1 Label:1 Match Result O
+[666] Base:1 FP16:1 Label:1 Match Result O
+[667] Base:1 FP16:1 Label:1 Match Result O
+[668] Base:0 FP16:0 Label:0 Match Result O
+[669] Base:1 FP16:1 Label:1 Match Result O
+[670] Base:0 FP16:0 Label:0 Match Result O
+[671] Base:1 FP16:1 Label:1 Match Result O
+[672] Base:0 FP16:0 Label:0 Match Result O
+[673] Base:0 FP16:0 Label:1 Match Result O
+[674] Base:1 FP16:1 Label:1 Match Result O
+[675] Base:1 FP16:1 Label:1 Match Result O
+[676] Base:0 FP16:0 Label:0 Match Result O
+[677] Base:1 FP16:1 Label:1 Match Result O
+[678] Base:1 FP16:1 Label:1 Match Result O
+[679] Base:1 FP16:1 Label:1 Match Result O
+[680] Base:1 FP16:1 Label:1 Match Result O
+[681] Base:0 FP16:0 Label:0 Match Result O
+[682] Base:0 FP16:0 Label:0 Match Result O
+[683] Base:1 FP16:1 Label:1 Match Result O
+[684] Base:1 FP16:1 Label:1 Match Result O
+[685] Base:0 FP16:0 Label:1 Match Result O
+[686] Base:1 FP16:1 Label:1 Match Result O
+[687] Base:0 FP16:0 Label:0 Match Result O
+[688] Base:0 FP16:0 Label:0 Match Result O
+[689] Base:0 FP16:0 Label:0 Match Result O
+[690] Base:0 FP16:0 Label:0 Match Result O
+[691] Base:1 FP16:1 Label:1 Match Result O
+[692] Base:0 FP16:0 Label:0 Match Result O
+[693] Base:0 FP16:0 Label:0 Match Result O
+[694] Base:0 FP16:0 Label:0 Match Result O
+[695] Base:1 FP16:1 Label:0 Match Result O
+[696] Base:1 FP16:1 Label:1 Match Result O
+[697] Base:0 FP16:0 Label:1 Match Result O
+[698] Base:1 FP16:1 Label:1 Match Result O
+[699] Base:0 FP16:0 Label:1 Match Result O
+[700] Base:0 FP16:0 Label:0 Match Result O
+[701] Base:0 FP16:0 Label:0 Match Result O
+[702] Base:0 FP16:0 Label:0 Match Result O
+[703] Base:0 FP16:0 Label:0 Match Result O
+[704] Base:0 FP16:0 Label:0 Match Result O
+[705] Base:0 FP16:0 Label:0 Match Result O
+[706] Base:0 FP16:0 Label:0 Match Result O
+[707] Base:1 FP16:1 Label:0 Match Result O
+[708] Base:1 FP16:1 Label:1 Match Result O
+[709] Base:0 FP16:0 Label:0 Match Result O
+[710] Base:0 FP16:0 Label:0 Match Result O
+[711] Base:0 FP16:0 Label:0 Match Result O
+[712] Base:0 FP16:0 Label:0 Match Result O
+[713] Base:0 FP16:0 Label:0 Match Result O
+[714] Base:1 FP16:1 Label:1 Match Result O
+[715] Base:0 FP16:0 Label:0 Match Result O
+[716] Base:0 FP16:0 Label:0 Match Result O
+[717] Base:1 FP16:1 Label:1 Match Result O
+[718] Base:1 FP16:1 Label:1 Match Result O
+[719] Base:0 FP16:0 Label:0 Match Result O
+[720] Base:1 FP16:1 Label:1 Match Result O
+[721] Base:1 FP16:1 Label:1 Match Result O
+[722] Base:0 FP16:0 Label:0 Match Result O
+[723] Base:1 FP16:1 Label:1 Match Result O
+[724] Base:1 FP16:1 Label:0 Match Result O
+[725] Base:1 FP16:1 Label:1 Match Result O
+[726] Base:1 FP16:1 Label:1 Match Result O
+[727] Base:0 FP16:0 Label:0 Match Result O
+[728] Base:1 FP16:1 Label:1 Match Result O
+[729] Base:1 FP16:1 Label:1 Match Result O
+[730] Base:0 FP16:0 Label:0 Match Result O
+[731] Base:0 FP16:0 Label:0 Match Result O
+[732] Base:0 FP16:0 Label:0 Match Result O
+[733] Base:0 FP16:0 Label:0 Match Result O
+[734] Base:0 FP16:0 Label:0 Match Result O
+[735] Base:1 FP16:1 Label:0 Match Result O
+[736] Base:1 FP16:1 Label:0 Match Result O
+[737] Base:1 FP16:1 Label:1 Match Result O
+[738] Base:1 FP16:1 Label:1 Match Result O
+[739] Base:1 FP16:1 Label:1 Match Result O
+[740] Base:1 FP16:1 Label:1 Match Result O
+[741] Base:0 FP16:0 Label:1 Match Result O
+[742] Base:1 FP16:1 Label:1 Match Result O
+[743] Base:0 FP16:0 Label:0 Match Result O
+[744] Base:1 FP16:1 Label:1 Match Result O
+[745] Base:0 FP16:0 Label:0 Match Result O
+[746] Base:1 FP16:1 Label:1 Match Result O
+[747] Base:1 FP16:1 Label:1 Match Result O
+[748] Base:0 FP16:0 Label:0 Match Result O
+[749] Base:1 FP16:1 Label:1 Match Result O
+[750] Base:0 FP16:0 Label:0 Match Result O
+[751] Base:0 FP16:0 Label:0 Match Result O
+[752] Base:0 FP16:0 Label:0 Match Result O
+[753] Base:1 FP16:1 Label:1 Match Result O
+[754] Base:1 FP16:1 Label:1 Match Result O
+[755] Base:1 FP16:1 Label:1 Match Result O
+[756] Base:0 FP16:0 Label:0 Match Result O
+[757] Base:0 FP16:0 Label:0 Match Result O
+[758] Base:1 FP16:1 Label:1 Match Result O
+[759] Base:0 FP16:0 Label:0 Match Result O
+[760] Base:1 FP16:1 Label:1 Match Result O
+[761] Base:0 FP16:0 Label:0 Match Result O
+[762] Base:1 FP16:1 Label:1 Match Result O
+[763] Base:1 FP16:1 Label:1 Match Result O
+[764] Base:1 FP16:1 Label:0 Match Result O
+[765] Base:0 FP16:0 Label:0 Match Result O
+[766] Base:1 FP16:1 Label:1 Match Result O
+[767] Base:1 FP16:1 Label:1 Match Result O
+[768] Base:1 FP16:1 Label:1 Match Result O
+[769] Base:1 FP16:1 Label:1 Match Result O
+[770] Base:0 FP16:0 Label:0 Match Result O
+[771] Base:1 FP16:1 Label:0 Match Result O
+[772] Base:1 FP16:1 Label:1 Match Result O
+[773] Base:1 FP16:1 Label:1 Match Result O
+[774] Base:0 FP16:0 Label:0 Match Result O
+[775] Base:0 FP16:0 Label:0 Match Result O
+[776] Base:0 FP16:0 Label:0 Match Result O
+[777] Base:1 FP16:1 Label:1 Match Result O
+[778] Base:1 FP16:1 Label:1 Match Result O
+[779] Base:0 FP16:0 Label:0 Match Result O
+[780] Base:1 FP16:1 Label:1 Match Result O
+[781] Base:0 FP16:0 Label:0 Match Result O
+[782] Base:1 FP16:1 Label:1 Match Result O
+[783] Base:1 FP16:1 Label:1 Match Result O
+[784] Base:1 FP16:1 Label:1 Match Result O
+[785] Base:1 FP16:1 Label:1 Match Result O
+[786] Base:0 FP16:0 Label:0 Match Result O
+[787] Base:0 FP16:0 Label:0 Match Result O
+[788] Base:1 FP16:1 Label:1 Match Result O
+[789] Base:0 FP16:0 Label:0 Match Result O
+[790] Base:0 FP16:0 Label:0 Match Result O
+[791] Base:1 FP16:1 Label:0 Match Result O
+[792] Base:1 FP16:1 Label:1 Match Result O
+[793] Base:1 FP16:1 Label:1 Match Result O
+[794] Base:1 FP16:1 Label:1 Match Result O
+[795] Base:0 FP16:0 Label:0 Match Result O
+[796] Base:1 FP16:1 Label:1 Match Result O
+[797] Base:0 FP16:0 Label:0 Match Result O
+[798] Base:0 FP16:0 Label:0 Match Result O
+[799] Base:1 FP16:1 Label:1 Match Result O
+[800] Base:0 FP16:0 Label:0 Match Result O
+[801] Base:0 FP16:0 Label:0 Match Result O
+[802] Base:0 FP16:0 Label:0 Match Result O
+[803] Base:1 FP16:1 Label:1 Match Result O
+[804] Base:0 FP16:0 Label:0 Match Result O
+[805] Base:0 FP16:0 Label:0 Match Result O
+[806] Base:1 FP16:1 Label:1 Match Result O
+[807] Base:1 FP16:1 Label:1 Match Result O
+[808] Base:1 FP16:1 Label:1 Match Result O
+[809] Base:1 FP16:1 Label:1 Match Result O
+[810] Base:1 FP16:1 Label:1 Match Result O
+[811] Base:0 FP16:0 Label:0 Match Result O
+[812] Base:0 FP16:0 Label:1 Match Result O
+[813] Base:0 FP16:0 Label:0 Match Result O
+[814] Base:0 FP16:0 Label:0 Match Result O
+[815] Base:1 FP16:1 Label:1 Match Result O
+[816] Base:1 FP16:1 Label:1 Match Result O
+[817] Base:1 FP16:1 Label:1 Match Result O
+[818] Base:0 FP16:0 Label:0 Match Result O
+[819] Base:0 FP16:0 Label:0 Match Result O
+[820] Base:1 FP16:1 Label:1 Match Result O
+[821] Base:1 FP16:1 Label:1 Match Result O
+[822] Base:0 FP16:0 Label:0 Match Result O
+[823] Base:1 FP16:1 Label:1 Match Result O
+[824] Base:0 FP16:0 Label:0 Match Result O
+[825] Base:1 FP16:1 Label:1 Match Result O
+[826] Base:1 FP16:1 Label:1 Match Result O
+[827] Base:1 FP16:1 Label:0 Match Result O
+[828] Base:0 FP16:0 Label:0 Match Result O
+[829] Base:1 FP16:1 Label:0 Match Result O
+[830] Base:1 FP16:1 Label:1 Match Result O
+[831] Base:1 FP16:1 Label:1 Match Result O
+[832] Base:1 FP16:1 Label:0 Match Result O
+[833] Base:0 FP16:0 Label:0 Match Result O
+[834] Base:1 FP16:1 Label:1 Match Result O
+[835] Base:1 FP16:1 Label:1 Match Result O
+[836] Base:0 FP16:0 Label:0 Match Result O
+[837] Base:1 FP16:1 Label:1 Match Result O
+[838] Base:0 FP16:0 Label:0 Match Result O
+[839] Base:0 FP16:0 Label:0 Match Result O
+[840] Base:0 FP16:0 Label:0 Match Result O
+[841] Base:1 FP16:1 Label:1 Match Result O
+[842] Base:0 FP16:0 Label:0 Match Result O
+[843] Base:0 FP16:0 Label:0 Match Result O
+[844] Base:0 FP16:0 Label:0 Match Result O
+[845] Base:0 FP16:0 Label:0 Match Result O
+[846] Base:1 FP16:1 Label:0 Match Result O
+[847] Base:1 FP16:1 Label:1 Match Result O
+[848] Base:1 FP16:1 Label:1 Match Result O
+[849] Base:1 FP16:1 Label:1 Match Result O
+[850] Base:1 FP16:1 Label:1 Match Result O
+[851] Base:0 FP16:0 Label:0 Match Result O
+[852] Base:0 FP16:0 Label:0 Match Result O
+[853] Base:1 FP16:1 Label:1 Match Result O
+[854] Base:0 FP16:0 Label:0 Match Result O
+[855] Base:1 FP16:1 Label:1 Match Result O
+[856] Base:1 FP16:1 Label:1 Match Result O
+[857] Base:1 FP16:1 Label:1 Match Result O
+[858] Base:1 FP16:1 Label:1 Match Result O
+[859] Base:1 FP16:1 Label:1 Match Result O
+[860] Base:1 FP16:1 Label:1 Match Result O
+[861] Base:1 FP16:1 Label:1 Match Result O
+[862] Base:0 FP16:0 Label:0 Match Result O
+[863] Base:0 FP16:0 Label:0 Match Result O
+[864] Base:0 FP16:0 Label:0 Match Result O
+[865] Base:1 FP16:1 Label:1 Match Result O
+[866] Base:1 FP16:1 Label:1 Match Result O
+[867] Base:0 FP16:0 Label:0 Match Result O
+[868] Base:1 FP16:1 Label:1 Match Result O
+[869] Base:0 FP16:0 Label:0 Match Result O
+[870] Base:0 FP16:0 Label:0 Match Result O
+[871] Base:1 FP16:1 Label:1 Match Result O
+
+Evaluation Results :
+Baseline BERT Accuracy : 92.43% (806/872)
+FP16 BERT Accuracy : 92.43% (806/872)
+Prediction Match Rate FP16 : 100.00% (872/872)
