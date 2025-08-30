@@ -94,9 +94,14 @@ def evaluate_SST2():
     correct_approx = 0
     match_count_approx = 0
 
+    lengths = []
+
     for i, item in enumerate(dataset):
-        inputs = tokenizer(item["sentence"], return_tensors="pt")
+        inputs = tokenizer(item["sentence"], return_tensors="pt", truncation=True)
         label = item["label"]
+
+        L = inputs["input_ids"].shape[-1]
+        lengths.append(L)
 
         with torch.no_grad():
             out_base = baseline_model(**inputs).logits
@@ -112,13 +117,10 @@ def evaluate_SST2():
         if pred_base == pred_approx:
             match_count_approx += 1
 
-        if pred_base == pred_approx:
-            same_approx = "O"
-        else:
-            same_approx = "X"
+        same_approx = "O" if pred_base == pred_approx else "X"
 
         print(
-            f"[{i:3d}] Base:{pred_base} Approx:{pred_approx} Label:{label} Match Result {same_approx}"
+            f"[{i:3d}] L={L:3d}  Base:{pred_base}  Approx:{pred_approx}  Label:{label}  Match {same_approx}"
         )
 
     total = len(dataset)
@@ -127,10 +129,10 @@ def evaluate_SST2():
         f"Baseline BERT Accuracy : {correct_baseline/total*100:.2f}% ({correct_baseline}/{total})"
     )
     print(
-        f"Approx BERT Accuracy : {correct_approx/total*100:.2f}% ({correct_approx}/{total})"
+        f"Approx BERT Accuracy   : {correct_approx/total*100:.2f}% ({correct_approx}/{total})"
     )
     print(
-        f"Prediction Match Rate Approx : {match_count_approx/total*100:.2f}% ({match_count_approx}/{total})"
+        f"Prediction Match Rate   : {match_count_approx/total*100:.2f}% ({match_count_approx}/{total})"
     )
 
 
