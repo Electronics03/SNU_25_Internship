@@ -80,3 +80,17 @@ def q610_bytes_to_floats(b: bytes, *, endian: str = "little") -> np.ndarray:
     dtype = "<i2" if endian == "little" else ">i2"
     i16 = np.frombuffer(b, dtype=dtype)
     return i16.astype(np.float64) / SCALE
+
+
+def build_softmax_frame(
+    payload64: np.ndarray, length: int, *, endian: str = "little"
+) -> bytes:
+
+    L = int(length)
+    if L < 1:
+        L = 1
+    if L > 64:
+        L = 64
+
+    payload_bytes = floats_to_q610_bytes(payload64, endian=endian)
+    return bytes([L]) + payload_bytes

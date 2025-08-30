@@ -29,7 +29,6 @@ def attention(Q, K, V, ser: serial.Serial):
 
 
 def softmax_FPGA_UART(ser: serial.Serial, scores, *, pad_value=-32.0, deadline_s=2.0):
-
     x = np.asarray(scores, dtype=np.float64)
     L = int(x.shape[0])
     if not (1 <= L <= 64):
@@ -38,12 +37,11 @@ def softmax_FPGA_UART(ser: serial.Serial, scores, *, pad_value=-32.0, deadline_s
     payload = np.full(64, pad_value, dtype=np.float64)
     payload[:L] = x
 
-    frame = UART_base.floats_to_q610_bytes(payload, endian="little")
+    frame = UART_base.build_softmax_frame(payload, length=L, endian="little")
     UART_base.send_exact(ser, frame)
 
     resp = UART_base.read_exact(ser, 128, deadline_s=deadline_s)
     probs64 = UART_base.q610_bytes_to_floats(resp, endian="little")
 
     p = np.asarray(probs64[:L], dtype=np.float64)
-
     return p

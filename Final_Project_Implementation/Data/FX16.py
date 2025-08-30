@@ -28,7 +28,7 @@ def split_by_n(s, n=4):
     return [s[i : i + n] for i in range(0, len(s), n)]
 
 
-for _ in range(63):
+for _ in range(64):
     in_FX16 = input()
     softmax_in = softmax_in + in_FX16
 
@@ -39,7 +39,7 @@ def split_by_n(s, n=4):
     return [s[i : i + n] for i in range(0, len(s), n)]
 
 
-for _ in range(63):
+for _ in range(64):
     in_FX16 = input()
     softmax_out = softmax_out + in_FX16
 
@@ -47,19 +47,19 @@ softmax_in_arr = split_by_n(softmax_in)
 softmax_out_arr = split_by_n(softmax_out)
 
 in_converted = Q610_to_float(softmax_in_arr)
-in_converted = np.array(in_converted).reshape(63, 64)
+in_converted = np.array(in_converted).reshape(64, 64)
 out_converted = Q610_to_float(softmax_out_arr)
-out_converted = np.array(out_converted).reshape(63, 64)
+out_converted = np.array(out_converted).reshape(64, 64)
 
 
-for i in range(63):
+for i in range(64):
     out_ideal = baseline_softmax_FP32(in_converted[i])
     for j in range(64):
         print(f"{in_converted[i][j]:.5f} {out_converted[i][j]:.5f} {out_ideal[j]:.5f}")
     print()
 
-with open("softmax_compare.txt", "w") as txtfile:
-    for i in range(63):
+with open("softmax_compare-1.txt", "w") as txtfile:
+    for i in range(64):
         out_ideal = baseline_softmax_FP32(in_converted[i])
         for j in range(64):
             txtfile.write(

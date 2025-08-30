@@ -5,6 +5,7 @@ module FSM #(
     output reg en,
     input rst,
 
+    output reg [1:0] length_mode,
     output [1023:0] data,
     output valid_in
 );
@@ -42,18 +43,21 @@ module FSM #(
                     state <= DATA;
                     en <= 0;
                     valid <= 0;
+                    length_mode <= 0;
                 end
                 DATA: begin
                     if (~comp)begin
                         address <= address + 1;
                         en <= 1;
                         valid <= 1;
+                        length_mode <= address[1:0];
                     end
                     else begin
                         state <= STOP;
                         address <= 8'd0;
                         en <= 1;
                         valid <= 1;
+                        length_mode <= 2;
                     end
                 end
                 STOP: begin
@@ -61,6 +65,7 @@ module FSM #(
                     address <= 8'd0;
                     en <= 1;
                     valid <= 0;
+                    length_mode <= 0;
                 end
             endcase
         end
@@ -68,7 +73,7 @@ module FSM #(
     
     assign valid_in = valid_pipe;
 
-    BRAM_data BRAM (
+    blk_mem_gen_0 BRAM (
         .clka(clk),
         .wea(1'b0),
         .addra(address),
