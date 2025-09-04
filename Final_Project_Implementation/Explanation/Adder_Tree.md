@@ -25,7 +25,7 @@ The design uses a 16-bit fixed-point format in Q6.10 representation.
 ## II. Pseudo code
 
 ```
-function max_tree(valid_in, in_0_flat[N], in_1_flat[N])
+function add_tree(valid_in, in_0_flat[N], in_1_flat[N])
 {
     STAGE ← log_2(N)
 
