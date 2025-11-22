@@ -1,3 +1,3 @@
-*.v   linguist-language=HDL
-*.sv  linguist-language=HDL
-*.svh linguist-language=HDL
+*.v   linguist-language=Verilog
+*.sv  linguist-language=Verilog
+*.svh linguist-language=Verilog
