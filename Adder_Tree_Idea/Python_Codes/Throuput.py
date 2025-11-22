@@ -1,36 +1,22 @@
-import sys
-import re
+import numpy as np
 
+# 파일 읽기
+with open("sst2_token_lengths.txt") as f:
+    lengths = [int(line.strip()) for line in f]
 
-def main():
-    # Throughput 규칙
-    def get_throughput(L):
-        if L <= 16:
-            return 4
-        elif L <= 32:
-            return 2
-        else:
-            return 1
+lengths = np.array(lengths)
+N = len(lengths)
 
-    lengths = []
-    throughputs = []
+# 평균 길이
+print("평균 길이:", np.mean(lengths))
 
-    print("Paste the log (end with Ctrl+D or Ctrl+Z):")
-    for line in sys.stdin:
-        match = re.search(r"L=\s*(\d+)", line)
-        if match:
-            L = int(match.group(1))
-            tp = get_throughput(L)
-            lengths.append(L)
-            throughputs.append(tp)
+# 구간별 비율
+p16 = np.sum((lengths >= 1) & (lengths <= 16)) / N
+p32 = np.sum((lengths >= 17) & (lengths <= 32)) / N
+p64 = np.sum((lengths >= 33) & (lengths <= 64)) / N
 
-    if throughputs:
-        avg_tp = sum(throughputs) / len(throughputs)
-        print(f"\nProcessed {len(throughputs)} entries.")
-        print(f"Average throughput: {avg_tp:.2f} data per clock")
-    else:
-        print("No valid entries found.")
+print(f"p16={p16:.4f}, p32={p32:.4f}, p64={p64:.4f}")
 
-
-if __name__ == "__main__":
-    main()
+# 정규화 처리량
+Tnorm = 4 * p16 + 2 * p32 + 1 * p64
+print("Normalized Throughput =", Tnorm, "x baseline")

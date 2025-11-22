@@ -1,0 +1,3 @@
+*.v   linguist-language=HDL
+*.sv  linguist-language=HDL
+*.svh linguist-language=HDL
